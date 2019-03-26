@@ -23,6 +23,8 @@ const appRoutes: Routes = [
 
 @NgModule({
   declarations: [
+    AdminComponent,
+    DoctorComponent
   ],
   imports: [
     PublicModule,

@@ -158,7 +158,7 @@
         <img src="http://via.placeholder.com/160x160" class="rounded-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>Account</p>
+        <p>{{currentUser.ADUserName}}</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>
@@ -179,24 +179,8 @@
           <li><a href="#">Bootstrap Model</a></li>
         </ul>
       </li>
-      <li> <a [routerLink]="['/admin/doctors']"><i class="fa fa-diamond"></i> <span class="nav-label">Bác sĩ</span></a> </li>
-      <li> <a [routerLink]="['/admin/doctors']"><i class="fa fa-diamond"></i> <span class="nav-label">Người dùng</span></a> </li>
-      <li> <a href="#" data-toggle="collapse" data-target="#products" class="collapsed active"> <i
-            class="fa fa-bar-chart-o"></i> <span class="nav-label">Graphs</span> <span
-            class="fa fa-chevron-left pull-right"></span> </a>
-        <ul class="sub-menu collapse" id="products">
-          <li class="active"><a href="#">CSS3 Animation</a></li>
-          <li><a href="#">General</a></li>
-          <li><a href="#">Buttons</a></li>
-          <li><a href="#">Tabs & Accordions</a></li>
-          <li><a href="#">Typography</a></li>
-          <li><a href="#">FontAwesome</a></li>
-          <li><a href="#">Slider</a></li>
-          <li><a href="#">Panels</a></li>
-          <li><a href="#">Widgets</a></li>
-          <li><a href="#">Bootstrap Model</a></li>
-        </ul>
-      </li>
+      <li> <a [routerLink]="['/admin/doctor']"><i class="fa fa-diamond"></i> <span class="nav-label">Bác sĩ</span></a> </li>
+      <li> <a [routerLink]="['/admin/patient']"><i class="fa fa-diamond"></i> <span class="nav-label">Bệnh nhân</span></a> </li>
       <li> <a href="#"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a> </li>
       <li> <a href="#" data-toggle="collapse" data-target="#tables" class="collapsed active"><i class="fa fa-table"></i>
           <span class="nav-label">Tables</span><span class="fa fa-chevron-left pull-right"></span></a>
