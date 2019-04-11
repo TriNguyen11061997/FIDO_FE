@@ -47,3 +47,8 @@ ul, ol {
     visibility: hidden;
     transition: .22s ease;
 }
+footer{
+    background: #2270bf;
+    float: left;
+    width: 100%;
+}

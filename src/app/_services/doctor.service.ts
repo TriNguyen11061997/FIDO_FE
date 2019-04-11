@@ -8,7 +8,7 @@ import { HttpClient } from "@angular/common/http";
 export class DoctorService {
   formData : Doctor;
   list: Doctor[];
-  readonly rootURL = "http://localhost:64391/api"
+  readonly rootURL = "https://aslmtfido.azurewebsites.net/api"
   constructor(private http : HttpClient) { }
 
   getAllObject(){

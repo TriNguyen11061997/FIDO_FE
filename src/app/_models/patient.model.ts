@@ -1,21 +1,21 @@
 export class Patient {
-    PatientID	:number;
-    AAStatus	:String;
-    AACreatedUser	:String;
-    AAUpdatedUser	:String;
-    AACreatedDate	:Date;
-    AAUpdatedDate	:Date;
-    PatientNo	:String;
-    PatientName	:String;
-    PatientGender	:String;
-    PatientBirthDay	:String;
-    PatientDesc	:String;
-    PatientPicture:	String;
-    PatientIDNumber	:String;
-    PatientIDNumberPlace	:String;
-    PatientIDNumberDate	:Date;
-    PatientTel	:String;
-    PatientEmail	:String;
-    FK_AddressID	:number;
+    patientID	:number;
+    aaStatus	:String;
+    aaCreatedUser	:String;
+    aaUpdatedUser	:String;
+    aaCreatedDate	:Date;
+    aaUpdatedDate	:Date;
+    patientNo	:String;
+    patientName	:String;
+    patientGender	:String;
+    patientBirthDay	:String;
+    patientDesc	:String;
+    patientPicture:	String;
+    patientIDNumber	:String;
+    patientIDNumberPlace	:String;
+    patientIDNumberDate	:Date;
+    patientTel	:String;
+    patientEmail	:String;
+    fK_AddressID	:number;
 	
 }

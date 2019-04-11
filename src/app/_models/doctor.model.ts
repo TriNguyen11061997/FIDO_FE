@@ -1,25 +1,25 @@
 export class Doctor {
-    DoctorID: number;
-    DoctorNo: string;;
-    DoctorName: string;;
-    DoctorAvatar	:string;
-    DoctorBirthDay	:Date;
-    DoctorDesc	:string;
-    DoctorGender	:string;
-    DoctorStatus	:string;
-    DoctorIDNumber	:string;
-    DoctorIDNumberPlace	:string;
-    DoctorIDNumberDate	:string;
-    DoctorPassportNo	:string;
-    DoctorPassportDate	:string;
-    DoctorPassportPlace	:string;
-    DoctorPhone1	:string;
-    DoctorPhone2	:string;
-    DoctorEmail	:string;
-    FK_EmployeeID	:number;
-    DoctorSpecialist	:string;
-    HospitalName	:string;
-    EmployeeName	:string;
-    FK_AddressID	:number;
+    doctorID: number;
+    doctorNo: String;
+    doctorName: String;
+    doctorAvatar	:String;
+    doctorBirthDay	:Date;
+    doctorDesc	:String;
+    doctorGender	:String;
+    doctorStatus	:String;
+    doctorIDNumber	:String;
+    doctorIDNumberPlace	:String;
+    doctorIDNumberDate	:String;
+    doctorPassportNo	:String;
+    doctorPassportDate	:Date;
+    doctorPassportPlace	:String;
+    doctorPhone1	:String;
+    doctorPhone2	:String;
+    doctorEmail	:String;
+    fK_EmployeeID	:number;
+    doctorSpecialist	:String;
+    hospitalName	:String;
+    employeeName	:String;
+    fK_AddressID	:number;
 
 }

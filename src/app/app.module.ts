@@ -12,12 +12,13 @@ import { AppRouting }        from './app.routing';
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { HomeComponent } from './home';
-import { LoginComponent } from './login';
+
 import { RegisterComponent } from './register';;
 import { PublicHeaderComponent } from './public/public-header/public-header.component';
-import { PublicFooterComponent } from './public/public-footer/public-footer.component'
+import { PublicFooterComponent } from './public/public-footer/public-footer.component';
 import { AdminComponent } from './admin/admin.component';
 import { PublicComponent } from './public/public.component';
+import { LoginComponent } from './public/login';
 
 
 @NgModule({
@@ -32,11 +33,7 @@ import { PublicComponent } from './public/public.component';
         AppComponent,
         AlertComponent,
         HomeComponent,
-        LoginComponent,
         RegisterComponent,
-        PublicComponent,
-        PublicHeaderComponent,
-        PublicFooterComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
