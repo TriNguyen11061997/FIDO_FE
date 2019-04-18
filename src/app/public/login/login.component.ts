@@ -5,8 +5,8 @@ import { first } from 'rxjs/operators';
 
 import { AlertService, AuthenticationService } from '@app/_services';
 
-@Component({ 
-    templateUrl: 'login.component.html' ,
+@Component({
+    templateUrl: 'login.component.html',
     styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
@@ -23,7 +23,7 @@ export class LoginComponent implements OnInit {
         private alertService: AlertService
     ) {
         // redirect to home if already logged in
-        
+
     }
 
     ngOnInit() {
@@ -40,8 +40,10 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
+        // if (this.f.username.value == 'admin' && this.f.password.value == 'admin'){
+        //     this.router.navigate(['/admin']);
+        // }
         this.submitted = true;
-
         // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;

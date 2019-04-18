@@ -2,7 +2,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ReactiveFormsModule }    from '@angular/forms';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { FormsModule } from '@angular/forms'
+import { FormsModule } from '@angular/forms';
+import { DataTablesModule } from 'angular-datatables';
 // used to create fake backend
 import { fakeBackendProvider } from './_helpers';
 
@@ -11,14 +12,8 @@ import { AppRouting }        from './app.routing';
 
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { HomeComponent } from './home';
+import { RegisterComponent } from './public/register/register.component';
 
-import { RegisterComponent } from './register';;
-import { PublicHeaderComponent } from './public/public-header/public-header.component';
-import { PublicFooterComponent } from './public/public-footer/public-footer.component';
-import { AdminComponent } from './admin/admin.component';
-import { PublicComponent } from './public/public.component';
-import { LoginComponent } from './public/login';
 
 
 @NgModule({
@@ -27,13 +22,12 @@ import { LoginComponent } from './public/login';
         ReactiveFormsModule,
         HttpClientModule,
         AppRouting,
-        FormsModule
+        FormsModule,
+        DataTablesModule
     ],
     declarations: [
         AppComponent,
         AlertComponent,
-        HomeComponent,
-        RegisterComponent,
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

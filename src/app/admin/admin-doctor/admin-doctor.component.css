@@ -1,3 +1,17 @@
+.main{
+  float: left;
+  height: 568px;
+  width: 84%;
+  overflow: scroll;
+}
+.container{
+  width: 100%;
+  padding-right: 0;
+  padding-left: 0;
+}
+.pt-5{
+  padding-top: 0!important;
+}
 html {
     font-family: Lato, 'Helvetica Neue', Arial, Helvetica, sans-serif;
     font-size: 14px;

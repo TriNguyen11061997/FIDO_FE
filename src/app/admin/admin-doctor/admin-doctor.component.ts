@@ -8,10 +8,17 @@ import { DoctorService } from '@app/_services/doctor.service';
 })
 export class AdminDoctorComponent implements OnInit {
 
-  constructor(private doctorService: DoctorService) { }
-
+  constructor(private doctorService: DoctorService) {
+  }
+  
+  dtOptions: DataTables.Settings = {};
   ngOnInit() {
     this.doctorService.getAllObject();
+    this.dtOptions = {
+      pagingType: 'full_numbers',
+      pageLength: 5,
+      processing: true
+    };
   }
 
 }
