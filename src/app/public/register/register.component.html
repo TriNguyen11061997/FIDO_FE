@@ -7,7 +7,7 @@
                 <h3>Welcome</h3>
                 <p>FiDo!</p>
                 <a [routerLink]="['/login']"><input type="submit" name="" value="Đăng nhập" /></a><br />
-                
+
             </div>
             <div class="col-md-9 register-right">
                 <ul class="nav nav-tabs nav-justified" id="myTab" role="tablist">
@@ -23,93 +23,145 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
                         <h3 class="register-heading">Thông tin</h3>
-                        <div class="row register-form">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Họ tên*" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email *" value="" />
-                                </div>
+                        <form [formGroup]="registerUserForm" (ngSubmit)="onSubmitUser()">
+                            <div class="row register-form">
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="text" formControlName="name" class="form-control"
+                                            placeholder="Họ tên*" value=""
+                                            [ngClass]="{ 'is-invalid': submitted && f.name.errors }" />
+                                        <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                                            <div *ngIf="f.name.errors.required">Vui lòng nhập họ tên!</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="email" class="form-control"
+                                            placeholder="Email *" value=""
+                                            [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                                        <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                                            <div *ngIf="f.email.errors.required">Vui lòng nhập email!</div>
+                                            <div *ngIf="f.email.errors.email">Không đúng định dạng!</div>
+                                        </div>
+                                    </div>
 
-                                <div class="form-group">
-                                    <div class="maxl">
-                                        <label class="radio inline">
-                                            <input type="radio" name="gender" value="male" checked>
-                                            <span> Nam </span>
-                                        </label>
-                                        <label class="radio inline">
-                                            <input type="radio" name="gender" value="female">
-                                            <span>Nữ </span>
-                                        </label>
+                                    <div class="form-group">
+                                        <div class="maxl">
+                                            <label class="radio inline">
+                                                <input type="radio" name="gender" value="male" checked>
+                                                <span> Nam </span>
+                                            </label>
+                                            <label class="radio inline">
+                                                <input type="radio" name="gender" value="female">
+                                                <span>Nữ </span>
+                                            </label>
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Mật khẩu *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Xác nhận mật khẩu *" value="" />
-                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <input type="password" formControlName="password" class="form-control"
+                                            placeholder="Mật khẩu *" value=""
+                                            [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+                                        <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                                            <div *ngIf="f.password.errors.required">Vui lòng nhập mật khẩu!</div>
+                                            <div *ngIf="f.password.errors.minlength">Mật khẩu ít nhất 6 kí tự</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" formControlName="confirmPassword" class="form-control"
+                                            placeholder="Xác nhận mật khẩu *" value=""
+                                            [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                                            <div *ngIf="f.confirmPassword.errors.required">Xác nhận mật khẩu!
+                                            </div>
+                                            <div *ngIf="f.confirmPassword.errors.mustMatch">Mật khẩu không khớp!</div>
+                                        </div>
+                                    </div>
 
-                                <input type="submit" class="btnRegister" value="Đăng ký" />
+                                    <input type="submit" class="btnRegister" value="Đăng ký" />
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                     <div class="tab-pane fade show" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                         <h3 class="register-heading">Thông tin</h3>
-                        <div class="row register-form">
-                            <div class="col-md-6">
-                                <div class="form-group">
-                                    <input type="text" class="form-control" placeholder="Họ tên*" value="" required />
-                                </div>
-                                <div class="form-group">
-                                    <input type="email" class="form-control" placeholder="Email *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Mật khẩu *" value="" />
-                                </div>
-                                <div class="form-group">
-                                    <input type="password" class="form-control" placeholder="Xác nhận mật khẩu *" value="" />
-                                </div>
-                            </div>
-                            <div class="col-md-6">                               
-                                <div class="form-group">
-                                    <select class="form-control">
-                                        <option class="hidden" selected disabled>Nơi làm việc
-                                        </option>
-                                        <option>Đà Nẵng</option>
-                                        <option>Quảng Nam</option>
-                                        <option>Hà Nội</option>
-                                    </select>
-                                </div>
-                                <div class="form-group">
+                        <form [formGroup]="registerDoctorForm" (ngSubmit)="onSubmitDoctor()">
+                            <div class="row register-form">
+                                <div class="col-md-6">
                                     <div class="form-group">
-                                        <select class="form-control">
-                                            <option class="hidden" selected disabled>Chuyên khoa
+                                        <input type="text" formControlName="name" class="form-control"
+                                            placeholder="Họ tên*" value=""
+                                            [ngClass]="{ 'is-invalid': submitted1 && f1.name.errors }" />
+                                        <div *ngIf="submitted1 && f1.name.errors" class="invalid-feedback">
+                                            <div *ngIf="f1.name.errors.required">Vui lòng nhập họ tên!</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="text" formControlName="email" class="form-control"
+                                            placeholder="Email *" value=""
+                                            [ngClass]="{ 'is-invalid': submitted1 && f1.email.errors }" />
+                                        <div *ngIf="submitted1 && f1.email.errors" class="invalid-feedback">
+                                            <div *ngIf="f1.email.errors.required">Vui lòng nhập email!</div>
+                                            <div *ngIf="f1.email.errors.email">Không đúng định dạng!</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" formControlName="password" class="form-control"
+                                            placeholder="Mật khẩu *" value=""
+                                            [ngClass]="{ 'is-invalid': submitted1 && f1.password.errors }" />
+                                        <div *ngIf="submitted1 && f1.password.errors" class="invalid-feedback">
+                                            <div *ngIf="f1.password.errors.required">Vui lòng nhập mật khẩu!</div>
+                                            <div *ngIf="f1.password.errors.minlength">Mật khẩu ít nhất 6 kí tự!</div>
+                                        </div>
+                                    </div>
+                                    <div class="form-group">
+                                        <input type="password" formControlName="confirmPassword" class="form-control"
+                                            placeholder="Xác nhận mật khẩu *" value=""
+                                            [ngClass]="{ 'is-invalid': submitted1 && f1.confirmPassword.errors }" />
+                                        <div *ngIf="submitted1 && f1.confirmPassword.errors" class="invalid-feedback">
+                                            <div *ngIf="f1.confirmPassword.errors.required">Xác nhận mật khẩu!
+                                            </div>
+                                            <div *ngIf="f1.confirmPassword.errors.mustMatch">Mật khẩu không khớp!</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <select class="form-control" formControlName="noilamviec">
+                                            <option class="hidden" selected disabled>Nơi làm việc
                                             </option>
-                                            <option>Ngoại tổng hợp</option>
-                                            <option>Khoa nội</option>
-                                            <option>Khoa bỏng</option>
+                                            <option value="0">Đà Nẵng</option>
+                                            <option value="0">Quảng Nam</option>
+                                            <option value="0">Hà Nội</option>
                                         </select>
                                     </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="maxl">
-                                        <label class="radio inline">
-                                            <input type="radio" name="gender" value="male" checked>
-                                            <span> Nam </span>
-                                        </label>
-                                        <label class="radio inline">
-                                            <input type="radio" name="gender" value="female">
-                                            <span>Nữ </span>
-                                        </label>
+                                    <div class="form-group">
+                                        <div class="form-group">
+                                            <select class="form-control" formControlName="chuyenkhoa">
+                                                <option class="hidden" selected disabled>Chuyên khoa
+                                                </option>
+                                                <option value="0">Ngoại tổng hợp</option>
+                                                <option value="0">Khoa nội</option>
+                                                <option value="0">Khoa bỏng</option>
+                                            </select>
+                                        </div>
                                     </div>
-                                </div>              
-                                <input type="submit" class="btnRegister" value="Đăng ký" />
+                                    <div class="form-group">
+                                        <div class="maxl">
+                                            <label class="radio inline">
+                                                <input type="radio" name="gender" value="male" checked>
+                                                <span> Nam </span>
+                                            </label>
+                                            <label class="radio inline">
+                                                <input type="radio" name="gender" value="female">
+                                                <span>Nữ </span>
+                                            </label>
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="btnRegister" value="Đăng ký" />
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
                 </div>
             </div>

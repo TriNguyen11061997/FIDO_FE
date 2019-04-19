@@ -22,7 +22,7 @@ export class AuthenticationService {
     }
 
     login(formData:Users) {
-        return this.http.post<any>(this.rootURL+"/signin",formData)
+        return this.http.post<any>(this.rootURL+"/login",formData)
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user[0]['object']) {

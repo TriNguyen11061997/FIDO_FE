@@ -161,3 +161,10 @@ a{color:inherit;text-decoration:none}
 .foot-lnk{
 	text-align:center;
 }
+.form-control{
+	border: none;
+    padding: 25px  20px;
+    border-radius: 25px;
+    background: rgba(255,255,255,.1);
+    color: white;
+}

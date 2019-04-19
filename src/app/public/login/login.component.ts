@@ -21,32 +21,28 @@ export class LoginComponent implements OnInit {
         private authenticationService: AuthenticationService,
         private alertService: AlertService
     ) {
-        // redirect to home if already logged in
-
     }
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            email: ['', Validators.required],
-            password: ['', Validators.required]
-        });
+            email: ['', [Validators.required, Validators.email]],
+            password: ['', [Validators.required, Validators.minLength(6)]]
+        })
 
         // get return url from route parameters or default to '/'
         this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     }
-
-    // convenience getter for easy access to form fields
     get f() { return this.loginForm.controls; }
-
     onSubmit() {
         this.submitted = true;
-        // stop here if form is invalid
         if (this.loginForm.invalid) {
             return;
         }
 
+        //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value))
+
         this.loading = true;
-        this.authenticationService.login(this.loginForm.value) 
+        this.authenticationService.login(this.loginForm.value)
             .pipe(first())
             .subscribe(
                 data => {

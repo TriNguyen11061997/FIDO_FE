@@ -1,48 +1,50 @@
 ﻿<app-public-header></app-public-header>
 <div class="body">
-    <div class="login-wrap">
-      <div class="login-html">
-        <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Đăng nhập</label>
-        <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Quên mật khẩu</label>
-        <div class="login-form">
-          <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-            <div class="sign-in-htm">
-              <div class="group">
-                <label for="user" class="label">Tên đăng nhập</label>
-                <input id="user" type="text" formControlName="email" class="input"
-                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
-                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
-                  <div *ngIf="f.email.errors.required">email is required</div>
-                </div>
+  <div class="login-wrap">
+    <div class="login-html">
+      <input id="tab-1" type="radio" name="tab" class="sign-in" checked><label for="tab-1" class="tab">Đăng nhập</label>
+      <input id="tab-2" type="radio" name="tab" class="for-pwd"><label for="tab-2" class="tab">Quên mật khẩu</label>
+      <div class="login-form">
+        <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+          <div class="sign-in-htm">
+            <div class="group">
+              <label class="label">Email đăng nhập</label>
+              <input type="text" formControlName="email" class="form-control" value=""
+                [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
+              <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div *ngIf="f.email.errors.required">Vui lòng nhập email!</div>
+                <div *ngIf="f.email.errors.email">Không đúng định dạng!</div>
               </div>
-              <div class="group">
-                <label for="pass" class="label">Mật khẩu</label>
-                <input id="pass" type="password" class="input" data-type="password" formControlName="password"
-                  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+            </div>
+            <div class="group">
+              <label class="label">Mật khẩu</label>
+              <input type="password" formControlName="password" class="form-control"
+              [ngClass]="{ 'is-invalid': submitted && f.password.errors }"/>
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
-                  <div *ngIf="f.password.errors.required">Password is required</div>
-                </div>
-  
+                  <div *ngIf="f.password.errors.required">Vui lòng nhập mật khẩu!</div>
+                  <div *ngIf="f.password.errors.minlength">Mật khẩu ít nhất 6 kí tự!</div>
               </div>
-              <div class="group">
-                <button [disabled]="loading" type="submit" class="button" value="Sign In">Đăng nhập</button>
-              </div>
-              <div class="hr"></div>
+
             </div>
-            </form>
-  
-            <div class="for-pwd-htm">
-              <div class="group">
-                <label for="user" class="label">email or Email</label>
-                <input id="user" type="text" class="input">
-              </div>
-              <div class="group">
-                <input type="submit" class="button" value="Reset Password">
-              </div>
-              <div class="hr"></div>
+            <div class="group">
+              <input type="submit" class="button" value="Đăng nhập" />
             </div>
+            <div class="hr"></div>
+          </div>
+        </form>
+
+        <div class="for-pwd-htm">
+          <div class="group">
+            <label for="user" class="label">email or Email</label>
+            <input id="user" type="text" class="input">
+          </div>
+          <div class="group">
+            <input type="submit" class="button" value="Reset Password">
+          </div>
+          <div class="hr"></div>
         </div>
       </div>
     </div>
   </div>
-  <app-public-footer></app-public-footer>
+</div>
+<app-public-footer></app-public-footer>
