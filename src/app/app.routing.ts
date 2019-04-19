@@ -10,6 +10,7 @@ import { LoginComponent } from './public/login';
 import { RegisterComponent } from './public/register/register.component';
 
 const appRoutes: Routes = [
+  { path: '', component: PublicComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'public', component: PublicComponent },

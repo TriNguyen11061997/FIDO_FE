@@ -4,39 +4,40 @@ import { BehaviorSubject, Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
 import { environment } from '@environments/environment';
-import { User } from '@app/_models';
+import { Users } from '@app/_models/users.model';
 
 @Injectable({ providedIn: 'root' })
 export class AuthenticationService {
-    private currentUserSubject: BehaviorSubject<User>;
-    public currentUser: Observable<User>;
-    readonly rootURL = "http://localhost:64391/api";
+    private currentUserSubject: BehaviorSubject<Users>;
+    public currentUser: Observable<Users>;
+    readonly rootURL = "http://fidoapi.herokuapp.com/api/v1";
+    formData : Users;
     constructor(private http: HttpClient) {
-        this.currentUserSubject = new BehaviorSubject<User>(JSON.parse(localStorage.getItem('currentUser')));
+        this.currentUserSubject = new BehaviorSubject<Users>(JSON.parse(localStorage.getItem('currentUser1')));
         this.currentUser = this.currentUserSubject.asObservable();
     }
 
-    public get currentUserValue(): User {
+    public get currentUserValue(): Users {
         return this.currentUserSubject.value;
     }
 
-    login(username: string, password: string) {
-        return this.http.get<any>(this.rootURL + '/ADUsers/?u=' + username + '&p=' + password)
+    login(formData:Users) {
+        return this.http.post<any>(this.rootURL+"/signin",formData)
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
-                if (user) {
+                if (user[0]['object']) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes
-                    localStorage.setItem('currentUser', JSON.stringify(user));
-                    this.currentUserSubject.next(user);
+                    localStorage.setItem('currentUser1', JSON.stringify(user[0]['object']));
+                    this.currentUserSubject.next(user[0]['object']);
                 }
 
-                return user;
+                return user[0]['object'];
             }));
     }
 
     logout() {
         // remove user from local storage to log user out
-        localStorage.removeItem('currentUser');
+        localStorage.removeItem('currentUser1');
         this.currentUserSubject.next(null);
     }
 }

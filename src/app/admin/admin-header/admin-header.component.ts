@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { User } from '@app/_models';
 import { AuthenticationService } from '@app/_services';
+import { Users } from '@app/_models/users.model';
 
 @Component({
   selector: 'app-admin-header',
@@ -10,7 +11,7 @@ import { AuthenticationService } from '@app/_services';
 })
 export class AdminHeaderComponent implements OnInit {
 
-  currentUser: User;
+  currentUser: Users;
 
   constructor(
     private router: Router,

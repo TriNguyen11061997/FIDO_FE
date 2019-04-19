@@ -139,7 +139,7 @@
           <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink"
             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             <img src="http://via.placeholder.com/160x160" class="user-image" alt="User Image">
-            <span class="hidden-xs">Hi {{currentUser.ADUserName}}</span>
+            <span class="hidden-xs">Hi {{currentUser.name}}</span>
           </a>
           <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
             <a class="dropdown-item"  (click)="logout()">Logout</a>
@@ -158,7 +158,7 @@
         <img src="http://via.placeholder.com/160x160" class="rounded-circle" alt="User Image">
       </div>
       <div class="pull-left info">
-        <p>{{currentUser.ADUserName}}</p>
+        <p>{{currentUser.name}}</p>
         <a href="#"><i class="fa fa-circle text-success"></i> Online</a>
       </div>
     </div>

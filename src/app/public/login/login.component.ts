@@ -1,8 +1,7 @@
 ﻿import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { first } from 'rxjs/operators';
-
 import { AlertService, AuthenticationService } from '@app/_services';
 
 @Component({
@@ -28,7 +27,7 @@ export class LoginComponent implements OnInit {
 
     ngOnInit() {
         this.loginForm = this.formBuilder.group({
-            username: ['', Validators.required],
+            email: ['', Validators.required],
             password: ['', Validators.required]
         });
 
@@ -40,9 +39,6 @@ export class LoginComponent implements OnInit {
     get f() { return this.loginForm.controls; }
 
     onSubmit() {
-        // if (this.f.username.value == 'admin' && this.f.password.value == 'admin'){
-        //     this.router.navigate(['/admin']);
-        // }
         this.submitted = true;
         // stop here if form is invalid
         if (this.loginForm.invalid) {
@@ -50,15 +46,15 @@ export class LoginComponent implements OnInit {
         }
 
         this.loading = true;
-        this.authenticationService.login(this.f.username.value, this.f.password.value)
+        this.authenticationService.login(this.loginForm.value) 
             .pipe(first())
             .subscribe(
                 data => {
-                    if (data.ADUserGroupID == 1)
+                    if (data.group_id == 1)
                         this.router.navigate(['/admin']);
-                    if (data.ADUserGroupID == 2)
+                    if (data.group_id == 2)
                         this.router.navigate(['/public']);
-                    if (data.ADUserGroupID == 3)
+                    if (data.group_id == 3)
                         this.router.navigate(['/doctor']);
                 },
                 error => {

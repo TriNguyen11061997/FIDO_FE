@@ -9,10 +9,10 @@
             <div class="sign-in-htm">
               <div class="group">
                 <label for="user" class="label">Tên đăng nhập</label>
-                <input id="user" type="text" formControlName="username" class="input"
-                  [ngClass]="{ 'is-invalid': submitted && f.username.errors }">
-                <div *ngIf="submitted && f.username.errors" class="invalid-feedback">
-                  <div *ngIf="f.username.errors.required">Username is required</div>
+                <input id="user" type="text" formControlName="email" class="input"
+                  [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                  <div *ngIf="f.email.errors.required">email is required</div>
                 </div>
               </div>
               <div class="group">
@@ -33,7 +33,7 @@
   
             <div class="for-pwd-htm">
               <div class="group">
-                <label for="user" class="label">Username or Email</label>
+                <label for="user" class="label">email or Email</label>
                 <input id="user" type="text" class="input">
               </div>
               <div class="group">

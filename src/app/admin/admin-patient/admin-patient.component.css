@@ -2,5 +2,5 @@
     float: left;
     height: 568px;
     width: 84%;
-    overflow: scroll;
+    overflow: overlay;
 }

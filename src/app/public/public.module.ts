@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
 import { Routes, RouterModule } from '@angular/router';
@@ -12,11 +12,12 @@ import { LoginComponent } from './login';
 import { PublicDoctorDetailComponent } from './public-doctor-detail/public-doctor-detail.component';
 import { PublicForumComponent } from './public-forum/public-forum.component';
 import { RegisterComponent } from './register/register.component';
+import { DemoComponent } from './demo/demo.component';
 
 
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
-  { path: 'public/forum', component: PublicForumComponent },
+  { path: 'public/forum', component: DemoComponent },
   { path: 'public/doctor/details', component: PublicDoctorDetailComponent }
 ];
 @NgModule({
@@ -27,7 +28,8 @@ const appRoutes: Routes = [
     PublicDoctorComponent,
     PublicDoctorDetailComponent,
     PublicForumComponent,
-    RegisterComponent
+    RegisterComponent,
+    DemoComponent
   ],
   imports: [
     FormsModule,
