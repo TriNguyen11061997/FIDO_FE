@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MustMatch } from '@app/_helpers/must-match.validator';
+import {  ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-register',
@@ -12,7 +13,8 @@ export class RegisterComponent implements OnInit {
   registerDoctorForm: FormGroup;
   submitted = false;
   submitted1 = false;
-  constructor(private formBuilder: FormBuilder) { }
+  constructor(private formBuilder: FormBuilder,
+    private toastr: ToastrService) { }
 
   ngOnInit() {
     this.registerUserForm = this.formBuilder.group({
@@ -28,8 +30,8 @@ export class RegisterComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      noilamviec : ['Nơi làm việc'],
-      chuyenkhoa:['Chuyên khoa']
+      noilamviec: ['Nơi làm việc'],
+      chuyenkhoa: ['Chuyên khoa']
     }, {
         validator: MustMatch('password', 'confirmPassword')
       });
@@ -38,6 +40,7 @@ export class RegisterComponent implements OnInit {
   get f1() { return this.registerDoctorForm.controls; }
   onSubmitUser() {
     this.submitted = true;
+    //this.toastr.success("Đăng ký thành công!","FiDo!",{timeOut:1000})
     if (this.registerUserForm.invalid) {
       return;
     }

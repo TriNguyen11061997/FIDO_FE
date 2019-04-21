@@ -8,7 +8,7 @@
         <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div class="sign-in-htm">
             <div class="group">
-              <label class="label">Email đăng nhập</label>
+              <label class="label">Email</label>
               <input type="text" formControlName="email" class="form-control" value=""
                 [ngClass]="{ 'is-invalid': submitted && f.email.errors }"/>
               <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
