@@ -3,6 +3,9 @@ import { FormsModule, ReactiveFormsModule, NgForm } from '@angular/forms'
 import { CommonModule } from '@angular/common';
 import { DataTablesModule } from 'angular-datatables';
 import { Routes, RouterModule } from '@angular/router';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 import { PublicHeaderComponent } from './public-header/public-header.component';
 import { PublicFooterComponent } from './public-footer/public-footer.component';
 import { PublicComponent } from './public.component';
@@ -17,7 +20,7 @@ import { DemoComponent } from './demo/demo.component';
 
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
-  { path: 'public/forum', component: DemoComponent },
+  { path: 'public/forum', component: PublicForumComponent },
   { path: 'public/doctor/details', component: PublicDoctorDetailComponent }
 ];
 @NgModule({
@@ -36,6 +39,8 @@ const appRoutes: Routes = [
     CommonModule,
     ReactiveFormsModule,
     DataTablesModule ,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
     RouterModule.forChild(appRoutes)
   ],
   exports:[

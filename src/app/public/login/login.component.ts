@@ -3,6 +3,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, NgForm } from '@angular/forms';
 import { first } from 'rxjs/operators';
 import { AlertService, AuthenticationService } from '@app/_services';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
     templateUrl: 'login.component.html',
@@ -19,7 +20,8 @@ export class LoginComponent implements OnInit {
         private route: ActivatedRoute,
         private router: Router,
         private authenticationService: AuthenticationService,
-        private alertService: AlertService
+        private alertService: AlertService,
+        private toastr: ToastrService
     ) {
     }
 
@@ -38,7 +40,7 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }
-
+        //this.toastr.success("Đăng nhập thành công!","FiDo!",{timeOut:3000})
         //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value))
 
         this.loading = true;
@@ -52,9 +54,10 @@ export class LoginComponent implements OnInit {
                         this.router.navigate(['/public']);
                     if (data.group_id == 3)
                         this.router.navigate(['/doctor']);
+                    this.toastr.success("Đăng nhập thành công!", "FiDo!", { timeOut: 3000 })
                 },
                 error => {
-                    this.alertService.error(error);
+                    this.toastr.error("Đăng nhập không thành công!","FiDo!",{timeOut:3000})
                     this.loading = false;
                 });
     }
