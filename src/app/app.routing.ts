@@ -8,6 +8,7 @@ import { PublicModule } from './public/public.module';
 import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './public/login';
 import { RegisterComponent } from './public/register/register.component';
+import { DoctorModule } from './doctor/doctor.module';
 
 const appRoutes: Routes = [
   { path: '', component: PublicComponent },
@@ -29,6 +30,7 @@ const appRoutes: Routes = [
   imports: [
     AdminModule,
     PublicModule,
+    DoctorModule,
     RouterModule.forRoot(appRoutes)
   ],
   exports: [RouterModule]

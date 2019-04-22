@@ -1,6 +1,6 @@
-export class Doctor {
+export class Employee {
     id: number;
-    doctor_no: String;
+    employee_no: String;
     name: String;
     avatar	:String;
     birthday	:Date;
@@ -16,10 +16,8 @@ export class Doctor {
     phone_no_1	:String;
     phone_no_2	:String;
     email	:String;
-    fk_employee_id	:number;
-    specialist	:String;
-    hospital_name	:String;
-    employeeName	:String;
     fk_address_id	:number;
-
+    tax_number :string;
+    start_date :Date;
+    end_date : Date;
 }

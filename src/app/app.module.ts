@@ -12,8 +12,6 @@ import { AppRouting }        from './app.routing';
 
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { RegisterComponent } from './public/register/register.component';
-
 
 
 @NgModule({
@@ -27,7 +25,7 @@ import { RegisterComponent } from './public/register/register.component';
     ],
     declarations: [
         AppComponent,
-        AlertComponent,
+        AlertComponent
     ],
     providers: [
         { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },

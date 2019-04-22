@@ -10,10 +10,6 @@
                     <div class="form-group item">
                         <select id="inputState " class="form-control">
                             <option selected>Tỉnh thành</option>
-                            <option>BMW</option>
-                            <option>Audi</option>
-                            <option>Maruti</option>
-                            <option>Tesla</option>
                         </select>
                     </div>
                 </div>
@@ -21,7 +17,7 @@
                 <div class="col-md-2 pt-3 item">
                     <div class="form-group">
                         <select id="inputState" class="form-control">
-                            <option selected>Model</option>
+                            <option selected>Chuyên khoa</option>
                             <option>BMW</option>
                             <option>Audi</option>
                             <option>Maruti</option>
@@ -32,7 +28,7 @@
                 <div class="col-md-2 pt-3 item">
                     <div class="form-group">
                         <select id="inputState" class="form-control">
-                            <option selected>Budget</option>
+                            <option selected>Chức vụ</option>
                             <option>BMW</option>
                             <option>Audi</option>
                             <option>Maruti</option>
@@ -69,8 +65,7 @@
         </div>
         <div>
             <ul class="main_left_ul">
-                <li class="main_left_ul_li">
-
+                <li class="main_left_ul_li" *ngFor="let item of listDoctor">
                     <div class="body">
                         <div class="media">
                             <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than" class="hero-image"
@@ -85,24 +80,14 @@
                                 <span class="comment-count">
                                     <i class="fa fa-comment-o"></i> 6
                                 </span>
-                                <span class="comment-count">
-                                    <i class="fa fa-reply"></i> 329
-                                </span>
-                                <span class="comment-count">
-                                    <i class="fa fa-heart"></i> 76
-                                </span>
 
                             </a>
 
                         </div>
-
                         <div class="info">
                             <h2>
-                                <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than">Chuyên gia tâm lý Lê Văn
-                                    Thắng</a>
-
+                                <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than">{{item.name}}</a>
                             </h2>
-
                             <div class="desc">
                                 Từ nhỏ anh đã luôn chú ý tới các hiện tượng xảy ra và những hành vi ứng xử của mình cũng
                                 như
@@ -110,224 +95,45 @@
                                 <a class="readmore" [routerLink]="['/public/doctor/details']" >Xem tiếp
                                     <i class="fa fa-angle-double-right"></i></a>
                             </div>
-
                             <dl class="brief">
                                 <dt>
                                     <i class="fa fa-graduation-cap"></i>
                                 </dt>
                                 <dd>
-                                    <a href="/danh-sach/bac-si/?degrees=thac-si">Thạc sĩ</a>
+                                    <a href="/danh-sach/bac-si/?degrees=thac-si">Chức vụ</a>
                                 </dd>
 
                                 <dt>
                                     <i class="fa fa-stethoscope"></i>
                                 </dt>
                                 <dd>
-                                    <a href="/danh-sach/bac-si/?specialities=tam-than">Tâm thần</a>,
-                                    <a href="/danh-sach/bac-si/?specialities=tam-ly">Tâm lý</a>
+                                    <a href="/danh-sach/bac-si/?specialities=tam-than">Chuyên khoa</a>,
                                 </dd>
 
                                 <dt>
                                     <i class="fa fa-book"></i>
                                 </dt>
                                 <dd>
-                                    8 năm kinh nghiệm trong ngành tư vấn và điều trị tâm lý
+                                    Kinh nghiệm
                                 </dd>
 
                                 <dt>
                                     <i class="fa fa-hospital-o"></i>
                                 </dt>
                                 <dd>
-                                    <a href="/trung-tam-tu-van-tam-ly-247-96564/tam-than">Trung tâm Tư vấn Tâm lý
-                                        247</a>
+                                    <a href="/trung-tam-tu-van-tam-ly-247-96564/tam-than">Nơi làm việc chính</a>
                                 </dd>
 
                             </dl>
                         </div>
-                        <div class="call-to-action">
+                        <!-- <div class="call-to-action">
                             <a href="#" class="sticky-nav-link action-favourite secondary weak button "
                                 title="Thêm vào ghi nhớ" data-professional-id="47351">
                                 <i class="fa fa-spinner fa-pulse loader"></i>
                                 <span class="added"><i class="fa fa-bookmark" aria-hidden="true"></i> Đã ghi nhớ</span>
                                 <span class="unadded"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Ghi nhớ</span>
                             </a>
-                        </div>
-                    </div>
-                    <div class="actions" id="contact-47351">
-                    </div>
-                </li>
-                <li class="main_left_ul_li">
-
-                    <div class="body">
-                        <div class="media">
-                            <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than" class="hero-image"
-                                style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/09_03_2017_04_31_47_548381.jpeg);"></a>
-
-                            <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than#nhan-xet"
-                                class="comments-summary break"
-                                title="2 hài lòng, 6 nhận xét, 329 câu trả lời, 76 cảm ơn">
-                                <span class="like-count">
-                                    <i class="fa fa-thumbs-o-up"></i> 2
-                                </span>
-                                <span class="comment-count">
-                                    <i class="fa fa-comment-o"></i> 6
-                                </span>
-                                <span class="comment-count">
-                                    <i class="fa fa-reply"></i> 329
-                                </span>
-                                <span class="comment-count">
-                                    <i class="fa fa-heart"></i> 76
-                                </span>
-
-                            </a>
-
-                        </div>
-
-                        <div class="info">
-                            <h2>
-                                <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than">Chuyên gia tâm lý Lê Văn
-                                    Thắng</a>
-
-                            </h2>
-
-                            <div class="desc">
-                                Từ nhỏ anh đã luôn chú ý tới các hiện tượng xảy ra và những hành vi ứng xử của mình cũng
-                                như
-                                mọi người xung quanh. Anh yêu thích kiến thức về con người,...
-                                <a class="readmore" href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than">Xem tiếp
-                                    <i class="fa fa-angle-double-right"></i></a>
-                            </div>
-
-                            <dl class="brief">
-                                <dt>
-                                    <i class="fa fa-graduation-cap"></i>
-                                </dt>
-                                <dd>
-                                    <a href="/danh-sach/bac-si/?degrees=thac-si">Thạc sĩ</a>
-                                </dd>
-
-                                <dt>
-                                    <i class="fa fa-stethoscope"></i>
-                                </dt>
-                                <dd>
-                                    <a href="/danh-sach/bac-si/?specialities=tam-than">Tâm thần</a>,
-                                    <a href="/danh-sach/bac-si/?specialities=tam-ly">Tâm lý</a>
-                                </dd>
-
-                                <dt>
-                                    <i class="fa fa-book"></i>
-                                </dt>
-                                <dd>
-                                    8 năm kinh nghiệm trong ngành tư vấn và điều trị tâm lý
-                                </dd>
-
-                                <dt>
-                                    <i class="fa fa-hospital-o"></i>
-                                </dt>
-                                <dd>
-                                    <a href="/trung-tam-tu-van-tam-ly-247-96564/tam-than">Trung tâm Tư vấn Tâm lý
-                                        247</a>
-                                </dd>
-
-                            </dl>
-                        </div>
-                        <div class="call-to-action">
-                            <a href="#" class="sticky-nav-link action-favourite secondary weak button "
-                                title="Thêm vào ghi nhớ" data-professional-id="47351">
-                                <i class="fa fa-spinner fa-pulse loader"></i>
-                                <span class="added"><i class="fa fa-bookmark" aria-hidden="true"></i> Đã ghi nhớ</span>
-                                <span class="unadded"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Ghi nhớ</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="actions" id="contact-47351">
-                    </div>
-                </li>
-                <li class="main_left_ul_li">
-
-                    <div class="body">
-                        <div class="media">
-                            <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than" class="hero-image"
-                                style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/09_03_2017_04_31_47_548381.jpeg);"></a>
-
-                            <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than#nhan-xet"
-                                class="comments-summary break"
-                                title="2 hài lòng, 6 nhận xét, 329 câu trả lời, 76 cảm ơn">
-                                <span class="like-count">
-                                    <i class="fa fa-thumbs-o-up"></i> 2
-                                </span>
-                                <span class="comment-count">
-                                    <i class="fa fa-comment-o"></i> 6
-                                </span>
-                                <span class="comment-count">
-                                    <i class="fa fa-reply"></i> 329
-                                </span>
-                                <span class="comment-count">
-                                    <i class="fa fa-heart"></i> 76
-                                </span>
-
-                            </a>
-
-                        </div>
-
-                        <div class="info">
-                            <h2>
-                                <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than">Chuyên gia tâm lý Lê Văn
-                                    Thắng</a>
-
-                            </h2>
-
-                            <div class="desc">
-                                Từ nhỏ anh đã luôn chú ý tới các hiện tượng xảy ra và những hành vi ứng xử của mình cũng
-                                như
-                                mọi người xung quanh. Anh yêu thích kiến thức về con người,...
-                                <a class="readmore" href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than">Xem tiếp
-                                    <i class="fa fa-angle-double-right"></i></a>
-                            </div>
-
-                            <dl class="brief">
-                                <dt>
-                                    <i class="fa fa-graduation-cap"></i>
-                                </dt>
-                                <dd>
-                                    <a href="/danh-sach/bac-si/?degrees=thac-si">Thạc sĩ</a>
-                                </dd>
-
-                                <dt>
-                                    <i class="fa fa-stethoscope"></i>
-                                </dt>
-                                <dd>
-                                    <a href="/danh-sach/bac-si/?specialities=tam-than">Tâm thần</a>,
-                                    <a href="/danh-sach/bac-si/?specialities=tam-ly">Tâm lý</a>
-                                </dd>
-
-                                <dt>
-                                    <i class="fa fa-book"></i>
-                                </dt>
-                                <dd>
-                                    8 năm kinh nghiệm trong ngành tư vấn và điều trị tâm lý
-                                </dd>
-
-                                <dt>
-                                    <i class="fa fa-hospital-o"></i>
-                                </dt>
-                                <dd>
-                                    <a href="/trung-tam-tu-van-tam-ly-247-96564/tam-than">Trung tâm Tư vấn Tâm lý
-                                        247</a>
-                                </dd>
-
-                            </dl>
-                        </div>
-                        <div class="call-to-action">
-                            <a href="#" class="sticky-nav-link action-favourite secondary weak button "
-                                title="Thêm vào ghi nhớ" data-professional-id="47351">
-                                <i class="fa fa-spinner fa-pulse loader"></i>
-                                <span class="added"><i class="fa fa-bookmark" aria-hidden="true"></i> Đã ghi nhớ</span>
-                                <span class="unadded"><i class="fa fa-bookmark-o" aria-hidden="true"></i> Ghi nhớ</span>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="actions" id="contact-47351">
+                        </div> -->
                     </div>
                 </li>
             </ul>

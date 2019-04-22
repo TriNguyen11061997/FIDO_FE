@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { DoctorService } from '@app/_services/doctor.service';
+import { Doctor } from '@app/_models/doctor.model';
+import { FormGroup } from '@angular/forms';
 
 @Component({
   selector: 'app-public-doctor',
@@ -7,9 +10,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PublicDoctorComponent implements OnInit {
 
-  constructor() { }
+  listDoctor: Doctor[] = [];
+  formData: FormGroup;
+  constructor(
+    private doctorService: DoctorService
+  ) { }
 
   ngOnInit() {
+    this.doctorService.getAllObject()
+      .subscribe(data => {
+        this.listDoctor = data[0];
+      }, (err) => { console.log(err) }
+      )
   }
-
 }
