@@ -16,11 +16,12 @@ import { PublicDoctorDetailComponent } from './public-doctor-detail/public-docto
 import { PublicForumComponent } from './public-forum/public-forum.component';
 import { RegisterComponent } from './register/register.component';
 import { DemoComponent } from './demo/demo.component';
+import { DoctorComponent } from '@app/doctor/doctor.component';
 
 
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
-  { path: 'public/forum', component: PublicForumComponent },
+  { path: 'public/forum', component: DoctorComponent },
   { path: 'public/doctor/details', component: PublicDoctorDetailComponent }
 ];
 @NgModule({

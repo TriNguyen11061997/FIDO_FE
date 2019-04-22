@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'http://fido.local/api/v1'
+  apiUrl: 'http://fidoapi.herokuapp.com/api/v1'
 };
 
 /*

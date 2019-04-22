@@ -8,6 +8,8 @@ import { AdminHeaderComponent } from './admin-header/admin-header.component';
 import { AdminFooterComponent } from './admin-footer/admin-footer.component';
 import { AuthGuard } from '@app/_guards';
 import { AdminPatientComponent } from './admin-patient/admin-patient.component';
+import { AdminDoctorFormComponent } from './admin-doctor/admin-doctor-form/admin-doctor-form.component';
+import { AdmminPatientFormComponent } from './admin-patient/admmin-patient-form/admmin-patient-form.component';
 
 
 
@@ -21,7 +23,9 @@ const appRoutes: Routes = [
      AdminDoctorComponent,
      AdminHeaderComponent,
      AdminFooterComponent,
-     AdminPatientComponent
+     AdminPatientComponent,
+     AdminDoctorFormComponent,
+     AdmminPatientFormComponent
     ],
   imports: [
     CommonModule,

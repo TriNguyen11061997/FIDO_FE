@@ -14,10 +14,11 @@ export class DemoComponent implements OnInit {
   list1 : Usergroup[];
   constructor(
     private groupService: UsergroupService,
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
   ) { }
 
   ngOnInit() {
+    //this.groupService.getObjectByID(2);
     this.groupService.getAllObject();
     this.doctorService.getAllObject();
   }

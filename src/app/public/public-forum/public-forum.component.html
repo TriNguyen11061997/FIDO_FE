@@ -1,10 +1,10 @@
 <app-public-header></app-public-header>
-<form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
+<form [formGroup]="doctorForm"  (ngSubmit)="onSubmit()">
   <div class="form-row">
     <div class="form-group col-md-4">
       <label for="inputEmail4">Mã số</label>
       <input type="text" formControlName="doctor_no" class="form-control" id="inputEmail4" placeholder="Mã số"
-        [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+        [ngClass]="{ 'is-invalid': submitted && f.doctor_no.errors }">
       <div *ngIf="submitted && f.doctor_no.errors" class="invalid-feedback">
         <div *ngIf="f.doctor_no.errors.required">Vui lòng nhập mã!</div>
       </div>

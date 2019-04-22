@@ -2,7 +2,9 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Usergroup } from '@app/_models/usergroup.model';
 import { Http, Response } from '@angular/http';
-import { map } from 'rxjs/operators';
+import { map, tap, catchError } from 'rxjs/operators';
+import { environment } from '@environments/environment';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -15,9 +17,11 @@ export class UsergroupService {
   }
 
   getAllObject() {
-    this.http.get(this.rootURL + '/groups')
+    this.http.get(environment.apiUrl + '/groups')
       .toPromise()
       .then(res => this.list = res[0] as Usergroup[]);
   }
-
+  getObjectByID(id: number):Observable<Usergroup> {
+    return this.http.get<Usergroup>(environment.apiUrl + '/groups/' + id);
+  }
 }
