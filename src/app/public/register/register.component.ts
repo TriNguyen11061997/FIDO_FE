@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { MustMatch } from '@app/_helpers/must-match.validator';
-import {  ToastrService } from 'ngx-toastr';
+import { ToastrService } from 'ngx-toastr';
+import { UserService } from '@app/_services';
+import { timeout } from 'rxjs/operators';
 
 @Component({
   selector: 'app-register',
@@ -13,15 +15,19 @@ export class RegisterComponent implements OnInit {
   registerDoctorForm: FormGroup;
   submitted = false;
   submitted1 = false;
-  constructor(private formBuilder: FormBuilder,
-    private toastr: ToastrService) { }
+  constructor(
+    private formBuilder: FormBuilder,
+    private toastr: ToastrService,
+    private userService: UserService) { }
 
   ngOnInit() {
     this.registerUserForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
       password: ['', [Validators.required, Validators.minLength(6)]],
-      confirmPassword: ['', Validators.required]
+      confirmPassword: ['', Validators.required],
+      gender: [''],
+      usable_type: ['App\\Patient']
     }, {
         validator: MustMatch('password', 'confirmPassword')
       });
@@ -44,6 +50,12 @@ export class RegisterComponent implements OnInit {
     if (this.registerUserForm.invalid) {
       return;
     }
+
+    this.userService.register(this.registerUserForm.value).subscribe(
+      data => {
+        this.toastr.success("Đăng kí thành công!", "FIDO!",{ timeOut: 2000 })
+      }, (err) => { this.toastr.error("Đăng kí không thành công!", "FIDO!",{ timeOut: 2000 }) }
+    )
 
     //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerUserForm.value))
   }

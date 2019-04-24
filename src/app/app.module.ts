@@ -12,6 +12,7 @@ import { AppRouting }        from './app.routing';
 
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
+import { BarRatingModule } from 'ngx-bar-rating';
 
 
 @NgModule({
@@ -21,7 +22,8 @@ import { JwtInterceptor, ErrorInterceptor } from './_helpers';
         HttpClientModule,
         AppRouting,
         FormsModule,
-        DataTablesModule
+        DataTablesModule,
+        BarRatingModule
     ],
     declarations: [
         AppComponent,

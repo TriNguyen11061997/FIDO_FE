@@ -13,14 +13,28 @@
             <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
             <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
           </ul>
-          <div class="login">
-            <a [routerLink]="['/login']"  class="login-btn">
+          <div class="login" *ngIf="!isLoading">
+            <a [routerLink]="['/login']" class="login-btn">
               <i class="fa fa-sign-in"></i>
               <span class="d-none d-md-inline-block">Đăng nhập</span>
             </a>
             <a [routerLink]="['/register']" class="signup-btn"><i class="fa fa-user"></i><span
                 class="d-none d-md-inline-block">Đăng ký</span>
             </a>
+          </div>
+          <div class="login" *ngIf="isLoading">
+              <a  class="login-btn" [routerLink]="['/']" (click)="logout()">
+                <i class="fa fa-sign-in"></i>
+                <span class="d-none d-md-inline-block">Đăng xuất</span>
+              </a>
+            <!-- <div class="btn-group">
+              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" (click)="logout()">
+                Hi {{currentUser?.name}}
+              </button>
+              <div class="dropdown-menu">
+                ...
+              </div>
+            </div> -->
           </div>
           <ul class="social-custom list-inline">
             <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>

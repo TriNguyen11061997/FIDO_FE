@@ -19,7 +19,7 @@ export class PublicDoctorComponent implements OnInit {
   ngOnInit() {
     this.doctorService.getAllObject()
       .subscribe(data => {
-        this.listDoctor = data[0];
+        this.listDoctor = data["data"][0];
       }, (err) => { console.log(err) }
       )
   }
