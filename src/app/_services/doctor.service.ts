@@ -16,7 +16,7 @@ export class DoctorService {
     return this.http.get(this.rootURL + '/doctors')
   }
   getObjectByID(id: number) {
-    return this.http.get<Doctor>(this.rootURL + '/doctors/' + id);
+    return this.http.get(this.rootURL + '/doctors/' + id);
   }
   update(doctors: Doctor) {
     return this.http.put(`${environment.apiUrl}/doctors/${doctors.id}`, doctors);

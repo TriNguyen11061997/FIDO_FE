@@ -17,12 +17,14 @@ import { PublicForumComponent } from './public-forum/public-forum.component';
 import { RegisterComponent } from './register/register.component';
 import { DemoComponent } from './demo/demo.component';
 import { DoctorComponent } from '@app/doctor/doctor.component';
-
+import { BarRatingModule } from "ngx-bar-rating";
+import { PublicDoctorRatingComponent } from './public-doctor-rating/public-doctor-rating.component';
 
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
   { path: 'public/forum', component: DoctorComponent },
-  { path: 'public/doctor/details', component: PublicDoctorDetailComponent }
+  { path: 'public/doctor/details/:id', component: PublicDoctorDetailComponent },
+  { path: 'public/doctor/rating/:id', component: PublicDoctorRatingComponent }
 ];
 @NgModule({
   declarations: [
@@ -33,7 +35,8 @@ const appRoutes: Routes = [
     PublicDoctorDetailComponent,
     PublicForumComponent,
     RegisterComponent,
-    DemoComponent
+    DemoComponent,
+    PublicDoctorRatingComponent
   ],
   imports: [
     FormsModule,
@@ -41,6 +44,7 @@ const appRoutes: Routes = [
     ReactiveFormsModule,
     DataTablesModule ,
     BrowserAnimationsModule,
+    BarRatingModule, 
     ToastrModule.forRoot(),
     RouterModule.forChild(appRoutes)
   ],

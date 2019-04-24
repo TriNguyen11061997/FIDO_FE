@@ -8,4 +8,7 @@ export class Users {
     user_active_check:string;
     rePassword:string;
     user_reset_token:string;
+    usable_type : string;
+    usable_id: number;
+    remember_token :string;
 }

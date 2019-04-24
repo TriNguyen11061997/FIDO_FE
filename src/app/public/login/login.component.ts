@@ -40,25 +40,25 @@ export class LoginComponent implements OnInit {
         if (this.loginForm.invalid) {
             return;
         }
-        //this.toastr.success("Đăng nhập thành công!","FiDo!",{timeOut:3000})
-        //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.loginForm.value))
-
         this.loading = true;
         this.authenticationService.login(this.loginForm.value)
             .pipe(first())
             .subscribe(
                 data => {
-                    if (data.group_id == 1)
+                    if (data.usable_type == "App\\Admin")
                         this.router.navigate(['/admin']);
-                    if (data.group_id == 2)
+                    if (data.usable_type == "App\\Patient")
                         this.router.navigate(['/public']);
-                    if (data.group_id == 3)
+                    if (data.usable_type == "App\\Doctor")
                         this.router.navigate(['/doctor']);
-                    this.toastr.success("Đăng nhập thành công!", "FiDo!", { timeOut: 3000 })
+                    //console.log(data.name);
+                    this.toastr.success("Đăng nhập thành công!","FIDO!", { timeOut: 2000 });
+                    
                 },
                 error => {
-                    this.toastr.error("Đăng nhập không thành công!","FiDo!",{timeOut:3000})
-                    this.loading = false;
+                    //this.authenticationService.logout();
+                    this.toastr.error("Đăng nhập không thành công!","FiDo!",{timeOut:2000})
+                    //this.loading = false;
                 });
     }
 }
