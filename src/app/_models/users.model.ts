@@ -11,4 +11,6 @@ export class Users {
     usable_type : string;
     usable_id: number;
     remember_token :string;
+    address_id:number;
+    specialist_id :number;
 }

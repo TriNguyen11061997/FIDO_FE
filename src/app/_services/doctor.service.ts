@@ -13,10 +13,10 @@ export class DoctorService {
   constructor(private http: HttpClient) { }
 
   getAllObject() {
-    return this.http.get(this.rootURL + '/doctors')
+    return this.http.get(environment.apiUrl + '/doctors');
   }
   getObjectByID(id: number) {
-    return this.http.get(this.rootURL + '/doctors/' + id);
+    return this.http.get(environment.apiUrl + '/doctors/' + id);
   }
   update(doctors: Doctor) {
     return this.http.put(`${environment.apiUrl}/doctors/${doctors.id}`, doctors);

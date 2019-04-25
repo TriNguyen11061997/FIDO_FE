@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '@app/_services/doctor.service';
+import { Doctor } from '@app/_models/doctor.model';
+import { PatientService } from '@app/_services/patient.service';
+import { Patient } from '@app/_models/patient.model';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-admin-patient',
@@ -8,50 +12,23 @@ import { DoctorService } from '@app/_services/doctor.service';
 })
 export class AdminPatientComponent implements OnInit {
 
-  constructor(private doctorService: DoctorService) { }
+  patients: Patient[]
+  constructor(private patientService: PatientService) {
+  }
 
-  public data = [
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-    { name: 'therichpost', email: 'therichpost@gmail.com', website: 'therichpost.com' },
-  ];
-  title = 'angulardatatables';
   dtOptions: DataTables.Settings = {};
+  dtTrigger: Subject<Doctor> = new Subject();
   ngOnInit() {
-    this.doctorService.getAllObject();
+    this.patientService.getAllObject().subscribe(
+      data => {
+        this.dtTrigger.next();
+        this.patients = data["data"][0];
+      }, (err) => { alert(err) }
+    );
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,
-      processing: true
+      processing: true,
     };
   }
 

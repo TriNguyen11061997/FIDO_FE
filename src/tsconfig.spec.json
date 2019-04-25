@@ -5,6 +5,9 @@
     "types": [
       "jasmine",
       "node"
+    ],
+    "@angular/*": [
+      "../node_modules/@angular/*"
     ]
   },
   "files": [

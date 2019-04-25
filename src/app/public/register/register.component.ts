@@ -4,6 +4,11 @@ import { MustMatch } from '@app/_helpers/must-match.validator';
 import { ToastrService } from 'ngx-toastr';
 import { UserService } from '@app/_services';
 import { timeout } from 'rxjs/operators';
+import { ActivatedRoute, Router } from '@angular/router';
+import { AddressService } from '@app/_services/address.service';
+import { SpecialistService } from '@app/_services/specialist.service';
+import { Specialist } from '@app/_models/specialist.model';
+import { Address } from '@app/_models/address.model';
 
 @Component({
   selector: 'app-register',
@@ -13,14 +18,31 @@ import { timeout } from 'rxjs/operators';
 export class RegisterComponent implements OnInit {
   registerUserForm: FormGroup;
   registerDoctorForm: FormGroup;
+  addresses: Address[];
+  specialists: Specialist[];
   submitted = false;
   submitted1 = false;
   constructor(
     private formBuilder: FormBuilder,
     private toastr: ToastrService,
-    private userService: UserService) { }
+    private userService: UserService,
+    private route: ActivatedRoute,
+    private router: Router,
+    private addressService : AddressService,
+    private specialistService : SpecialistService) { }
 
   ngOnInit() {
+    this.addressService.getAllObject().subscribe(
+      data =>{
+        this.addresses = data["data"]
+      },(err)=>{}
+    );
+    this.specialistService.getAllObject().subscribe(
+      data =>{
+        this.specialists = data["data"]
+      },(err)=>{}
+    );
+
     this.registerUserForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
@@ -34,10 +56,12 @@ export class RegisterComponent implements OnInit {
     this.registerDoctorForm = this.formBuilder.group({
       name: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
+      gender: [''],
       password: ['', [Validators.required, Validators.minLength(6)]],
       confirmPassword: ['', Validators.required],
-      noilamviec: ['Nơi làm việc'],
-      chuyenkhoa: ['Chuyên khoa']
+      usable_type: ['App\\Doctor'],
+      address_id: ['Địa chỉ'],
+      specialist_id: ['Chuyên khoa']
     }, {
         validator: MustMatch('password', 'confirmPassword')
       });
@@ -53,7 +77,8 @@ export class RegisterComponent implements OnInit {
 
     this.userService.register(this.registerUserForm.value).subscribe(
       data => {
-        this.toastr.success("Đăng kí thành công!", "FIDO!",{ timeOut: 2000 })
+        this.toastr.success("Đăng kí thành công!", "FIDO!",{ timeOut: 2000 });
+        this.router.navigate(["/login"]);
       }, (err) => { this.toastr.error("Đăng kí không thành công!", "FIDO!",{ timeOut: 2000 }) }
     )
 
@@ -64,7 +89,12 @@ export class RegisterComponent implements OnInit {
     if (this.registerDoctorForm.invalid) {
       return;
     }
-
-    alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerDoctorForm.value))
+    
+    this.userService.register(this.registerDoctorForm.value).subscribe(
+      data => {
+        this.router.navigate(["/login"]);
+        this.toastr.success("Đăng kí thành công!", "FIDO!",{ timeOut: 2000 })
+      }, (err) => { this.toastr.error("Đăng kí không thành công!", "FIDO!",{ timeOut: 2000 }) }
+    )
   }
 }

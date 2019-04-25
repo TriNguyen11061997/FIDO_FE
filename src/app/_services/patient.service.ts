@@ -9,12 +9,10 @@ import { Observable } from 'rxjs';
 export class PatientService {
   formData: Patient;
   list: Patient[];
-  readonly rootURL = "http://fidoapi.herokuapp.com/api/v1"
   constructor(private http: HttpClient) { }
 
   getAllObject() {
-    this.http.get(this.rootURL + '/patients')
-      .toPromise().then(res => this.list = res[0] as Patient[]);
+    return this.http.get(environment.apiUrl+ '/patients');
   }
   getObjectByID(id: number): Observable<Patient> {
     return this.http.get<Patient>(environment.apiUrl + '/patients/' + id);

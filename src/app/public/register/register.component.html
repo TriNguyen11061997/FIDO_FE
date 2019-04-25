@@ -47,11 +47,13 @@
                                     <div class="form-group">
                                         <div class="maxl">
                                             <label class="radio inline">
-                                                <input formControlName="gender" type="radio" name="gender" value="male" checked>
+                                                <input formControlName="gender" type="radio" name="gender" value="male"
+                                                    checked>
                                                 <span> Nam </span>
                                             </label>
                                             <label class="radio inline">
-                                                <input formControlName="gender" type="radio" name="gender" value="female">
+                                                <input formControlName="gender" type="radio" name="gender"
+                                                    value="female">
                                                 <span>Nữ </span>
                                             </label>
                                         </div>
@@ -127,22 +129,21 @@
                                 </div>
                                 <div class="col-md-6">
                                     <div class="form-group">
-                                        <select class="form-control" formControlName="noilamviec">
-                                            <option class="hidden" selected disabled>Nơi làm việc
+                                        <select class="form-control" formControlName="address_id">
+
+                                            <option class="hidden" selected disabled>Địa chỉ
                                             </option>
-                                            <option value="0">Đà Nẵng</option>
-                                            <option value="0">Quảng Nam</option>
-                                            <option value="0">Hà Nội</option>
+                                            <option *ngFor="let item of addresses" value="{{item.id}}">{{item.name}}
+                                            </option>
                                         </select>
                                     </div>
                                     <div class="form-group">
                                         <div class="form-group">
-                                            <select class="form-control" formControlName="chuyenkhoa">
+                                            <select class="form-control" formControlName="specialist_id">
                                                 <option class="hidden" selected disabled>Chuyên khoa
                                                 </option>
-                                                <option value="0">Ngoại tổng hợp</option>
-                                                <option value="0">Khoa nội</option>
-                                                <option value="0">Khoa bỏng</option>
+                                                <option *ngFor="let item of specialists" value="{{item.id}}">
+                                                    {{item.name}}</option>
                                             </select>
                                         </div>
                                     </div>

@@ -2,7 +2,6 @@
 import { Router } from '@angular/router';
 
 import { AuthenticationService } from './_services';
-import { User } from './_models';
 import { Users } from './_models/users.model';
 
 @Component({ selector: 'app', templateUrl: 'app.component.html' })
