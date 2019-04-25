@@ -21,5 +21,6 @@ export class Doctor {
     hospital_name	:String;
     employeeName	:String;
     fk_address_id	:number;
+    phone_number : String;
 
 }

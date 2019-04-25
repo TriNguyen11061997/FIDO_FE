@@ -10,12 +10,14 @@ import { AuthGuard } from '@app/_guards';
 import { AdminPatientComponent } from './admin-patient/admin-patient.component';
 import { AdminDoctorFormComponent } from './admin-doctor/admin-doctor-form/admin-doctor-form.component';
 import { AdmminPatientFormComponent } from './admin-patient/admmin-patient-form/admmin-patient-form.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 
 const appRoutes: Routes = [
   { path: 'admin/doctor', component: AdminDoctorComponent,canActivate: [AuthGuard] },
   { path: 'admin/patient', component: AdminPatientComponent,canActivate: [AuthGuard] },
+  { path: 'admin/doctor/form/:id', component: AdminDoctorFormComponent,canActivate: [AuthGuard] },
   // otherwise redirect to home
 ];
 @NgModule({
@@ -29,6 +31,8 @@ const appRoutes: Routes = [
     ],
   imports: [
     CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
     DataTablesModule,
     RouterModule.forChild(appRoutes)  
   ],
