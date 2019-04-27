@@ -24,4 +24,8 @@ export class PatientService {
   delete(id: number) {
     return this.http.delete(`${environment.apiUrl}/patients/${id}`);
   }
+
+  add(patient: Patient) {
+    return this.http.post(environment.apiUrl+"/patients", patient);
+  }
 }

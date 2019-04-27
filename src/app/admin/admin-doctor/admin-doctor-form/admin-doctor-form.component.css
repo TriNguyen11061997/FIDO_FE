@@ -1,6 +1,16 @@
-.main{
+.main {
     float: left;
     height: 568px;
     width: 84%;
     overflow: overlay;
-  }
+}
+
+.form-row {
+    margin-right: 0;
+    margin-left: 0;
+}
+
+form {
+    margin-right: 3%;
+    margin-left: 2%;
+}

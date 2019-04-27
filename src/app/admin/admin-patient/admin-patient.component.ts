@@ -22,7 +22,7 @@ export class AdminPatientComponent implements OnInit {
     this.patientService.getAllObject().subscribe(
       data => {
         this.dtTrigger.next();
-        this.patients = data["data"][0];
+        this.patients = data["data"];
       }, (err) => { alert(err) }
     );
     this.dtOptions = {

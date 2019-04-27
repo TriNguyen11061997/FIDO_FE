@@ -18,6 +18,9 @@ const appRoutes: Routes = [
   { path: 'admin/doctor', component: AdminDoctorComponent,canActivate: [AuthGuard] },
   { path: 'admin/patient', component: AdminPatientComponent,canActivate: [AuthGuard] },
   { path: 'admin/doctor/form/:id', component: AdminDoctorFormComponent,canActivate: [AuthGuard] },
+  { path: 'admin/doctor/form', component: AdminDoctorFormComponent,canActivate: [AuthGuard] },
+  { path: 'admin/patient/form', component: AdmminPatientFormComponent,canActivate: [AuthGuard] },
+  { path: 'admin/patient/form/:id', component: AdmminPatientFormComponent,canActivate: [AuthGuard] },
   // otherwise redirect to home
 ];
 @NgModule({

@@ -13,4 +13,5 @@ export class Users {
     remember_token :string;
     address_id:number;
     specialist_id :number;
+    avartar : string;
 }

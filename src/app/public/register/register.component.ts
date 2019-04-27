@@ -34,12 +34,12 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
     this.addressService.getAllObject().subscribe(
       data =>{
-        this.addresses = data["data"]
+        this.addresses = data as Address[]
       },(err)=>{}
     );
     this.specialistService.getAllObject().subscribe(
       data =>{
-        this.specialists = data["data"]
+        this.specialists = data as Specialist[]
       },(err)=>{}
     );
 

@@ -16,5 +16,5 @@ export class Patient {
     id_number_date	:Date;
     phone_number	:String;
     email	:String;
-    fk_address_id	:number;
+    address_id	:number;
 }
