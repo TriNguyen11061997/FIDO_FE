@@ -1,38 +1,44 @@
-#main_header{
-    background:url(src/assets/images/nen_login.jpg) no-repeat center;
+#main_header {
+    background: url(src/assets/images/nen_login.jpg) no-repeat center;
     height: 100px;
 }
-.item{
+
+.item {
     padding: 5px;
 }
-#main_left{
+
+#main_left {
     width: 63%;
-    display: inline-block;  
+    display: inline-block;
     float: left;
     margin-left: 3%;
 }
-.main_left_ul{
+
+.main_left_ul {
     list-style: none;
     margin-top: 10px;
     padding-left: 0;
 }
-.main_left_ul_li{
-    border: 1px solid hsla(0,0%,100%,0);
+
+.main_left_ul_li {
+    border: 1px solid hsla(0, 0%, 100%, 0);
     border-bottom: 1px solid #eee;
     clear: both;
     padding: 15px 0;
     position: relative;
-    transition: box-shadow .2s,border .1s;
+    transition: box-shadow .2s, border .1s;
 }
-.media{
+
+.media {
     float: left;
     margin: 0 15px 0 8px;
     position: relative;
     z-index: 1;
     display: inline;
 }
-.hero-image{
-    background: #fff url(https://dwbxi9io9o7ce.cloudfront.net/build/f470667….jpg) no-repeat 50% 50%/contain;
+
+.hero-image {
+    background: #fff no-repeat 50% 50%/contain;
     border-radius: 4px 4px 0 0;
     display: block;
     height: 130px;
@@ -40,65 +46,76 @@
     width: 130px;
     background-position-y: 20%;
 }
-.comments-summary{
+
+.comments-summary {
     background: #fff;
     border-radius: 0 0 4px 4px;
-    border: 1px solid rgba(0,0,0,.15);
+    border: 1px solid rgba(0, 0, 0, .15);
     display: block;
     overflow: hidden;
     padding: 2px;
     text-align: center;
     transition: border-color .1s;
 }
-.comments-summary.break{
+
+.comments-summary.break {
     padding-top: 7px;
 }
-.media .comments-summary.break>span{
+
+.media .comments-summary.break>span {
     float: left;
     margin: 0;
     min-height: 18px;
     width: 50%;
 }
-.like-count{
+
+.like-count {
     color: #ff749c;
     font-size: 12px;
 }
-.comment-count{
+
+.comment-count {
     color: #888;
     font-size: 11px;
     display: inline-block;
     margin: 0 5px 0 0;
 }
-.info{
+
+.info {
     margin: 0 0 0 153px;
 }
-.info h2{
+
+.info h2 {
     font-weight: 400;
     font-size: 16px;
     margin: 0 0 5px;
 }
-ul li a{
+
+ul li a {
     text-decoration: none;
     color: #00a2a2;
     transition: all .1s;
 }
-ul li .body{
+
+ul li .body {
     display: inline-block;
     position: relative;
 }
-.info .desc{
+
+.info .desc {
     float: right;
     font-size: 12px;
     margin: 0 5px 40px 0;
     width: 35%;
 }
-.info .desc .readmore{
+
+.info .desc .readmore {
     font-style: italic;
     white-space: nowrap;
 }
 
 .info .brief {
-    margin: 0 39% 40px 10px; 
+    margin: 0 39% 40px 10px;
 }
 
 .info .brief dt {
@@ -106,6 +123,7 @@ ul li .body{
     text-align: center;
     width: 15px;
 }
+
 .fa {
     display: inline-block;
     font: normal normal normal 14px/1 FontAwesome;
@@ -114,16 +132,19 @@ ul li .body{
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
 }
+
 .info .brief dd {
     margin: 0 0 1px 18px;
 }
+
 .call-to-action {
     bottom: 0;
     position: absolute;
     right: 12px;
 }
+
 a.button.secondary.weak {
-    border-color: rgba(0,0,0,.15);
+    border-color: rgba(0, 0, 0, .15);
 }
 
 a.button.secondary {
@@ -131,6 +152,7 @@ a.button.secondary {
     border: 1px solid #00a2a2;
     color: #00a2a2;
 }
+
 a.button {
     display: inline-block;
     background: #00babe;
@@ -139,19 +161,25 @@ a.button {
     color: #fff;
     padding: 4px 18px 3px;
     position: relative;
-    transition: background-color .1s,color .1s;
+    transition: background-color .1s, color .1s;
     text-decoration: none;
 }
+
 .action-favourite .added {
     display: none;
 }
+
 .action-favourite .loader {
     display: none;
 }
+
 .action-favourite .unadded {
     display: inline;
 }
-.clearfix:after, .content section:after, .has-aside aside section:after {
+
+.clearfix:after,
+.content section:after,
+.has-aside aside section:after {
     content: "";
     display: table;
     clear: both;
@@ -163,6 +191,7 @@ aside {
     width: 30%;
     margin-top: 15px;
 }
+
 aside section {
     background: #fff;
     border: 1px solid #eee;
@@ -175,6 +204,7 @@ aside section {
     -ms-border-radius: 5px;
     border-radius: 5px;
 }
+
 aside section h3 {
     border-bottom: 1px solid #eee;
     float: left;
@@ -184,18 +214,21 @@ aside section h3 {
     padding: 11px 0 9px;
     width: 100%;
 }
+
 .collapsible-container.collapsible-list dl {
     float: left;
     margin: 0;
     padding: 5px 0;
     width: 100%;
 }
+
 .collapsible-container.collapsible-list dl dt {
     float: left;
     list-style: none;
     padding: 5px 0;
     width: 100%;
 }
+
 .collapsible-container.collapsible-list dl dt a {
     color: #333;
     display: block;
@@ -203,7 +236,8 @@ aside section h3 {
     padding: 0;
     position: relative;
 }
-.collapsible-container.collapsible-list dl dt a  h5 {
+
+.collapsible-container.collapsible-list dl dt a h5 {
     float: left;
     font-size: 14px;
     font-weight: 400;
@@ -211,11 +245,13 @@ aside section h3 {
     margin: 0;
     width: 70%;
 }
+
 .collapsible-container.collapsible-list dl dt a span {
     color: #999;
     float: right;
     font-size: 11px;
 }
+
 aside section .collapse-trigger {
     border-top: 1px solid #eee;
     cursor: pointer;
@@ -224,12 +260,15 @@ aside section .collapse-trigger {
     text-align: center;
     width: 100%;
 }
+
 .collapse-trigger .trigger-expand {
     display: block;
 }
+
 .collapse-trigger .trigger-collapse {
     display: none;
 }
+
 aside section.top-list ul {
     border-bottom: 1px solid #eee;
     float: left;
@@ -238,15 +277,18 @@ aside section.top-list ul {
     padding-left: 0;
     margin: 0;
 }
+
 aside section.top-list ul li {
     min-height: 75px;
     overflow: hidden;
     padding: 10px 0 10px 70px;
     position: relative;
 }
+
 aside section.top-list ul li+li {
     border-top: 1px solid #eee;
 }
+
 aside section.top-list ul li a.image {
     background: url(https://dwbxi9io9o7ce.cloudfront.net/build/f470667….jpg) no-repeat 50% 50%/cover;
     height: 55px;
@@ -261,15 +303,18 @@ aside section.top-list ul li a.image {
     -ms-border-radius: 5px;
     border-radius: 5px;
 }
+
 aside section.top-list ul li .body h4 {
     font-weight: 400;
     font-size: 14px;
     line-height: 1.4;
     margin: 0 0 2px;
 }
+
 aside section.top-list ul li .body h4 a {
     color: #333;
 }
+
 aside section.top-list a.view-more {
     clear: both;
     display: block;

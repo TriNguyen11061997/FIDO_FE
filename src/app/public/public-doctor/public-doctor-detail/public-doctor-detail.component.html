@@ -1,0 +1,412 @@
+<app-public-header></app-public-header>
+<!-- start body -->
+<div id="main">
+    <div id="vue-bootstrap" class="bg-light-gray">
+        <div id="profile">
+            <div class="profile-header p-t-sm p-b-sm border-bottom">
+                <div class="container has-full-sized-image-triggers">
+                    <img src="{{doctor?.avatar}}" alt="" class="image full-sized-image-trigger">
+                    <div class="body">
+                        <ul class="breadcrumb">
+                            <li><a href="#"><span itemprop="title"><i aria-hidden="true"
+                                                class="fa fa-home"></i></span></a></li>
+                            <li><a href="#"><span itemprop="title">Tra cứu bác sĩ</span></a></li>
+                            <li><a href="#"><span itemprop="title">Chi tiết bác sĩ</span></a></li>
+                        </ul>
+                        <h1>
+                            <span>{{doctor?.name}}</span>
+                        </h1>
+                        <bar-rating [(rate)]="rate" [max]="5"></bar-rating>
+                    </div>
+                    <!-- <div class="btn-group pull-right text-right">
+                            <span class="social-follow">
+                                <span>
+                                    <span>
+                                        <span href="#" class="btn btn-primary-inverted btn-curvy btn-sm weaker m-r-xs">
+                                            <i aria-hidden="true" class="fa fa-user-plus"></i> Theo dõi
+                                        </span>
+                                    </span>
+                                </span>
+                            </span>
+                            <a href="#" title="" data-professional-id="42"
+                                class="action-favourite btn btn-primary-inverted btn-curvy btn-sm weaker ">
+                                <i class="fa fa-spinner fa-pulse loader"></i>
+                                <span class="added"><i aria-hidden="true" class="fa fa-bookmark"></i> Đã ghi nhớ</span>
+                                <span class="unadded"><i aria-hidden="true" class="fa fa-bookmark-o"></i> Ghi nhớ</span>
+                            </a>
+                        </div> -->
+                </div>
+            </div>
+            <nav class="bg-white m-b-sm text-right">
+                <div class="container no-padding">
+                    <ul *ngIf="loadDetail" class="nav-tabs hover-underline tab-content-triggers list-unstyled list-inline auto-scroll-nav">
+                        <li class="no-paddings"><a (click)="ShowDetail()" class="auto-scroll-item active">Thông
+                                    tin chi tiết</a></li>
+                        <li class="no-paddings">
+                            <a (click)="ShowRating()" class="click-me auto-scroll-item"><i aria-hidden="true"
+                                        class="fa fa-comments-o"></i>
+                                         Đánh giá (1111)
+                                        </a>
+                        </li>
+                    </ul>
+                    <ul *ngIf="loadRating" class="nav-tabs hover-underline tab-content-triggers list-unstyled list-inline auto-scroll-nav">
+                        <li class="no-paddings"><a (click)="ShowDetail()" class="auto-scroll-item">Thông
+                                        tin chi tiết</a></li>
+                        <li class="no-paddings">
+                            <a (click)="ShowRating()" class="click-me auto-scroll-item active"><i aria-hidden="true"
+                                            class="fa fa-comments-o"></i>
+                                             Đánh giá (1111)
+                                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+            <div class="container">
+                <div class="row">
+                    <aside class="col-xs-12 col-md-3 col-lg-4 hidden-xs">
+                        <div class="info-box panel panel-default bg-white">
+                            <div class="info-has-icon"><i aria-hidden="true" class="fa fa-fw fa-pencil text-muted"></i>
+                                <a href="#">
+                                        Quản lý trang này
+                                    </a>
+                            </div>
+                            <div class="row text-center group-activities">
+                                <div class="col-xs-3">
+                                    <a href="#" class="tab-content-link">
+                                        <p>
+                                            296
+                                            <i aria-hidden="true" class="fa fa-thumbs-o-up"></i>
+                                        </p>
+                                        <small>Lượt thích</small>
+                                    </a>
+                                </div>
+                                <!-- <div class="col-xs-3">
+                                        <a href="#" class="tab-content-link">
+                                            <p>237</p>
+                                            <small>Người theo dõi</small>
+                                        </a>
+                                    </div> -->
+                                <div class="col-xs-3">
+                                    <a href="#" class="tab-content-link">
+                                        <p>859
+                                            <i class="fa fa-comment-o"></i>
+                                        </p>
+                                        <small>Nhận xét</small>
+
+                                    </a>
+                                </div>
+                                <!-- <div class="col-xs-3">
+                                        <p>10.8K</p>
+                                        <small>Lượt xem</small>
+                                    </div> -->
+                            </div>
+                        </div>
+                    </aside>
+                    <section class="col-xs-12 col-md-9 col-lg-8" *ngIf="loadDetail">
+                        <div class="min-page-height clearfix">
+                            <div class="tab-content-container">
+                                <!-- start chi tiet-->
+                                <div id="thong-tin-chi-tiet" class="tab-content active">
+                                    <div class="row">
+                                        <div class="col-xs-12 col-md-7">
+                                            <div class="collapsible-container collapsible-block expanded screen-lg">
+                                                <div class="collapsible-header">
+                                                    <div class="collapse-trigger">
+                                                        <i aria-hidden="true" class="fa fa-fw fa-info-circle"></i> Giới thiệu
+                                                    </div>
+                                                </div>
+                                                <div data-content-length="400" class="collapsible-target has-readmore-content custom-readmore-content">
+                                                    <div class="cms">
+                                                        <p>Trên 30 kinh nghiệm trong lĩnh vực sản phụ khoa. Số điện thoại liên hệ:&nbsp;
+                                                            <a href="tel://0767846898">0767846898</a>.
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="collapsible-container collapsible-block expanded screen-lg">
+                                                <div class="collapsible-header">
+                                                    <div class="collapse-trigger">
+                                                        <i aria-hidden="true" class="fa fa-fw fa-briefcase"></i> Chức vụ
+                                                    </div>
+                                                </div>
+                                                <div class="collapsible-target text-bold">
+                                                    <ul>
+                                                        <li>
+                                                            <p> Trưởng khoa Phụ ngoại - Bệnh viện Phụ sản Trung ương
+                                                            </p>
+                                                        </li>
+
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="collapsible-container collapsible-block expanded screen-lg">
+                                                <div class="collapsible-header">
+                                                    <div class="collapse-trigger">
+                                                        <i aria-hidden="true" class="fa fa-fw fa-hospital-o"></i> Nơi công tác
+                                                    </div>
+                                                </div>
+                                                <div class="collapsible-target has-images text-bold">
+                                                    <ul class="list-unstyled">
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="image" style="background-image: url(&quot;https://dwbxi9io9o7ce.cloudfront.net/images/11_07_2016_10_06_14_661256.jpeg&quot;);"></span> Phòng khám Sản phụ khoa - Bác sĩ Đỗ Thị
+                                                                Ngọc Lan
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">
+                                                                <span class="image" style="background-image: url(&quot;https://dwbxi9io9o7ce.cloudfront.net/images/24_07_2016_07_04_10_382763.jpeg&quot;);"></span> Bệnh viện Phụ sản An Thịnh
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="collapsible-container collapsible-block expanded screen-lg">
+                                                <div class="collapsible-header">
+                                                    <div class="collapse-trigger">
+                                                        <i aria-hidden="true" class="fa fa-fw fa-book"></i> Kinh Nghiệm
+
+                                                    </div>
+                                                </div>
+                                                <div class="collapsible-target text-bold">
+                                                    <ul>
+                                                        <li>
+                                                            <p>Bệnh viện Phụ sản An Thịnh
+                                                                <br>Bệnh viện Phụ sản An Thịnh
+                                                            </p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="collapsible-container collapsible-block expanded screen-lg">
+                                                <div class="collapsible-header">
+                                                    <div class="collapse-trigger">
+                                                        <i aria-hidden="true" class="fa fa-fw fa-trophy"></i> Giải thưởng và ghi nhận
+
+                                                    </div>
+                                                </div>
+                                                <div class="collapsible-target text-bold">
+                                                    <ul>
+                                                        <li>
+                                                            <p>Bằng khen của Thủ tướng Chính phủ</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Bằng khen của Bộ trưởng Bộ y tế</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Danh hiệu&nbsp;Thầy thuốc ưu tú</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div data-start-from="0" class="collapsible-container collapsible-block screen-lg list-item-count-display expanded">
+                                                <div class="collapsible-header">
+                                                    <div class="collapse-trigger">
+                                                        <i aria-hidden="true" class="fa fa-fw fa-star-o"></i> Được nhắc đến
+                                                        <span class="item-count-render">(1)</span>
+                                                    </div>
+                                                </div>
+                                                <div class="collapsible-target text-bold has-images">
+                                                    <ul class="list-unstyled item-count-target">
+                                                        <li>
+                                                            <a href="#" title="Xem thông tin chi tiết">
+                                                                <span class="image" style="background-image: url(&quot;https://dwbxi9io9o7ce.cloudfront.net/images/20180410_073555_716119_nam_phu_khoa.max-110x110.jpg&quot;);"></span> Bị viêm nấm phụ khoa
+                                                                thì nên khám bác sĩ nào tại Hà Nội?
+                                                            </a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-xs-12 col-md-5">
+                                            <div class="collapsible-container collapsible-block expanded screen-lg">
+                                                <div class="collapsible-header">
+                                                    <div class="collapse-trigger">
+                                                        <i aria-hidden="true" class="fa fa-fw fa-stethoscope"></i> Chuyên khoa
+                                                    </div>
+                                                </div>
+                                                <div class="collapsible-target text-bold">
+                                                    <ul class="list-unstyled">
+                                                        <li>
+                                                            <a href="/danh-sach/bac-si/?specialities=san-phu">Sản
+                                                                    phụ khoa</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="collapsible-container collapsible-block expanded screen-lg">
+                                                <div class="collapsible-header">
+                                                    <div class="collapse-trigger">
+                                                        <i aria-hidden="true" class="fa fa-fw fa-list"></i> Dịch vụ
+                                                    </div>
+                                                </div>
+                                                <div class="collapsible-target text-bold">
+                                                    <ul class="list-unstyled">
+                                                        <li>
+                                                            <a href="#">Phẫu thuật vô sinh</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Điều trị u xơ tử cung</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Chẩn đoán, điều trị và phẫu thuật phụ
+                                                                    khoa</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Điều trị u nang buồng trứng</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Phẫu thuật dị dạng sinh dục</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Phẫu thuật sa sinh dục</a>
+                                                        </li>
+                                                        <li>
+                                                            <a href="#">Phẫu thuật nội soi điều trị chửa ngoài tử
+                                                                    cung</a>
+                                                        </li>
+                                                    </ul>
+                                                    <ul>
+                                                        <li>
+                                                            <p>Điều trị và phẫu thuật phụ khoa</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Phẫu&nbsp;thuật nội soi điều trị chửa ngoài tử cung
+                                                            </p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Điều trị u&nbsp;nang buồng trứng</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Điều trị u&nbsp;xơ tử cung</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Phẫu thuật vô sinh</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Phẫu thuật sa sinh dục</p>
+                                                        </li>
+                                                        <li>
+                                                            <p>Phẫu thuật dị dạng sinh dục</p>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <div class="collapsible-container collapsible-block collapsed screen-lg">
+                                                <div class="collapsible-header">
+                                                    <div class="collapse-trigger">
+                                                        <i aria-hidden="true" class="fa fa-fw fa-graduation-cap"></i> Quá trình đào tạo
+                                                    </div>
+                                                </div>
+                                                <div class="collapsible-target">
+                                                    <em class="no-content">Thông tin chưa được cập nhật.</em>
+                                                </div>
+                                            </div>
+                                            <div class="collapsible-container collapsible-block expanded screen-lg">
+                                                <div class="collapsible-header">
+                                                    <div class="collapse-trigger">
+                                                        <i aria-hidden="true" class="fa fa-fw fa-globe"></i> Ngôn ngữ
+                                                    </div>
+                                                </div>
+                                                <div class="collapsible-target text-bold">
+                                                    <ul class="list-unstyled">
+                                                        <li>
+                                                            <a href="#">Tiếng Việt</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- start hoi-dap bac si-->
+                            </div>
+                        </div>
+                    </section>
+                    <section class="col-xs-12 col-md-9 col-lg-8" *ngIf="loadRating">
+                        <div class="min-page-height clearfix">
+                            <div class="tab-content-container">
+                                <div id="nhan-xet" class="tab-content active">
+                                    <div class="comments-container ">
+                                        <div class="row">
+                                            <div class="col-xs-12 col-md-7 pull-left">
+                                                <ul class="comments">
+                                                    <li class="comment " *ngFor="let item of ratings">
+                                                        <div class="comment-avatar"><span>B</span></div>
+                                                        <div class="comment-body">
+                                                            <h4>
+                                                                <span>                                                            
+                                                                    {{item.patient_name}}                                                             
+                                                                    </span>
+                                                                <span class="liking"></span>
+                                                            </h4>
+                                                            <bar-rating [(rate)]="item.star" [max]="5" [ngModel]="item.star"></bar-rating>
+                                                            <div class="comment-content">
+                                                                <p>{{item.review}}</p>
+                                                            </div>
+                                                            <p class="date">14h50 07-10-2016</p>
+                                                            <!-- <div class="comment-actions">
+                                                                    <strong>
+                                                                    Nhận xét này có hữu ích với bạn không?
+                                                                    <span class="options">
+                                                                        <a href="#" data-comment-id="1150" data-comment-type="professional" title="Có" class="comment-voting useful active"><i aria-hidden="true" class="fa fa-check fa-fw"></i> <i class="fa fa-spinner fa-pulse fa-fw loader"></i> <span>31</span></a> <a href="#" data-comment-id="1150" data-comment-type="professional" title="Không" class="comment-voting not-useful"><i aria-hidden="true" class="fa fa-times fa-fw"></i> <i class="fa fa-spinner fa-pulse fa-fw loader"></i> <span>7</span></a></span>
+                                                                    </strong>
+                                                                </div> -->
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                            <div class="col-xs-12 col-md-5 pull-right">
+                                                <div class="comment-form">
+                                                    <form [formGroup]="ratingForm" (ngSubmit)="onSubmit()" name="professional-comment" id="comment-post">
+                                                        <p>Bạn đã sử dụng dịch vụ của bác sĩ <strong>{{doctor?.name}}</strong>? Hãy chia sẻ cảm nhận của bạn với cộng đồng.</p>
+                                                        <p>Nếu bạn có câu hỏi về sức khỏe và chuyên môn, vui lòng chuyển sang trang <a href="">Hỏi Bác sĩ</a> để được tư vấn miễn phí.</p>
+                                                        <!-- <div class="form-group"><label>Tên:</label> <input type="text" required="required" name="name" placeholder="Tên đầy đủ của bạn..." class="form-control"></div>
+                                                        <div class="form-group"><label>Email:</label> <input type="email" required="required" name="email" placeholder="Địa chỉ email của bạn..." class="form-control"></div>
+                                                        <p class="instruction">ViCare cam kết bảo mật tuyệt đối địa chỉ email và thông tin cá nhân của bạn.</p> -->
+                                                        <ng-container *ngIf="loadReview; else elseLoading">
+                                                            <div class="form-group">
+                                                                <input type="hidden" formControlName="doctor_id">
+                                                                <label>Đánh giá:</label>
+                                                                <bar-rating [(rate)]="star" [max]="5" formControlName="star"></bar-rating>
+                                                                <label>Bình luận:</label>
+                                                                <textarea formControlName="review" placeholder="Đánh giá của bạn..." required="required" rows="5" class="form-control">
+                                                                        </textarea></div>
+                                                            <div class="form-group">
+                                                                <label class="like">
+                                                                            <input type="radio" name="like" value="true"> 
+                                                                            <i class="fa fa-thumbs-o-up"></i> Hài lòng
+                                                                        </label>
+                                                                <label class="dislike">
+                                                                            <input type="radio" name="like" value="false"> 
+                                                                            <i class="fa fa-thumbs-o-down"></i> Không hài lòng
+                                                                        </label>
+                                                            </div>
+                                                            <div class="form-group">
+                                                                <button type="submit" class="btn btn-sm btn-primary">Gửi</button></div>
+                                                        </ng-container>
+                                                        <ng-template #elseLoading>
+                                                            <a [routerLink]="['/login']">Vui lòng đăng nhập để sử dụng dịch vụ</a>
+                                                        </ng-template>
+
+                                                    </form>
+                                                    <div class="form-success">
+                                                        <h4><i class="fa fa-check-square-o"></i> Cám ơn bạn đã gửi nhận xét!</h4>
+                                                        <p>Phản hồi của bạn giúp ích cho cộng đồng khi chọn lựa cơ sở chăm sóc sức khỏe và bác sĩ tốt nhất. Nó cũng góp phần giúp Đỗ Thị Ngọc Lan để tăng chất lượng dịch vụ.</p>
+                                                        <p>Hãy tiếp tục chia sẻ trải nghiệm của bạn về các cơ sở y tế và bác sĩ nhé!</p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<app-public-footer></app-public-footer>

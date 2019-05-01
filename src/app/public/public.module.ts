@@ -12,19 +12,17 @@ import { PublicComponent } from './public.component';
 import { PublicDoctorComponent } from './public-doctor/public-doctor.component';
 import { AuthGuard } from '@app/_guards';
 import { LoginComponent } from './login';
-import { PublicDoctorDetailComponent } from './public-doctor-detail/public-doctor-detail.component';
+import { PublicDoctorDetailComponent } from './public-doctor/public-doctor-detail/public-doctor-detail.component';
 import { PublicForumComponent } from './public-forum/public-forum.component';
 import { RegisterComponent } from './register/register.component';
 import { DemoComponent } from './demo/demo.component';
 import { DoctorComponent } from '@app/doctor/doctor.component';
 import { BarRatingModule } from "ngx-bar-rating";
-import { PublicDoctorRatingComponent } from './public-doctor-rating/public-doctor-rating.component';
-
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
   { path: 'public/forum', component: DoctorComponent },
   { path: 'public/doctor/details/:id', component: PublicDoctorDetailComponent },
-  { path: 'public/doctor/rating/:id', component: PublicDoctorRatingComponent }
+  
 ];
 @NgModule({
   declarations: [
@@ -36,7 +34,6 @@ const appRoutes: Routes = [
     PublicForumComponent,
     RegisterComponent,
     DemoComponent,
-    PublicDoctorRatingComponent
   ],
   imports: [
     FormsModule,

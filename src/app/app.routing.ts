@@ -9,6 +9,7 @@ import { AdminModule } from './admin/admin.module';
 import { LoginComponent } from './public/login';
 import { RegisterComponent } from './public/register/register.component';
 import { DoctorModule } from './doctor/doctor.module';
+import { CommonModule } from '@angular/common';
 
 const appRoutes: Routes = [
   { path: '', component: PublicComponent },
@@ -30,6 +31,7 @@ const appRoutes: Routes = [
   imports: [
     AdminModule,
     PublicModule,
+    CommonModule,
     DoctorModule,
     RouterModule.forRoot(appRoutes)
   ],

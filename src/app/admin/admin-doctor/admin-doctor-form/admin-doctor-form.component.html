@@ -106,8 +106,8 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-6">
-                <label for="inputCity">Chuyên gia</label>
+            <div class="form-group col-md-4">
+                <label for="inputCity">Chuyên khoa chính</label>
                 <select class="form-control" formControlName="specialist_id">
                     <option class="hidden" selected disabled>Chuyên khoa
                     </option>
@@ -119,7 +119,16 @@
                     <div *ngIf="f.specialist.errors.required">Vui lòng lĩnh vực của bạn!</div>
                 </div> -->
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
+                <label for="inputCity">Chuyên khoa phụ</label>
+                <select class="form-control" formControlName="sub_specialist_id">
+                    <option class="hidden" selected disabled>Chuyên khoa
+                    </option>
+                    <option *ngFor="let item of speciallists" value="{{item.id}}">
+                        {{item.name}}</option>
+                </select>
+            </div>
+            <div class="form-group col-md-4">
                 <label for="inputZip">Nơi làm việc</label>
                 <input formControlName="hospital_name" type="text" class="form-control" id="inputZip" [ngClass]="{ 'is-invalid': submitted && f.hospital_name.errors }">
                 <div *ngIf="submitted && f.hospital_name.errors" class="invalid-feedback">
@@ -129,26 +138,28 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="inputCity">Phường,xã</label>
-                <input formControlName="email" type="text" class="form-control" id="inputCity">
-
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputZip">Quận,huyện</label>
-                <input formControlName="email" type="text" class="form-control" id="inputZip">
+            <div class="form-group col-md-8">
+                <label for="inputCity">Phường,xã,Quận,huyện</label>
+                <input formControlName="address_details" type="text" class="form-control" id="inputCity">
             </div>
             <div class="form-group col-md-4">
                 <label for="inputCity">Tỉnh,thành phố</label>
-                <input formControlName="email" type="text" class="form-control" id="inputCity">
+                <select class="form-control" formControlName="address_id">
+                    <option class="hidden" selected disabled>Địa chỉ
+                    </option>
+                    <option *ngFor="let item of addresses" value="{{item.id}}">{{item.name}}
+                    </option>
+                </select>
             </div>
         </div>
         <div class="form-group">
             <label for="inputCity">Nhân viên xác nhận</label>
-            <select formControlName="fk_employee_id" class="form-control">
-        <option selected>Trí</option>
-        <option>Sáng</option>
-      </select>
+            <select class="form-control" formControlName="employee_id">
+                <option class="hidden" selected disabled>Nhân viên
+                </option>
+                <option *ngFor="let item of employees" value="{{item.id}}">{{item.name}}
+                </option>
+            </select>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

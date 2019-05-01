@@ -7,6 +7,8 @@ import { AddressService } from '@app/_services/address.service';
 import { SpecialistService } from '@app/_services/specialist.service';
 import { Specialist } from '@app/_models/specialist.model';
 import { Address } from '@app/_models/address.model';
+import { EmployeeService } from '@app/_services/employee.service';
+import { Employee } from '@app/_models/employee.model';
 
 @Component({
   selector: 'app-admin-doctor-form',
@@ -19,6 +21,7 @@ export class AdminDoctorFormComponent implements OnInit {
   doctor: Doctor;
   speciallists: Specialist[];
   addresses: Address[];
+  employees: Employee[];
   submitted = false;
   id: number;
   constructor(
@@ -27,19 +30,30 @@ export class AdminDoctorFormComponent implements OnInit {
     private router: Router,
     private route: ActivatedRoute,
     private addressService: AddressService,
-    private specilistService: SpecialistService
+    private specilistService: SpecialistService,
+    private employeeService : EmployeeService
   ) { }
 
   ngOnInit() {
     //this.getDoctorDetails(this.route.snapshot.params['id']);
     this.id = this.route.snapshot.params['id'];
-    this.specilistService.getAllObject().subscribe(
+    this.addressService.getAllObject().subscribe(
       data => {
-        this.addresses = data["data"]
+        this.addresses = data as Address[]
       });
     this.specilistService.getAllObject().subscribe(
       data => {
-        this.speciallists = data["data"]
+        this.speciallists = data as Specialist[]
+      }, (err) => { }
+    );
+    this.specilistService.getAllObject().subscribe(
+      data => {
+        this.speciallists = data as Specialist[]
+      }, (err) => { }
+    );
+    this.employeeService.getAllObject().subscribe(
+      data => {
+        this.employees = data["data"] as Employee[] 
       }, (err) => { }
     );
     if (this.id != null) {
@@ -61,9 +75,13 @@ export class AdminDoctorFormComponent implements OnInit {
       passport_date: [null],
       phone_number: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      fk_employee_id: [null],
-      specialist: [null, Validators.required],
-      hospital_name: [null, Validators.required]
+      employee_id: [null],
+      hospital_name: [null, Validators.required],
+      address_details : [null],
+      address_id :[null],
+      specialist_id : [null],
+      sub_specialist_id : [null],
+
     });
   }
   get f() { return this.doctorForm.controls; }
@@ -92,7 +110,11 @@ export class AdminDoctorFormComponent implements OnInit {
               id_number_date: this.doctor.id_number_date,
               phone_number: this.doctor.phone_number,
               email: this.doctor.email,
-              hospital_name: this.doctor.hospital_name
+              hospital_name: this.doctor.hospital_name,
+              address_id : this.doctor.address_id,
+              address_details : this.doctor.address_details,
+              specialist_id : this.doctor.specialist_id,
+              sub_specialist_id : this.doctor.sub_specialist_id
             })
         }, (err) => { console.log(err) }
       );

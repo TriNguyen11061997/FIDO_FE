@@ -100,10 +100,8 @@ export class AdmminPatientFormComponent implements OnInit {
   update() {
     this.service.update(this.patientForm.value).subscribe(
       data => {
-        if (data["status_code"] == 202) {
-
-        }
         this.toastr.success("Đã cập nhật thành công!", "FIDO!")
+        this.router.navigate(['/admin/patient'])
 
       }, (err) => { this.toastr.error(err) }
     )
@@ -113,11 +111,11 @@ export class AdmminPatientFormComponent implements OnInit {
     this.service.add(this.patientForm.value).subscribe(
       data => {
         if (data["status_code"] == 201) {
-          this.toastr.success("Đã thêm thành công!", "FIDO!"),
-            this.router.navigate(['/admin/patient'])
+          this.toastr.success("Đã thêm thành công!", "FIDO!");
+          this.router.navigate(['/admin/patient'])
         }
         else
-          this.toastr.error("Email or CMND đã tồn tại","FIDO!")
+          this.toastr.error("Email or CMND đã tồn tại", "FIDO!")
       }, (err) => { this.toastr.error(err) }
     )
   }

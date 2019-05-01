@@ -39,8 +39,8 @@
                                 <td>{{emp.id_number}}</td>
                                 <td>{{emp.phone_number}}</td>
                                 <td>{{emp.email}}</td>
-                                <td>{{emp.address}}</td>
-                                <td>{{emp.specialist}}</td>
+                                <td>{{emp.address_name}}</td>
+                                <td>{{emp.specialist_name}}</td>
                                 <!-- /[routerLink]="['/public/doctor/details',item.id]" -->
                                 <td><button class="btn-outline-primary" [routerLink]="['/admin/doctor/form',emp.id]"><a>Edit</a></button></td>
                                 <td><button class="btn btn-sm btn-outline-danger" (click)="Delete(emp.id)">X</button></td>

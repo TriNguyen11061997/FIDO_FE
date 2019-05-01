@@ -12,12 +12,13 @@ import { AppRouting }        from './app.routing';
 
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
-import { BarRatingModule } from 'ngx-bar-rating';
-
+import { BarRatingModule } from 'ngx-bar-rating';import { CommonModule } from '@angular/common';
+;
 
 @NgModule({
     imports: [
         BrowserModule,
+        CommonModule,
         ReactiveFormsModule,
         HttpClientModule,
         AppRouting,

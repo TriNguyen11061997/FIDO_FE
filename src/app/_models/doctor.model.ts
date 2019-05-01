@@ -13,15 +13,19 @@ export class Doctor {
     passport_no	:String;
     passport_date	:Date;
     passport_place	:String;
-    phone_no_1	:String;
-    phone_no_2	:String;
     email	:String;
-    fk_employee_id	:number;
-    specialist	:String;
-    hospital_name	:String;
-    employeeName	:String;
-    fk_address_id	:number;
     phone_number : String;
-    address : string;
+    employee_id	:number;
+    employee_name	:String;
+    hospital_name	:String;
+    address_id	:number;
+    address_name : String;
+    specialist_id	:number;
+    specialist_name: String;
+    sub_specialist_id : number;
+    sub_specialist_name : String;
+    address_details : string;
+    rating : number;
+    actived: number;
 
 }

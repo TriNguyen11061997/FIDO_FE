@@ -1,3 +1,26 @@
 <app-public-header></app-public-header>
-<img src="assets/images/nen_login.jpg" alt="">
+<div id="homepage">
+    <section class="area-background">
+        <div class="container">
+            <h2 class="text-center text-uppercase color-white area-title">Tất cả vì sức khoẻ người Việt</h2>
+
+            <p class="text-center color-white area-sub-title"><em>Nền tảng y tế hàng đầu Việt Nam về thông tin khám chữa bệnh và chăm sóc sức khoẻ</em></p>
+
+            <form class="search text-center" method="get" action="https://vicare.vn/tim-kiem/" name="global-search">
+                <div class="inner">
+                    <span class="location">
+                    <select name="province" id="location-switch-home">
+                        <option value="all"> Cả nước</option>
+                        <option *ngFor="let item of addresses"  value="{{item.id}}">{{item.name}}</option>                    
+                    </select>
+                </span>
+                    <div class="has-suggestion"><input type="text" name="q" value="" placeholder="câu hỏi, bác sĩ, phòng khám, bệnh viện..." autocomplete="off" id="search-input-home">
+                        <div class="suggestion" style="display: none;"></div>
+                    </div>
+                    <button type="submit"><i class="fa fa-search icon-search-not-loading"></i><i class="icon-search-loading"></i></button>
+                </div>
+            </form>
+        </div>
+    </section>
+</div>
 <app-public-footer></app-public-footer>

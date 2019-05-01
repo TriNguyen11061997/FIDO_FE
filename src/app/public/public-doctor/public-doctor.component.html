@@ -2,7 +2,7 @@
 <div id="main_header">
 
 </div>
-<div  class="main">
+<div class="main">
     <div id="main_left">
         <div class="container-fluid">
             <div class="row align-items-center justify-content-center">
@@ -68,12 +68,8 @@
                 <li class="main_left_ul_li" *ngFor="let item of listDoctor">
                     <div class="body">
                         <div class="media">
-                            <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than" class="hero-image"
-                                style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/09_03_2017_04_31_47_548381.jpeg);"></a>
-
-                            <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than#nhan-xet"
-                                class="comments-summary break"
-                                title="2 hài lòng, 6 nhận xét, 329 câu trả lời, 76 cảm ơn">
+                            <img class="hero-image" src="{{item.avatar}}" alt="">
+                            <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than#nhan-xet" class="comments-summary break" title="2 hài lòng, 6 nhận xét, 329 câu trả lời, 76 cảm ơn">
                                 <span class="like-count">
                                     <i class="fa fa-thumbs-o-up"></i> 2
                                 </span>
@@ -88,10 +84,8 @@
                                 <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than">{{item.name}}</a>
                             </h2>
                             <div class="desc">
-                                Từ nhỏ anh đã luôn chú ý tới các hiện tượng xảy ra và những hành vi ứng xử của mình cũng
-                                như
-                                mọi người xung quanh. Anh yêu thích kiến thức về con người,...
-                                <a class="readmore" [routerLink]="['/public/doctor/details',item.id]" >Xem tiếp
+                                Từ nhỏ anh đã luôn chú ý tới các hiện tượng xảy ra và những hành vi ứng xử của mình cũng như mọi người xung quanh. Anh yêu thích kiến thức về con người,...
+                                <a class="readmore" [routerLink]="['/public/doctor/details',item.id]">Xem tiếp
                                     <i class="fa fa-angle-double-right"></i></a>
                             </div>
                             <dl class="brief">
@@ -282,7 +276,7 @@
             <h3>Đáng quan tâm</h3>
 
             <ul>
-                
+
                 <li>
                     <a class="image" href="/tuyen-chon-bac-si/5-bac-si-nam-mat-tay-chuyen-khoa-san-tai-ha-noi-119/" style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/19_07_2016_03_51_50_142932.jpeg);" title="5 bác sĩ nam “mát tay” chuyên khoa sản tại Hà Nội"></a>
 
@@ -294,7 +288,7 @@
                         </h4>
                     </div>
                 </li>
-                
+
                 <li>
                     <a class="image" href="/tuyen-chon-bac-si/5-bac-si-dau-nganh-ve-chuyen-khoa-tim-mach-duoc-nhieu-nguoi-biet-den-tai-tp-ho-chi-minh-122/" style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/19_07_2016_04_14_22_302702.jpeg);" title="5 Bác sĩ đầu ngành về chuyên khoa tim mạch được nhiều người biết đến tại TP. Hồ Chí Minh"></a>
 
@@ -306,7 +300,7 @@
                         </h4>
                     </div>
                 </li>
-                
+
                 <li>
                     <a class="image" href="/tuyen-chon-bac-si/5-bac-si-phau-thuat-than-kinh-noi-tieng-tai-tp-hcm-243/" style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/04_08_2016_09_51_26_177372.jpeg);" title="5 bác sĩ phẫu thuật thần kinh nổi tiếng tại Tp. HCM"></a>
 
@@ -318,7 +312,7 @@
                         </h4>
                     </div>
                 </li>
-                
+
                 <li>
                     <a class="image" href="/tuyen-chon-bac-si/5-bac-si-nam-mat-tay-chuyen-khoa-san-tai-tp-ho-chi-minh-155/" style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/19_07_2016_10_07_06_495082.jpeg);" title="5 bác sĩ nam “mát tay” chuyên khoa sản tại Tp. Hồ Chí Minh"></a>
 
@@ -330,7 +324,7 @@
                         </h4>
                     </div>
                 </li>
-                
+
                 <li>
                     <a class="image" href="/tuyen-chon-bac-si/top-5-bac-si-tuoi-tre-tai-cao-chuyen-khoa-co-xuong-khop-tai-ha-noi-146/" style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/19_07_2016_09_01_17_254115.jpeg);" title="Top 5 Bác sĩ tuổi trẻ tài cao chuyên khoa cơ xương khớp tại Hà Nội"></a>
 
@@ -342,7 +336,7 @@
                         </h4>
                     </div>
                 </li>
-                
+
                 <li>
                     <a class="image" href="/tuyen-chon-bac-si/5-bac-si-phau-thuat-than-kinh-noi-tieng-tai-ha-noi-245/" style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/04_08_2016_10_28_43_627148.jpeg);" title="5 bác sĩ phẫu thuật thần kinh nổi tiếng tại Hà Nội"></a>
 
@@ -354,7 +348,7 @@
                         </h4>
                     </div>
                 </li>
-                
+
                 <li>
                     <a class="image" href="/tuyen-chon-bac-si/5-tien-si-chuyen-khoa-chan-thuong-chinh-hinh-cot-song-tai-tphcm-1649/" style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/09_10_2016_07_56_38_002927.jpeg);" title="5 Tiến sĩ chuyên khoa chấn thương chỉnh hình cột sống tại TP.HCM "></a>
 
@@ -366,7 +360,7 @@
                         </h4>
                     </div>
                 </li>
-                
+
                 <li>
                     <a class="image" href="/tuyen-chon-bac-si/5-bac-si-nu-chuyen-khoa-san-tai-tp-ho-chi-minh-154/" style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/19_07_2016_09_55_20_446675.jpeg);" title="5 bác sĩ nữ chuyên khoa sản tại Tp. Hồ Chí Minh"></a>
 
@@ -378,7 +372,7 @@
                         </h4>
                     </div>
                 </li>
-                
+
                 <li>
                     <a class="image" href="/tuyen-chon-bac-si/5-bac-si-nu-chuyen-khoa-tieu-hoa-gan-mat-tai-tphcm-1686/" style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/09_10_2016_18_20_10_092350.jpeg);" title="5 bác sĩ nữ chuyên khoa tiêu hóa gan mật tại Tp.HCM"></a>
 
@@ -390,7 +384,7 @@
                         </h4>
                     </div>
                 </li>
-                
+
                 <li>
                     <a class="image" href="/tuyen-chon-bac-si/5-bac-si-dieu-tri-nam-khoa-giau-kinh-nghiem-tai-ha-noi-247/" style="background-image: url(https://dwbxi9io9o7ce.cloudfront.net/images/05_08_2016_07_49_31_184905.jpeg);" title="5 bác sĩ điều trị nam khoa giàu kinh nghiệm tại Hà Nội"></a>
 
@@ -402,7 +396,7 @@
                         </h4>
                     </div>
                 </li>
-                
+
             </ul>
 
             <a href="/tuyen-chon-bac-si/" class="view-more">Xem tất cả các tuyển chọn</a>

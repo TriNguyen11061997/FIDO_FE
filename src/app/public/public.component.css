@@ -1,0 +1,138 @@
+#homepage section.area-background {
+    background-attachment: fixed;
+    background-image: url(src/assets/images/public/home1.jpg);
+    background-position: 50% 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    height: 84vh;
+    position: relative;
+    padding-top: 22vh;
+}
+
+#homepage section.area-background form .inner .location:before {
+    content: "\F041";
+    font-family: FontAwesome;
+    font-size: 21px;
+    left: 17px;
+    pointer-events: none;
+    position: absolute;
+    top: 9px;
+}
+
+#homepage section.area-background form .inner .location:after {
+    content: "\F0D7";
+    color: #666;
+    font-size: 18px;
+    font-family: FontAwesome;
+    pointer-events: none;
+    position: absolute;
+    right: 16px;
+    top: 12px;
+}
+
+#homepage section.area-background .area-title {
+    font-size: 34px;
+    letter-spacing: 8px;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.color-white {
+    color: #fff;
+}
+
+.initialism,
+.text-uppercase {
+    text-transform: uppercase;
+}
+
+#homepage section.area-background .area-sub-title {
+    font-size: 13px;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+
+#homepage section.area-background .area-sub-title {
+    font-size: 20px;
+    letter-spacing: 1.2px;
+    margin-bottom: 48px;
+}
+
+#homepage section.area-background form .inner {
+    font-size: 18px;
+}
+
+#homepage section.area-background form .inner {
+    background: hsla(0, 0%, 100%, .9);
+    border-radius: 5px;
+    display: inline-block;
+    font-size: 20px;
+    height: 50px;
+    position: relative;
+    text-align: left;
+    white-space: nowrap;
+}
+
+#homepage section.area-background form .inner .location {
+    border-radius: 5px 0 0 5px;
+    color: #ff749c;
+    float: left;
+    height: 100%;
+    position: relative;
+    vertical-align: middle;
+}
+
+#homepage section.area-background form .inner .location select {
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    border-right: 1px solid rgba(0, 0, 0, .2);
+    border-radius: 0;
+    color: #666;
+    cursor: pointer;
+    margin: 11px 0 0;
+    padding: 0 32px 0 37px;
+}
+
+#homepage section.area-background form .inner .has-suggestion {
+    float: left;
+    height: 100%;
+    white-space: normal;
+}
+
+.has-suggestion {
+    float: left;
+    position: relative;
+}
+
+#homepage section.area-background form .inner input {
+    background: none;
+    border: none;
+    display: inline-block;
+    padding: 5px 15px;
+    height: 100%;
+    margin: 0 0 0 -5px;
+    transition: background .15s;
+    width: 500px;
+    vertical-align: middle;
+    z-index: 10;
+}
+
+#homepage section.area-background form .inner button {
+    background: #00babe;
+    border-radius: 0 5px 5px 0;
+    border: none;
+    color: #fff;
+    float: right;
+    font-size: 20px;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    vertical-align: middle;
+    width: 54px;
+}

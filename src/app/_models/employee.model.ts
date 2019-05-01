@@ -13,8 +13,7 @@ export class Employee {
     passport_no	:String;
     passport_date	:Date;
     passport_place	:String;
-    phone_no_1	:String;
-    phone_no_2	:String;
+    phone_number	:String;
     email	:String;
     fk_address_id	:number;
     tax_number :string;
