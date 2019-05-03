@@ -3,15 +3,15 @@
     <div>
         <main class="container pt-5">
             <div class="card mb-5">
-                <div class="card-header">Danh sách Bác sĩ
-                    <a [routerLink]="['/admin/doctor/form']"><button style="float: right;" class="btn btn-primary">Thêm mới</button></a>
+                <div class="card-header">Danh sách người dùng
+                    <a [routerLink]="['/admin/employee/form']"><button style="float: right;" class="btn btn-primary">Thêm mới</button></a>
                 </div>
                 <div class="card-block p-0">
                     <table class="table table-bordered table-sm m-0" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
                         <thead>
                             <tr>
                                 <th>Chi tiết</th>
-                                <th>Mã</th>
+                                <th>Mã nhân viên</th>
                                 <th>Họ tên</th>
                                 <th>Giới tính</th>
                                 <th>Ngày sinh</th>
@@ -19,28 +19,20 @@
                                 <th>Số điện thoại</th>
                                 <th>Email</th>
                                 <th>Địa chỉ</th>
-                                <th>Chuyên khoa</th>
+
                             </tr>
                         </thead>
                         <tbody>
-                            <tr *ngFor="let emp of doctors">
-                                <!-- <td>
-                                    <label class="custom-control custom-checkbox">
-                    <input type="checkbox" class="custom-control-input">
-                    <span class="custom-control-indicator"></span>
-                  </label>
-                                </td> -->
-                                <td><button class="btn-outline-primary" [routerLink]="['/admin/doctor/form',emp.id]"><a>View</a></button></td>
-                                <td>{{emp.doctor_no}}</td>
+                            <tr *ngFor="let emp of employees">
+                                <td><button class="btn-outline-primary"><a [routerLink]="['/admin/employee/form',emp.id]">View</a></button></td>
+                                <td>{{emp.employee_no}}</td>
                                 <td>{{emp.name}}</td>
                                 <td>{{emp.gender}}</td>
                                 <td>{{emp.birthday}}</td>
                                 <td>{{emp.id_number}}</td>
                                 <td>{{emp.phone_number}}</td>
                                 <td>{{emp.email}}</td>
-                                <td>{{emp.address_name}}</td>
-                                <td>{{emp.specialist_name}}</td>
-                                <!-- /[routerLink]="['/public/doctor/details',item.id]" -->
+                                <td>{{emp.address_id}}</td>
                             </tr>
                         </tbody>
                     </table>

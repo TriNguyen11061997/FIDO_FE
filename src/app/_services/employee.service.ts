@@ -26,7 +26,7 @@ export class EmployeeService {
     return this.http.delete(`${environment.apiUrl}/employees/${id}`);
   }
 
-  add(patient: Patient) {
-    return this.http.post(environment.apiUrl + "/employees", patient);
+  add(employee: Employee) {
+    return this.http.post(environment.apiUrl + "/employees", employee);
   }
 }

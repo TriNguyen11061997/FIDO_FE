@@ -24,6 +24,7 @@ export class AdminDoctorFormComponent implements OnInit {
   employees: Employee[];
   submitted = false;
   id: number;
+  btn_delete: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private service: DoctorService,
@@ -58,6 +59,7 @@ export class AdminDoctorFormComponent implements OnInit {
     );
     if (this.id != null) {
       this.getDoctorByID(this.id);
+      this.btn_delete = true;
     }
     this.doctorForm = this.formBuilder.group({
       id: [],
@@ -114,7 +116,8 @@ export class AdminDoctorFormComponent implements OnInit {
               address_id : this.doctor.address_id,
               address_details : this.doctor.address_details,
               specialist_id : this.doctor.specialist_id,
-              sub_specialist_id : this.doctor.sub_specialist_id
+              sub_specialist_id : this.doctor.sub_specialist_id,
+              employee_id : this.doctor.employee_id
             })
         }, (err) => { console.log(err) }
       );

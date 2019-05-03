@@ -25,4 +25,8 @@ export class DoctorService {
   delete(id: number) {
     return this.http.delete(`${environment.apiUrl}/doctors/${id}`);
   }
+
+  get10Object(id: number) {
+    return this.http.get(environment.apiUrl + '/doctors-pagination?page=' + id);
+  }
 }

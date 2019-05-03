@@ -33,9 +33,9 @@ export class PublicDoctorComponent implements OnInit {
   } 
 
   getDoctor() {
-    this.doctorService.getAllObject()
+    this.doctorService.get10Object(1)
       .subscribe(data => {
-        this.listDoctor = data as Doctor[];
+        this.listDoctor = data["data"] as Doctor[];
       }, (err) => { console.log(err) }
       )
   }

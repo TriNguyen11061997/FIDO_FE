@@ -1,16 +1,13 @@
 <app-admin-header></app-admin-header>
 <div class="main">
-    <div class="card-header">Thông tin bác sĩ
+    <div class="card-header">Thông tin người dùng
     </div>
-    <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
+    <form [formGroup]="emloyeeForm" (ngSubmit)="onSubmit()">
         <input type="text" formControlName="id" hidden>
         <div class="form-row">
             <div class="form-group col-md-4">
-                <label for="inputEmail4">Mã số</label>
-                <input type="text" formControlName="doctor_no" class="form-control" id="inputEmail4" placeholder="Mã số" [ngClass]="{ 'is-invalid': submitted && f.doctor_no.errors }">
-                <div *ngIf="submitted && f.doctor_no.errors" class="invalid-feedback">
-                    <div *ngIf="f.doctor_no.errors.required">Vui lòng nhập mã!</div>
-                </div>
+                <label for="inputPassword4">Mã nhân viên</label>
+                <input type="text" formControlName="employee_no" readonly class="form-control" id="inputPassword4" placeholder="Mã">
             </div>
             <div class="form-group col-md-4">
                 <label for="inputPassword4">Họ tên</label>
@@ -21,10 +18,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="inputPassword4">Ảnh đại diện</label>
-                <input type="file" formControlName="avatar" class="form-control" id="inputPassword4" [ngClass]="{ 'is-invalid': submitted && f.avatar.errors }">
-                <div *ngIf="submitted && f.avatar.errors" class="invalid-feedback">
-                    <div *ngIf="f.avatar.errors.required">Vui lòng chọn ảnh đại diện!</div>
-                </div>
+                <input type="file" formControlName="avatar" class="form-control" id="inputPassword4">
             </div>
         </div>
         <div class="form-row">
@@ -87,15 +81,23 @@
                 <input formControlName="passport_place" type="text" class="form-control" id="inputCity">
             </div>
         </div>
+
         <div class="form-row">
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
+                <label for="inputCity">Mã số thuế</label>
+                <input formControlName="tax_number" type="tel" class="form-control" id="inputCity" [ngClass]="{ 'is-invalid': submitted && f.tax_number.errors }">
+                <div *ngIf="submitted && f.tax_number.errors" class="invalid-feedback">
+                    <div *ngIf="f.tax_number.errors.required">Vui lòng nhập mã số thuế!</div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
                 <label for="inputCity">Số điện thoại</label>
                 <input formControlName="phone_number" type="tel" class="form-control" id="inputCity" [ngClass]="{ 'is-invalid': submitted && f.phone_number.errors }">
                 <div *ngIf="submitted && f.phone_number.errors" class="invalid-feedback">
                     <div *ngIf="f.phone_number.errors.required">Vui lòng nhập số điện thoại!</div>
                 </div>
             </div>
-            <div class="form-group col-md-6">
+            <div class="form-group col-md-4">
                 <label for="inputZip">Email</label>
                 <input formControlName="email" type="email" class="form-control" id="inputZip" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
@@ -106,60 +108,29 @@
         </div>
 
         <div class="form-row">
-            <div class="form-group col-md-4">
-                <label for="inputCity">Chuyên khoa chính</label>
-                <select class="form-control" formControlName="specialist_id">
-                    <option class="hidden" selected disabled>Chuyên khoa
-                    </option>
-                    <option *ngFor="let item of speciallists" value="{{item.id}}">
-                        {{item.name}}</option>
-                </select>
-                <!-- <input formControlName="specialist" type="text" class="form-control" id="inputCity" [ngClass]="{ 'is-invalid': submitted && f.specialist.errors }">
-                <div *ngIf="submitted && f.specialist.errors" class="invalid-feedback">
-                    <div *ngIf="f.specialist.errors.required">Vui lòng lĩnh vực của bạn!</div>
-                </div> -->
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputCity">Chuyên khoa phụ</label>
-                <select class="form-control" formControlName="sub_specialist_id">
-                    <option class="hidden" selected disabled>Chuyên khoa
-                    </option>
-                    <option *ngFor="let item of speciallists" value="{{item.id}}">
-                        {{item.name}}</option>
-                </select>
-            </div>
-            <div class="form-group col-md-4">
-                <label for="inputZip">Nơi làm việc</label>
-                <input formControlName="hospital_name" type="text" class="form-control" id="inputZip" [ngClass]="{ 'is-invalid': submitted && f.hospital_name.errors }">
-                <div *ngIf="submitted && f.hospital_name.errors" class="invalid-feedback">
-                    <div *ngIf="f.hospital_name.errors.required">Vui lòng nhập nơi làm việc!</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-row">
             <div class="form-group col-md-8">
-                <label for="inputCity">Phường,xã,Quận,huyện</label>
-                <input formControlName="address_details" type="text" class="form-control" id="inputCity">
+                <label for="inputCity">Phường,Xã,Quận,Huyện</label>
+                <input formControlName="address_detail" type="text" class="form-control" id="inputCity">
             </div>
             <div class="form-group col-md-4">
                 <label for="inputCity">Tỉnh,thành phố</label>
                 <select class="form-control" formControlName="address_id">
-                    <option class="hidden" selected disabled>Địa chỉ
-                    </option>
-                    <option *ngFor="let item of addresses" value="{{item.id}}">{{item.name}}
-                    </option>
-                </select>
+                  <option class="hidden" selected disabled>Địa chỉ
+                  </option>
+                  <option *ngFor="let item of addresses" value="{{item.id}}">{{item.name}}
+                  </option>
+              </select>
             </div>
         </div>
-        <div class="form-group">
-            <label for="inputCity">Nhân viên xác nhận</label>
-            <select class="form-control" formControlName="employee_id">
-                <option class="hidden" selected disabled>Nhân viên
-                </option>
-                <option *ngFor="let item of employees" value="{{item.id}}">{{item.name}}
-                </option>
-            </select>
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="inputCity">Ngày bắt đầu làm việc</label>
+                <input formControlName="start_date" type="date" class="form-control" id="inputZip">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCity">Ngày kết thúc làm việc</label>
+                <input formControlName="end_date" type="date" class="form-control" id="inputZip">
+            </div>
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>

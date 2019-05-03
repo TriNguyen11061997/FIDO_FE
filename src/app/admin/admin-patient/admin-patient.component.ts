@@ -17,7 +17,7 @@ export class AdminPatientComponent implements OnInit {
   }
 
   dtOptions: DataTables.Settings = {};
-  dtTrigger: Subject<Doctor> = new Subject();
+  dtTrigger: Subject<Patient> = new Subject();
   ngOnInit() {
     this.patientService.getAllObject().subscribe(
       data => {

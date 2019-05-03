@@ -11,6 +11,8 @@ import { AdminPatientComponent } from './admin-patient/admin-patient.component';
 import { AdminDoctorFormComponent } from './admin-doctor/admin-doctor-form/admin-doctor-form.component';
 import { AdmminPatientFormComponent } from './admin-patient/admmin-patient-form/admmin-patient-form.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminEmployeeComponent } from './admin-employee/admin-employee.component';
+import { AdminEmployeeFormComponent } from './admin-employee/admin-employee-form/admin-employee-form.component';
 
 
 
@@ -21,6 +23,9 @@ const appRoutes: Routes = [
   { path: 'admin/doctor/form', component: AdminDoctorFormComponent,canActivate: [AuthGuard] },
   { path: 'admin/patient/form', component: AdmminPatientFormComponent,canActivate: [AuthGuard] },
   { path: 'admin/patient/form/:id', component: AdmminPatientFormComponent,canActivate: [AuthGuard] },
+  { path: 'admin/employee', component: AdminEmployeeComponent,canActivate: [AuthGuard] },
+  { path: 'admin/employee/form', component: AdminEmployeeFormComponent,canActivate: [AuthGuard] },
+  { path: 'admin/employee/form/:id', component: AdminEmployeeFormComponent,canActivate: [AuthGuard] },
   // otherwise redirect to home
 ];
 @NgModule({
@@ -30,7 +35,9 @@ const appRoutes: Routes = [
      AdminFooterComponent,
      AdminPatientComponent,
      AdminDoctorFormComponent,
-     AdmminPatientFormComponent
+     AdmminPatientFormComponent,
+     AdminEmployeeComponent,
+     AdminEmployeeFormComponent
     ],
   imports: [
     CommonModule,
