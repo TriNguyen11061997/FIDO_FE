@@ -28,6 +28,7 @@ export class AuthenticationService {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes           
                     formData.usable_id= user["usable_id"];
                     formData.name = user["data"]["name"];
+                    formData.avartar = user["data"]["avatar"];
                     formData.remember_token = user["access_token"];
                     formData.usable_type = user["usable_type"];
                     //console.log(user["data"]["data"]["name"]);

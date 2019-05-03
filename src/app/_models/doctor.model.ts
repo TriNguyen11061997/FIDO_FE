@@ -27,5 +27,6 @@ export class Doctor {
     address_details : string;
     rating : number;
     actived: number;
+    experience: string;
 
 }

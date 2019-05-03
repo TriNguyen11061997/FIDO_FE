@@ -32,7 +32,7 @@ export class AdminDoctorComponent implements OnDestroy, OnInit {
     this.doctorService.getAllObject()
       .subscribe(
         data => {
-          this.doctors = data["data"] as Doctor[];
+          this.doctors = data as Doctor[];
           this.dtTrigger.next();
         }, (err) => { alert(err) }
       );

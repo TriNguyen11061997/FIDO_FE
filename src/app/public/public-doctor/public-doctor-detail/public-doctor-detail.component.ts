@@ -19,7 +19,7 @@ import { RatingService } from '@app/_services/rating.service';
 export class PublicDoctorDetailComponent implements OnInit {
   currentUser: Users;
   loadReview: boolean = false;
-  doctor: Doctor;
+  doctor: Doctor = null;
   ratingForm: FormGroup;
   rate: number;
   ratings: Rating[];

@@ -84,7 +84,7 @@
                                 <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than">{{item.name}}</a>
                             </h2>
                             <div class="desc">
-                                Từ nhỏ anh đã luôn chú ý tới các hiện tượng xảy ra và những hành vi ứng xử của mình cũng như mọi người xung quanh. Anh yêu thích kiến thức về con người,...
+                                {{item.description}},...
                                 <a class="readmore" [routerLink]="['/public/doctor/details',item.id]">Xem tiếp
                                     <i class="fa fa-angle-double-right"></i></a>
                             </div>
@@ -95,26 +95,26 @@
                                 <dd>
                                     <a href="/danh-sach/bac-si/?degrees=thac-si">Chức vụ</a>
                                 </dd>
-
                                 <dt>
                                     <i class="fa fa-stethoscope"></i>
                                 </dt>
                                 <dd>
-                                    <a href="/danh-sach/bac-si/?specialities=tam-than">Chuyên khoa</a>,
+                                    <a href="">{{item.specialist_name}}</a>,
+                                    <a href="">{{item.sub_specialist_name}}</a>
                                 </dd>
 
                                 <dt>
                                     <i class="fa fa-book"></i>
                                 </dt>
                                 <dd>
-                                    Kinh nghiệm
+                                    {{item.experience}}
                                 </dd>
 
                                 <dt>
                                     <i class="fa fa-hospital-o"></i>
                                 </dt>
                                 <dd>
-                                    <a href="/trung-tam-tu-van-tam-ly-247-96564/tam-than">Nơi làm việc chính</a>
+                                    <a href="/trung-tam-tu-van-tam-ly-247-96564/tam-than">{{item.hospital_name}}</a>
                                 </dd>
 
                             </dl>
@@ -130,141 +130,22 @@
                     </div>
                 </li>
             </ul>
+            <ul class="pagination">
+                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
+                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+            </ul>
         </div>
     </div>
     <aside>
         <section class="collapsible-container collapsible-list collapsed">
             <h3>Chuyên khoa</h3>
-
             <dl class="collapsible-target">
-
-                <dt>
+                <dt *ngFor="let item of specialists">
                     <a href="/danh-sach/bac-si/?specialities=duoc" class="" title="Dược">
-                        <h5>Dược</h5>
+                        <h5>{{item.name}}</h5>
                         <span class="thread-count ">9589 bác sĩ</span>
                     </a>
                 </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=kham-benh" class="" title="Khám bệnh">
-                        <h5>Khám bệnh</h5>
-                        <span class="thread-count ">4092 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=y-hoc-co-truyen" class="" title="Y học cổ truyền">
-                        <h5>Y học cổ truyền</h5>
-                        <span class="thread-count ">2015 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=san-phu" class="" title="Sản phụ khoa">
-                        <h5>Sản phụ khoa</h5>
-                        <span class="thread-count ">1919 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=rang-ham-mat" class="" title="Răng - Hàm - Mặt">
-                        <h5>Răng - Hàm - Mặt</h5>
-                        <span class="thread-count ">1903 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=nhi" class="" title="Nhi">
-                        <h5>Nhi</h5>
-                        <span class="thread-count ">1902 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=tham-my" class="" title="Thẩm mỹ">
-                        <h5>Thẩm mỹ</h5>
-                        <span class="thread-count ">1693 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=hoi-suc-cap-cuu" class="" title="Hồi sức - Cấp cứu">
-                        <h5>Hồi sức - Cấp cứu</h5>
-                        <span class="thread-count ">1602 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=chan-doan-hinh-anh" class="" title="Chẩn đoán hình ảnh">
-                        <h5>Chẩn đoán hình ảnh</h5>
-                        <span class="thread-count ">1599 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=noi-tiet" class="" title="Nội tiết">
-                        <h5>Nội tiết</h5>
-                        <span class="thread-count ">1450 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=nhan-khoa" class="" title="Nhãn khoa">
-                        <h5>Nhãn khoa</h5>
-                        <span class="thread-count ">1198 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=tai-mui-hong" class="" title="Tai - Mũi - Họng">
-                        <h5>Tai - Mũi - Họng</h5>
-                        <span class="thread-count ">1153 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=da-khoa" class="" title="Đa khoa">
-                        <h5>Đa khoa</h5>
-                        <span class="thread-count ">1043 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=tim-mach" class="" title="Tim mạch">
-                        <h5>Tim mạch</h5>
-                        <span class="thread-count ">985 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=chan-thuong-chinh-hinh-cot-song" class=""
-                        title="Chấn thương chỉnh hình - Cột sống">
-                        <h5>Chấn thương chỉnh hình - Cột sống</h5>
-                        <span class="thread-count ">957 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=xet-nghiem" class="" title="Xét nghiệm">
-                        <h5>Xét nghiệm</h5>
-                        <span class="thread-count ">889 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=tam-than" class="" title="Tâm thần">
-                        <h5>Tâm thần</h5>
-                        <span class="thread-count ">880 bác sĩ</span>
-                    </a>
-                </dt>
-
-                <dt>
-                    <a href="/danh-sach/bac-si/?specialities=tam-ly" class="" title="Tâm lý">
-                        <h5>Tâm lý</h5>
-                        <span class="thread-count ">0 bác sĩ</span>
-                    </a>
-                </dt>
-
             </dl>
 
             <div class="collapse-trigger">

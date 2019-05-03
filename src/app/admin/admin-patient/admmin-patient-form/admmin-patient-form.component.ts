@@ -23,6 +23,7 @@ export class AdmminPatientFormComponent implements OnInit {
   speciallists: Specialist[];
   addresses: Address[];
   submitted = false;
+  btn_delete: boolean = false;
   id: number;
   constructor(
     private formBuilder: FormBuilder,
@@ -43,6 +44,7 @@ export class AdmminPatientFormComponent implements OnInit {
       });
     if (this.id != null) {
       this.getDoctorByID(this.id);
+      this.btn_delete = true;
     }
     this.patientForm = this.formBuilder.group({
       id: [null],
@@ -118,6 +120,17 @@ export class AdmminPatientFormComponent implements OnInit {
           this.toastr.error("Email or CMND đã tồn tại", "FIDO!")
       }, (err) => { this.toastr.error(err) }
     )
+  }
+
+  OnDelete(id:number){
+    if(confirm("Bạn có chắc chắn muốn xóa?")) {
+      this.service.delete(id).subscribe(
+        data => {
+          this.toastr.success("Đã xóa thành công" ,"FIDO!");
+          console.log(id);
+          this.router.navigate(['/admin/patient'])
+        }, (err) => {  this.toastr.error("Xóa không thành công","FIDO!")});
+    }
   }
 
 

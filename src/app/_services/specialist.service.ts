@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment';
+import { Specialist } from '@app/_models/specialist.model';
 
 
 @Injectable({
@@ -13,6 +14,6 @@ export class SpecialistService {
   ) { }
   
   getAllObject(){
-    return this.http.get(environment.apiUrl + "/specialists");
+    return this.http.get<Specialist[]>(environment.apiUrl + "/specialists");
   }
 }

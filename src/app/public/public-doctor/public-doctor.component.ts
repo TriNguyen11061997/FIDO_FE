@@ -2,6 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '@app/_services/doctor.service';
 import { Doctor } from '@app/_models/doctor.model';
 import { FormGroup } from '@angular/forms';
+import { Specialist } from '@app/_models/specialist.model';
+import { SpecialistService } from '@app/_services/specialist.service';
+import { Subject } from 'rxjs';
 
 @Component({
   selector: 'app-public-doctor',
@@ -10,13 +13,26 @@ import { FormGroup } from '@angular/forms';
 })
 export class PublicDoctorComponent implements OnInit {
 
-  listDoctor: Doctor[] = [];
+  public listDoctor:  Array<Doctor> = [];
+  specialists: Specialist[] = [];
+  doctorLenght: number;
+  doctors: Doctor[];
   formData: FormGroup;
   constructor(
-    private doctorService: DoctorService
+    private doctorService: DoctorService,
+    private specialistService: SpecialistService
   ) { }
 
   ngOnInit() {
+    this.specialistService.getAllObject().subscribe(
+      data => {
+        this.specialists = data 
+      }
+    ),
+    this.getDoctor();
+  } 
+
+  getDoctor() {
     this.doctorService.getAllObject()
       .subscribe(data => {
         this.listDoctor = data as Doctor[];
