@@ -93,7 +93,7 @@
                                     <i class="fa fa-graduation-cap"></i>
                                 </dt>
                                 <dd>
-                                    <a href="/danh-sach/bac-si/?degrees=thac-si">Chức vụ</a>
+                                    <a href="/danh-sach/bac-si/?degrees=thac-si">{{item.title}}</a>
                                 </dd>
                                 <dt>
                                     <i class="fa fa-stethoscope"></i>
@@ -130,10 +130,20 @@
                     </div>
                 </li>
             </ul>
-            <ul class="pagination">
-                <li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-                <li class="page-item"><a class="page-link" href="#">Next</a></li>
+
+            <ul style="float: right;">
+                <!-- <li class="page-item active"><a class="page-link" href="#">1</a></li>
+                <li class="page-item"><a class="page-link" href="#">2</a></li>
+                <li class="page-item"><a class="page-link" href="#">3</a></li> -->
             </ul>
+            <div class="row" style="float: right;">
+                <div class="dataTables_paginate paging_simple_numbers">
+                    <a href="javascript:void(0);" class="previous_next" id="prev">Previous</a>
+                    <ul class="pagination" style="display: inline-flex;">
+                    </ul>
+                    <a class="previous_next" id="next" href="javascript:void(0);">Next</a>
+                </div>
+            </div>
         </div>
     </div>
     <aside>
@@ -147,7 +157,6 @@
                     </a>
                 </dt>
             </dl>
-
             <div class="collapse-trigger">
                 <span class="trigger-expand"><i class="fa fa-chevron-down"></i></span>
                 <span class="trigger-collapse"><i class="fa fa-chevron-up"></i></span>

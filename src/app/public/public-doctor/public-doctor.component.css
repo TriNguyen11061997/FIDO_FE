@@ -7,11 +7,25 @@
     padding: 5px;
 }
 
+.disable {
+    cursor: not-allowed;
+    color: #9ea3b3;
+    pointer-events: none;
+}
+
 #main_left {
     width: 63%;
     display: inline-block;
-    float: left;
     margin-left: 3%;
+}
+
+.previous_next {
+    padding: 7.5px 12px;
+    margin-left: -1px;
+    line-height: 1.42857143;
+    color: #337ab7;
+    background-color: #fff;
+    border: 1px solid #ddd;
 }
 
 .main_left_ul {
@@ -186,7 +200,7 @@ a.button {
 }
 
 aside {
-    float: left;
+    float: right;
     padding: 10px 0 10px 20px;
     width: 30%;
     margin-top: 15px;

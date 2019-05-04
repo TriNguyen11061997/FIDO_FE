@@ -163,6 +163,7 @@ export class DoctorComponent implements OnInit {
     formData.append('address_details', this.doctorForm.get('address_details').value);
     formData.append('employee_id', this.doctorForm.get('employee_id').value);
     formData.append('experience', this.doctorForm.get('experience').value);
+    formData.append('hospital_name', this.doctorForm.get('hospital_name').value);
     formData.append('title', this.doctorForm.get('title').value);
     this.service.update(formData).subscribe(
       data => {

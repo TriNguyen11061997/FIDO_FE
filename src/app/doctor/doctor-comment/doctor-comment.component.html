@@ -1,3 +1,39 @@
-<p>
-  doctor-comment works!
-</p>
+<app-doctor-header></app-doctor-header>
+<div class="main">
+    <div>
+        <main class="container pt-5">
+            <div class="card mb-5">
+                <div class="card-header">Danh sách những đánh giá
+                </div>
+                <div class="card-block p-0">
+                    <table class="table table-bordered table-sm m-0" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                        <thead>
+                            <tr>
+                                <th>Report</th>
+                                <th>Tên người dùng</th>
+                                <th>Đánh giá</th>
+                                <th>Nội dung</th>
+                                <th>Thích</th>
+                                <th>Ngày đánh giá</th>
+                                <th>Trạng thái report</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let emp of ratings">
+                                <td><button class="btn-outline-primary">Report</button></td>
+                                <td>{{emp.patient_name}}</td>
+                                <td>{{emp.star}}</td>
+                                <td>{{emp.review}}</td>
+                                <td>{{emp.like}}</td>
+                                <td>{{emp.created_at}}</td>
+                                <td>{{emp.report}}</td>
+                                <!-- /[routerLink]="['/public/doctor/details',item.id]" -->
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<app-doctor-footer></app-doctor-footer>

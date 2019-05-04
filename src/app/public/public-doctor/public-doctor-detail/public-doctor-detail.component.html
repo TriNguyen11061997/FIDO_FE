@@ -119,9 +119,9 @@
                                                     <div class="cms">
                                                         <p>{{doctor?.description}}.
                                                             <br>Số điện thoại :&nbsp;
-                                                            <a href="tel://0767846898">{{doctor.phone_number}}</a>.
+                                                            <a href="tel://0767846898">{{doctor?.phone_number}}</a>.
                                                             <br>Email :&nbsp;
-                                                            <a href="tel://0767846898">{{doctor.email}}</a>.
+                                                            <a href="tel://0767846898">{{doctor?.email}}</a>.
                                                         </p>
                                                     </div>
                                                 </div>
@@ -135,7 +135,7 @@
                                                 <div class="collapsible-target text-bold">
                                                     <ul>
                                                         <li>
-                                                            <p> Trưởng khoa Phụ ngoại - Bệnh viện Phụ sản Trung ương
+                                                            <p> {{doctor?.title}}
                                                             </p>
                                                         </li>
 
@@ -154,7 +154,7 @@
                                                             <a href="#">
                                                                 <!-- <span class="image" style="background-image: url(&quot;https://dwbxi9io9o7ce.cloudfront.net/images/11_07_2016_10_06_14_661256.jpeg&quot;);"></span> Phòng khám Sản phụ khoa - Bác sĩ Đỗ Thị
                                                                 Ngọc Lan -->
-                                                                <span>{{doctor.hospital_name}}</span>
+                                                                <span>{{doctor?.hospital_name}}</span>
                                                             </a>
                                                         </li>
                                                         <!-- <li>
@@ -174,7 +174,7 @@
                                                 <div class="collapsible-target text-bold">
                                                     <ul>
                                                         <li>
-                                                            <p>{{doctor.experience}}
+                                                            <p>{{doctor?.experience}}
                                                             </p>
                                                         </li>
                                                     </ul>
@@ -212,9 +212,9 @@
                                                 <div class="collapsible-target text-bold">
                                                     <ul class="list-unstyled">
                                                         <li>
-                                                            <a href="">{{doctor.specialist_name}}</a>
+                                                            <a href="">{{doctor?.specialist_name}}</a>
                                                             <br>
-                                                            <a href="">{{doctor.sub_specialist_name}}</a>
+                                                            <a href="">{{doctor?.sub_specialist_name}}</a>
                                                         </li>
                                                     </ul>
                                                 </div>

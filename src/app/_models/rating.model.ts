@@ -7,6 +7,7 @@ export class Rating {
     doctor_id: number;
     patient_id: number;
     patient_name : String;
-    created_at : Date
+    created_at : Date;
+    report : boolean;
 }
 
