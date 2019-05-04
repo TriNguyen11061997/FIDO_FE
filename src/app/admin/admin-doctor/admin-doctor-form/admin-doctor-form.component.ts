@@ -9,6 +9,7 @@ import { Specialist } from '@app/_models/specialist.model';
 import { Address } from '@app/_models/address.model';
 import { EmployeeService } from '@app/_services/employee.service';
 import { Employee } from '@app/_models/employee.model';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-admin-doctor-form',
@@ -18,13 +19,14 @@ import { Employee } from '@app/_models/employee.model';
 export class AdminDoctorFormComponent implements OnInit {
 
   doctorForm: FormGroup;
-  doctor: Doctor;
+  doctor: Doctor = null;
   speciallists: Specialist[];
   addresses: Address[];
   employees: Employee[];
   submitted = false;
   id: number;
   btn_delete: boolean = false;
+  fileAvatar =null;
   constructor(
     private formBuilder: FormBuilder,
     private service: DoctorService,
@@ -32,7 +34,8 @@ export class AdminDoctorFormComponent implements OnInit {
     private route: ActivatedRoute,
     private addressService: AddressService,
     private specilistService: SpecialistService,
-    private employeeService : EmployeeService
+    private employeeService : EmployeeService,
+    private toastr : ToastrService
   ) { }
 
   ngOnInit() {
@@ -63,9 +66,9 @@ export class AdminDoctorFormComponent implements OnInit {
     }
     this.doctorForm = this.formBuilder.group({
       id: [],
-      doctor_no: [null, Validators.required],
+      doctor_no: [],
       name: [null, Validators.required],
-      avatar: [null, Validators.required],
+      avatar: [null],
       birthday: [null, Validators.required],
       description: [null, Validators.required],
       gender: [null, Validators.required],
@@ -80,9 +83,9 @@ export class AdminDoctorFormComponent implements OnInit {
       employee_id: [null],
       hospital_name: [null, Validators.required],
       address_details : [null],
-      address_id :[null],
-      specialist_id : [null],
-      sub_specialist_id : [null],
+      address_id :["Địa chỉ"],
+      specialist_id : ["Chuyên khoa"],
+      sub_specialist_id : ["Chuyên khoa"],
 
     });
   }
@@ -91,6 +94,12 @@ export class AdminDoctorFormComponent implements OnInit {
     this.submitted = true;
     if (this.doctorForm.invalid) {
       return;
+    }
+    if (this.id != null) {
+      this.update();
+    }
+    else {
+      this.add();
     }
   }
 
@@ -121,5 +130,62 @@ export class AdminDoctorFormComponent implements OnInit {
             })
         }, (err) => { console.log(err) }
       );
+  }
+
+  onSelectedFile(event) {
+    if (event.target.files.length > 0) {
+      this.fileAvatar = <File>event.target.files[0];
+      this.doctorForm.get('avatar').setValue(this.fileAvatar);
+    }
+  }
+  
+  update() {
+    this.service.update(this.doctorForm.value).subscribe(
+      data => {
+        this.toastr.success("Đã cập nhật thành công!", "FIDO!")
+        this.router.navigate(['/admin/doctor'])
+
+      }, (err) => { this.toastr.error(err) }
+    )
+  }
+
+  add() {
+    const formData = new FormData();
+    formData.append('name', this.doctorForm.get('name').value);
+    formData.append('avatar', this.doctorForm.get('avatar').value);
+    formData.append('birthday', this.doctorForm.get('birthday').value);
+    formData.append('gender', this.doctorForm.get('gender').value);
+    formData.append('id_number', this.doctorForm.get('id_number').value);
+    formData.append('id_number_place', this.doctorForm.get('id_number_place').value);
+    formData.append('id_number_date', this.doctorForm.get('id_number_date').value);
+    formData.append('phone_number', this.doctorForm.get('phone_number').value);
+    formData.append('email', this.doctorForm.get('email').value);
+    formData.append('address_id', this.doctorForm.get('address_id').value);
+    formData.append('description', this.doctorForm.get('description').value);
+    formData.append('sub_specialist_id', this.doctorForm.get('sub_specialist_id').value);
+    formData.append('specialist_id', this.doctorForm.get('specialist_id').value);
+    formData.append('address_details', this.doctorForm.get('address_details').value);
+    formData.append('employee_id', this.doctorForm.get('employee_id').value);
+    this.service.add(formData).subscribe(
+      data => {
+        if (data["status_code"] == 201) {
+          this.toastr.success("Đã thêm thành công!", "FIDO!");
+          this.router.navigate(['/admin/doctor'])
+        }
+        else
+          this.toastr.error("Email or CMND đã tồn tại", "FIDO!")
+      }, (err) => { this.toastr.error(err) }
+    )
+  }
+
+  onDelete(id:number){
+    if(confirm("Bạn có chắc chắn muốn xóa?")) {
+      this.service.delete(id).subscribe(
+        data => {
+          this.toastr.success("Đã xóa thành công" ,"FIDO!");
+          console.log(id);
+          this.router.navigate(['/admin/doctor'])
+        }, (err) => {  this.toastr.error("Xóa không thành công","FIDO!")});
+    }
   }
 }

@@ -1,8 +1,10 @@
+import { Binary } from "selenium-webdriver/firefox";
+
 export class Doctor {
     id: number;
     doctor_no: String;
     name: String;
-    avatar	:String;
+    avatar	: String;
     birthday	:Date;
     description	:String;
     gender	:String;

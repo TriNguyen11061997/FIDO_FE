@@ -42,14 +42,5 @@ export class AdminDoctorComponent implements OnDestroy, OnInit {
     this.dtTrigger.unsubscribe();
   }
 
-  Delete(id) {
-    if(confirm("Bạn có chắc chắn muốn xóa?")) {
-      this.doctorService.delete(id).subscribe(
-        data => {
-          this.toastr.success("Đã xóa thành công","FIDO!");
-          this.ngOnInit();
-        }, (err) => {  this.toastr.error("Xóa không thành công","FIDO!")});
-    }
-  }
 
 }

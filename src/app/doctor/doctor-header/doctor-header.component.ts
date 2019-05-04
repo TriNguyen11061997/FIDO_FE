@@ -10,6 +10,7 @@ import { Users } from '@app/_models/users.model';
 })
 export class DoctorHeaderComponent implements OnInit {
   currentUser: Users;
+  avatarCheck :boolean=false;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
@@ -18,6 +19,9 @@ export class DoctorHeaderComponent implements OnInit {
   }
 
   ngOnInit() {
+    if(this.currentUser.avatar!= null){
+      this.avatarCheck = true;
+    }
   }
   
   logout() {

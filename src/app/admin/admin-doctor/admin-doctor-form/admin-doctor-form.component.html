@@ -7,10 +7,7 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="inputEmail4">Mã số</label>
-                <input type="text" formControlName="doctor_no" class="form-control" id="inputEmail4" placeholder="Mã số" [ngClass]="{ 'is-invalid': submitted && f.doctor_no.errors }">
-                <div *ngIf="submitted && f.doctor_no.errors" class="invalid-feedback">
-                    <div *ngIf="f.doctor_no.errors.required">Vui lòng nhập mã!</div>
-                </div>
+                <input type="text" formControlName="doctor_no" class="form-control" id="inputEmail4" placeholder="Mã số" readonly>
             </div>
             <div class="form-group col-md-4">
                 <label for="inputPassword4">Họ tên</label>
@@ -21,10 +18,7 @@
             </div>
             <div class="form-group col-md-4">
                 <label for="inputPassword4">Ảnh đại diện</label>
-                <input type="file" formControlName="avatar" class="form-control" id="inputPassword4" [ngClass]="{ 'is-invalid': submitted && f.avatar.errors }">
-                <div *ngIf="submitted && f.avatar.errors" class="invalid-feedback">
-                    <div *ngIf="f.avatar.errors.required">Vui lòng chọn ảnh đại diện!</div>
-                </div>
+                <input type="file" name="avatar" class="form-control" id="inputPassword4" (change)="onSelectedFile($event)">
             </div>
         </div>
         <div class="form-row">
@@ -163,6 +157,6 @@
         </div>
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
-    <button style="margin-left: 2%" class="btn btn-danger" *ngIf="btn_delete" (click)="OnDelete(id)">Delete</button>
+    <button (click)="onDelete(id)" style="margin-left: 2%" class="btn btn-danger" *ngIf="btn_delete">Delete</button>
 </div>
 <app-admin-footer></app-admin-footer>

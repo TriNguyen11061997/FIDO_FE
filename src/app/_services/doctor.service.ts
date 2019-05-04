@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Doctor } from '@app/_models/doctor.model';
 import { HttpClient } from "@angular/common/http";
 import { environment } from '@environments/environment.prod';
+import { NgForm } from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -20,6 +21,10 @@ export class DoctorService {
   }
   update(doctors: Doctor) {
     return this.http.put(`${environment.apiUrl}/doctors/${doctors.id}`, doctors);
+  }
+
+  add(formData: FormData) {
+  return this.http.post(`${environment.apiUrl}/doctors`, formData);
   }
 
   delete(id: number) {
