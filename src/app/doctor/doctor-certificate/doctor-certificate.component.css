@@ -5,12 +5,7 @@
     overflow: overlay;
 }
 
-.form-row {
+.row {
     margin-right: 0;
-    margin-left: 0;
-}
-
-form {
-    margin-right: 3%;
-    margin-left: 2%;
+    margin-left: -0;
 }

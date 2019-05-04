@@ -4,7 +4,7 @@ export class Doctor {
     id: number;
     doctor_no: String;
     name: String;
-    avatar	: String;
+    avatar	: string;
     birthday	:Date;
     description	:String;
     gender	:String;
@@ -30,5 +30,5 @@ export class Doctor {
     rating : number;
     actived: number;
     experience: string;
-
+    title : string;
 }

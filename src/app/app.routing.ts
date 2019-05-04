@@ -10,6 +10,7 @@ import { LoginComponent } from './public/login';
 import { RegisterComponent } from './public/register/register.component';
 import { DoctorModule } from './doctor/doctor.module';
 import { CommonModule } from '@angular/common';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const appRoutes: Routes = [
   { path: '', component: PublicComponent },
@@ -30,6 +31,8 @@ const appRoutes: Routes = [
   ],
   imports: [
     AdminModule,
+    FormsModule,
+    ReactiveFormsModule,
     PublicModule,
     CommonModule,
     DoctorModule,

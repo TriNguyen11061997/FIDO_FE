@@ -1,0 +1,15 @@
+<table class="table table-hover table-sm m-0">
+    <thead>
+        <tr>
+            <th>Tên chứng chỉ</th>
+            <th>Mô tả</th>
+            <th>Ảnh</th>
+        </tr>
+    </thead>
+    <tr *ngFor="let emp of certificateService.list">
+        <td (click)="populateForm(emp)">{{emp.name}}</td>
+        <td (click)="populateForm(emp)">{{emp.description}}</td>
+        <td (click)="populateForm(emp)"><a href="{{emp.image}}">{{emp.image}}</a></td>
+        <td><button (click)="onDelete(emp.id)" class="btn btn-sm btn-outline-danger">X</button></td>
+    </tr>
+</table>

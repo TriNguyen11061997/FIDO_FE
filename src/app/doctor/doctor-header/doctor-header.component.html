@@ -131,17 +131,16 @@
 
                 <li class="nav-item dropdown  user-menu">
                     <a class="nav-link dropdown-toggle" href="http://example.com" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        <ng-container *ngIf="avatarCheck; else elseTemplate">
+                        <ng-container *ngIf="avatarCheck; else elseTemplate1">
                             <img src="{{currentUser.avatar}}" class="user-image" alt="User Image">
                         </ng-container>
-                        <ng-template #elseTemplate>
+                        <ng-template #elseTemplate1>
                             <img src="http://via.placeholder.com/160x160" class="user-image" alt="User Image">
                         </ng-template>
-
                         <span class="hidden-xs">Hi {{currentUser.name}}</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" href="#">Thông tin cá nhân</a>
+                        <a class="dropdown-item" [routerLink]="['/doctor']">Thông tin cá nhân</a>
                         <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
                     </div>
                 </li>
@@ -183,8 +182,8 @@
             <li><a href="#">Bootstrap Model</a></li>
           </ul>
         </li> -->
-            <li> <a [routerLink]="['/admin/doctor']"><i class="fa fa-diamond"></i> <span class="nav-label">Thông tin cá nhân</span></a> </li>
-            <li> <a [routerLink]="['/admin/patient']"><i class="fa fa-diamond"></i> <span class="nav-label">Chứng chỉ hành nghề</span></a> </li>
+            <li> <a [routerLink]="['/doctor']"><i class="fa fa-diamond"></i> <span class="nav-label">Thông tin cá nhân</span></a> </li>
+            <li> <a [routerLink]="['/doctor/certificates']"><i class="fa fa-diamond"></i> <span class="nav-label">Chứng chỉ hành nghề</span></a> </li>
             <!-- <li> <a href="#"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a> </li>
         <li> <a href="#" data-toggle="collapse" data-target="#tables" class="collapsed active"><i class="fa fa-table"></i>
             <span class="nav-label">Tables</span><span class="fa fa-chevron-left pull-right"></span></a>
@@ -208,7 +207,7 @@
             <li><a href=""> Credit Card form</a> </li>
           </ul>
         </li> -->
-            <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Bình luận</span></a> </li>
+            <li> <a [routerLink]="['/doctor/comment']"><i class="fa fa-files-o"></i> <span class="nav-label">Bình luận</span></a> </li>
             <li> <a href="#"><i class="fa fa-files-o"></i> <span class="nav-label">Hỏi đáp</span></a> </li>
 
         </ul>

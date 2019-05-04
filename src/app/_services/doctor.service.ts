@@ -19,8 +19,8 @@ export class DoctorService {
   getObjectByID(id: number) {
     return this.http.get(environment.apiUrl + '/doctors/' + id);
   }
-  update(doctors: Doctor) {
-    return this.http.put(`${environment.apiUrl}/doctors/${doctors.id}`, doctors);
+  update(formData: FormData) {
+    return this.http.post(`${environment.apiUrl}/doctors/${formData.get("id")}`, formData);
   }
 
   add(formData: FormData) {
