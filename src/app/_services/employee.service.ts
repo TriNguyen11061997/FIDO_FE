@@ -18,15 +18,15 @@ export class EmployeeService {
   getObjectByID(id: number): Observable<Employee> {
     return this.http.get<Employee>(environment.apiUrl + '/employees/' + id);
   }
-  update(employee: Employee) {
-    return this.http.put(`${environment.apiUrl}/employees/${employee.id}`, employee);
+  update(formData: FormData) {
+    return this.http.post(`${environment.apiUrl}/employees/${formData.get("id")}`, formData);
   }
 
   delete(id: number) {
     return this.http.delete(`${environment.apiUrl}/employees/${id}`);
   }
 
-  add(employee: Employee) {
-    return this.http.post(environment.apiUrl + "/employees", employee);
+  add(formData: FormData) {
+    return this.http.post(environment.apiUrl + "/employees", formData);
   }
 }

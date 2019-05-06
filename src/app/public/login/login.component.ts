@@ -42,22 +42,26 @@ export class LoginComponent implements OnInit {
         }
         this.loading = true;
         this.authenticationService.login(this.loginForm.value)
-            .pipe(first())
             .subscribe(
                 data => {
-                    if (data.usable_type == "App\\Admin")
-                        this.router.navigate(['/admin']);
-                    if (data.usable_type == "App\\Patient")
-                        this.router.navigate(['/public']);
-                    if (data.usable_type == "App\\Doctor")
-                        this.router.navigate(['/doctor']);
-                    //console.log(data.name);
-                    this.toastr.success("Đăng nhập thành công!","FIDO!", { timeOut: 2000 });
-                    
+                    if (data.status_code == "PASS") {
+                        if (data.usable_type == "App\\Admin" || data.usable_type == "App\\Employee")
+                            this.router.navigate(['/admin']);
+                        if (data.usable_type == "App\\Patient")
+                            this.router.navigate(['/public']);
+                        if (data.usable_type == "App\\Doctor")
+                            this.router.navigate(['/doctor']);
+                        this.toastr.success("Đăng nhập thành công!", "FIDO!", { timeOut: 1000 });
+                    }
+                    else{
+                        this.toastr.error("Username or Password không đúng!", "FiDo!", { timeOut: 1000 });
+                    }
+                    //console.log(data.name);                  
+
                 },
                 error => {
-                    //this.authenticationService.logout();
-                    this.toastr.error("Đăng nhập không thành công!","FiDo!",{timeOut:2000})
+                    //this.authenticationService.logout();        
+                    this.toastr.error("Đăng nhập không thành công!", "FiDo!", { timeOut: 1000 });
                     //this.loading = false;
                 });
     }

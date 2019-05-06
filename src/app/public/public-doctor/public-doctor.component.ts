@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { DoctorService } from '@app/_services/doctor.service';
 import { Doctor } from '@app/_models/doctor.model';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { Specialist } from '@app/_models/specialist.model';
 import { SpecialistService } from '@app/_services/specialist.service';
 import { Subject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { AddressService } from '@app/_services/address.service';
+import { Address } from '@app/_models/address.model';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-public-doctor',
@@ -13,25 +17,73 @@ import { Subject } from 'rxjs';
 })
 export class PublicDoctorComponent implements OnInit {
 
-  public listDoctor: Array<Doctor> = [];
+  formSearch: FormGroup;
+  listDoctor: Array<Doctor> = [];
   specialists: Specialist[] = [];
   formData: FormGroup;
-  pageNumber: number = null;
+  pageNumber: number = 0;
+  currentPage: number = 0;
+  addresses: Address[] = []
   constructor(
     private doctorService: DoctorService,
-    private specialistService: SpecialistService
+    private addressService: AddressService,
+    private specialistService: SpecialistService,
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute,
   ) {
   }
 
   ngOnInit() {
-    this.doctorService.get10Object(1)
-      .subscribe(data => {
-        this.pageNumber = data["meta"]["last_page"];
+    this.formSearch = this.formBuilder.group({
+      specialist_id: [""],
+      address_id: [""],
+      name: []
+    })
+    if (this.doctorService.address_id != null || this.doctorService.name != null) {
+      const formData = new FormData();
+      this.formSearch.patchValue({
+        address_id: this.doctorService.address_id,
+        name: this.doctorService.name
+      })
+      this.onSearch();
+    } else {
+      this.doctorService.get10Object(1)
+        .subscribe(data => {
+          this.pageNumber = data["meta"]["last_page"] as number;
+          this.listDoctor = data["data"] as Doctor[];
+          this.showPagination(this.pageNumber);
+        }
+        )
+    }
+    this.addressService.getAllObject().subscribe(
+      data => {
+        this.addresses = data as Address[]
+      });
+    this.specialistService.getAllObject().subscribe(
+      data => {
+        this.specialists = data as Specialist[];
+      }
+    )
+  }
+
+  onSearch() {
+    this.doctorService.search(this.formSearch.value).subscribe(
+      data => {
+        this.pageNumber = data["meta"]["last_page"] as number;
         this.listDoctor = data["data"] as Doctor[];
         this.showPagination(this.pageNumber);
-      }, (err) => { console.log(err) }
-      )
-    console.log(this.pageNumber);
+      }
+    )
+  }
+
+  onNext() {
+    this.currentPage += 1;
+    this.ChangePage(this.currentPage);
+  }
+
+  onPrev() {
+    this.currentPage -= 1;
+    this.ChangePage(this.currentPage);
   }
 
   getDoctor(page: number) {
@@ -43,8 +95,9 @@ export class PublicDoctorComponent implements OnInit {
   }
 
   showPagination(pages: number) {
+    $(".pagination").html("")
     for (let i = 0; i < pages; i++) {
-      $(".pagination").append("<li class='page-item'><a  (click)='ChangePage(" + i + ")'  class='page-link' rel='" + i + "'>" + (i + 1) + "</a></li>");
+      $(".pagination").append("<li (click)=" + "onClick() " + " class='page-item'><a class='page-link' rel='" + i + "'>" + (i + 1) + "</a></li>");
     }
     $(".pagination li:first").addClass("active");
     $("#prev").addClass("disable");

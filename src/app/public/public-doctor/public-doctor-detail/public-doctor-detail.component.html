@@ -5,7 +5,7 @@
         <div id="profile">
             <div class="profile-header p-t-sm p-b-sm border-bottom">
                 <div class="container has-full-sized-image-triggers">
-                    <img src="{{doctor?.avatar}}" alt="" class="image full-sized-image-trigger">
+                    <a href="{{doctor?.avatar}}"><img src="{{doctor?.avatar}}" alt="" class="image full-sized-image-trigger"></a>
                     <div class="body">
                         <ul class="breadcrumb">
                             <li><a href="#"><span itemprop="title"><i aria-hidden="true"
@@ -317,7 +317,10 @@
                                             <div class="col-xs-12 col-md-7 pull-left">
                                                 <ul class="comments">
                                                     <li class="comment " *ngFor="let item of ratings">
-                                                        <div class="comment-avatar"><span>B</span></div>
+                                                        <div class="comment-avatar"><span>
+                                                            <img src="{{item.patient_avatar}}" alt="">
+                                                        </span>
+                                                        </div>
                                                         <div class="comment-body">
                                                             <h4>
                                                                 <span>                                                            

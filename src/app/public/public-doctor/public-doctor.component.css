@@ -32,6 +32,7 @@
     list-style: none;
     margin-top: 10px;
     padding-left: 0;
+    font-size: small;
 }
 
 .main_left_ul_li {
@@ -55,9 +56,8 @@
     background: #fff no-repeat 50% 50%/contain;
     border-radius: 4px 4px 0 0;
     display: block;
-    height: 130px;
     overflow: hidden;
-    width: 130px;
+    width: 150px;
     background-position-y: 20%;
 }
 
@@ -201,6 +201,7 @@ a.button {
 
 aside {
     float: right;
+    margin-left: 2%;
     padding: 10px 0 10px 20px;
     width: 30%;
     margin-top: 15px;
@@ -336,4 +337,42 @@ aside section.top-list a.view-more {
     text-align: center;
     vertical-align: middle;
     white-space: nowrap;
+}
+
+#filter-summary {
+    margin: 20px 8px 0;
+}
+
+#filter-summary a:hover {
+    border-color: #00babe;
+}
+
+#filter-summary select {
+    background: #fff;
+    border-radius: 4px;
+    border: 1px solid #ddd;
+    color: #777;
+    display: inline-block;
+    font-size: 12px;
+    padding: 6px 24px 5px;
+    overflow: hidden;
+    position: relative;
+    margin: 0 2px 5px 0;
+    text-decoration: none;
+    text-overflow: ellipsis;
+    vertical-align: top;
+}
+
+#filter-summary select:after {
+    content: "\F0D7";
+    font-family: FontAwesome;
+    position: absolute;
+    right: 10px;
+    top: 7px;
+}
+
+#search-input {
+    border: none;
+    color: #333;
+    padding: 5px 10px 4px 32px;
 }

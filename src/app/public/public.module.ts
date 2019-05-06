@@ -18,10 +18,13 @@ import { RegisterComponent } from './register/register.component';
 import { DemoComponent } from './demo/demo.component';
 import { DoctorComponent } from '@app/doctor/doctor.component';
 import { BarRatingModule } from "ngx-bar-rating";
+import { PublicInfoComponent } from './public-info/public-info.component';
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
   { path: 'public/forum', component: DoctorComponent },
   { path: 'public/doctor/details/:id', component: PublicDoctorDetailComponent },
+  { path: 'public/doctor/:address_id/:name', component: PublicDoctorComponent },
+  { path: 'public/info', component: PublicInfoComponent,canActivate: [AuthGuard]},
   
 ];
 @NgModule({
@@ -34,6 +37,7 @@ const appRoutes: Routes = [
     PublicForumComponent,
     RegisterComponent,
     DemoComponent,
+    PublicInfoComponent,
   ],
   imports: [
     FormsModule,

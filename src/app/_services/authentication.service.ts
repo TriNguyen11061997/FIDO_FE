@@ -21,7 +21,7 @@ export class AuthenticationService {
     }
 
     login(formData: Users) {
-        return this.http.post<any>(environment.apiUrl + "/login", formData)
+        return this.http.post(environment.apiUrl + "/login", formData)
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
                 if (user["data"]) {
@@ -31,13 +31,14 @@ export class AuthenticationService {
                     formData.avatar = user["data"]["avatar"];
                     formData.remember_token = user["access_token"];
                     formData.usable_type = user["usable_type"];
+                    formData.status_code = user["status_code"];
                     //console.log(user["data"]["data"]["name"]);
                     localStorage.setItem('currentUser2', JSON.stringify(formData));
                     this.currentUserSubject.next(formData);
+                    return formData;
                 }
-
-                return formData;
-            }));
+                return null;
+            }))
     }
 
     logout() {

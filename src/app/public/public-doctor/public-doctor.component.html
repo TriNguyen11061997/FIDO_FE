@@ -4,71 +4,29 @@
 </div>
 <div class="main">
     <div id="main_left">
-        <div class="container-fluid">
-            <div class="row align-items-center justify-content-center">
-                <div class="col-md-2 pt-3 item">
-                    <div class="form-group item">
-                        <select id="inputState " class="form-control">
-                            <option selected>Tỉnh thành</option>
-                        </select>
-                    </div>
-                </div>
-
-                <div class="col-md-2 pt-3 item">
-                    <div class="form-group">
-                        <select id="inputState" class="form-control">
-                            <option selected>Chuyên khoa</option>
-                            <option>BMW</option>
-                            <option>Audi</option>
-                            <option>Maruti</option>
-                            <option>Tesla</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2 pt-3 item">
-                    <div class="form-group">
-                        <select id="inputState" class="form-control">
-                            <option selected>Chức vụ</option>
-                            <option>BMW</option>
-                            <option>Audi</option>
-                            <option>Maruti</option>
-                            <option>Tesla</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2 pt-3 item">
-                    <div class="form-group item">
-                        <select id="inputState" class="form-control">
-                            <option selected>Type</option>
-                            <option>BMW</option>
-                            <option>Audi</option>
-                            <option>Maruti</option>
-                            <option>Tesla</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2 pt-3 item">
-                    <div class="form-group item">
-                        <select id="inputState" class="form-control">
-                            <option selected>Type</option>
-                            <option>BMW</option>
-                            <option>Audi</option>
-                            <option>Maruti</option>
-                            <option>Tesla</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-primary btn-block">Search</button>
-                </div>
-            </div>
+        <div id="filter-summary">
+            <form [formGroup]="formSearch" (ngSubmit)="onSearch()">
+                <select formControlName="address_id" title="Lọc danh sách bác sĩ theo Tỉnh thành"> 
+                    <option value=""><a>Tỉnh thành</a></option>
+                    <option *ngFor="let item of addresses"  value="{{item.id}}">{{item.name}}</option>
+                </select>
+                <select formControlName="specialist_id" title="Lọc danh sách bác sĩ theo Chuyên khoa"> 
+                    <option value="">Chuyên khoa</option>
+                    <option *ngFor="let item of specialists"  value="{{item.id}}">{{item.name}}</option>
+                </select>
+                <!-- <select title="Lọc danh sách bác sĩ theo Nơi đào tạo"> 
+                    <option value="" disabled>Nơi đào tạo</option>
+                </select> -->
+                <input formControlName="name" type="text" name="q" id="search-input" value="" placeholder="Tìm kiếm..." autocomplete="off">
+                <button type="submit">Search</button>
+            </form>
         </div>
         <div>
             <ul class="main_left_ul">
                 <li class="main_left_ul_li" *ngFor="let item of listDoctor">
                     <div class="body">
                         <div class="media">
-                            <img class="hero-image" src="{{item.avatar}}" alt="">
+                            <a href="{{item.avatar}}"><img class="hero-image" src="{{item.avatar}}" alt=""></a>
                             <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than#nhan-xet" class="comments-summary break" title="2 hài lòng, 6 nhận xét, 329 câu trả lời, 76 cảm ơn">
                                 <span class="like-count">
                                     <i class="fa fa-thumbs-o-up"></i> 2
@@ -138,10 +96,10 @@
             </ul>
             <div class="row" style="float: right;">
                 <div class="dataTables_paginate paging_simple_numbers">
-                    <a href="javascript:void(0);" class="previous_next" id="prev">Previous</a>
+                    <a (click)="onPrev()" href="javascript:void(0);" class="previous_next" id="prev">Previous</a>
                     <ul class="pagination" style="display: inline-flex;">
                     </ul>
-                    <a class="previous_next" id="next" href="javascript:void(0);">Next</a>
+                    <a (click)="onNext()" class="previous_next" id="next" href="javascript:void(0);">Next</a>
                 </div>
             </div>
         </div>

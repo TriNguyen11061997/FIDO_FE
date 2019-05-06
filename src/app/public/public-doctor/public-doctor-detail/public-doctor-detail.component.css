@@ -11809,3 +11809,13 @@ ul {
     color: #999;
     font-size: 11px;
 }
+
+#profile .collapsible-block .collapsible-header .collapse-trigger:before {
+    color: #c5c5c5;
+    font-size: 20px;
+    top: -2px;
+}
+
+.collapsible-container.screen-lg.collapsible-block.expanded .collapse-trigger:before {
+    content: "\F107";
+}

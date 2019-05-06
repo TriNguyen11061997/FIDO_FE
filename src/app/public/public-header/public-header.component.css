@@ -1,4 +1,3 @@
-
 .top-bar {
     background: #008577;
     color: #fff;
@@ -21,11 +20,13 @@
 .top-bar ul.social-custom {
     margin-left: 20px;
 }
+
 .top-bar ul {
     margin-bottom: 0;
 }
 
-.top-bar a.login-btn i, .top-bar a.signup-btn i {
+.top-bar a.login-btn i,
+.top-bar a.signup-btn i {
     margin-right: 10px;
 }
 
@@ -33,6 +34,7 @@
     background: #4fbfa8;
     color: #fff;
 }
+
 .top-bar ul.social-custom a {
     text-decoration: none !important;
     font-size: 0.7rem;
@@ -44,11 +46,15 @@
     border-radius: 50%;
     margin: 0;
 }
-a:focus, a:hover {
+
+a:focus,
+a:hover {
     color: #348e7b;
     text-decoration: underline;
 }
-.top-bar a.login-btn, .top-bar a.signup-btn {
+
+.top-bar a.login-btn,
+.top-bar a.signup-btn {
     color: #eee;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -58,3 +64,17 @@ a:focus, a:hover {
     margin-right: 10px;
 }
 
+.container {
+    max-width: 1292px;
+}
+
+.user-image {
+    float: left;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+}
+
+.dropdown-item {
+    padding: 5px 5px;
+}

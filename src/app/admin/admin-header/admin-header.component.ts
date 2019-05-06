@@ -11,7 +11,7 @@ import { Users } from '@app/_models/users.model';
 export class AdminHeaderComponent implements OnInit {
 
   currentUser: Users;
-
+  avatarCheck: boolean = false;
   constructor(
     private router: Router,
     private authenticationService: AuthenticationService
@@ -24,6 +24,9 @@ export class AdminHeaderComponent implements OnInit {
     this.router.navigate(['/public']);
   }
   ngOnInit() {
+    if (this.currentUser.avatar != null) {
+      this.avatarCheck = true;
+    }
   }
 
 

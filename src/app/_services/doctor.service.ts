@@ -8,6 +8,8 @@ import { NgForm } from '@angular/forms';
   providedIn: 'root'
 })
 export class DoctorService {
+  address_id : number;
+  name : string;
   formData: Doctor;
   list: Doctor[];
   readonly rootURL = "http://fidoapi.herokuapp.com/api/v1"
@@ -33,5 +35,9 @@ export class DoctorService {
 
   get10Object(id: number) {
     return this.http.get(environment.apiUrl + '/doctors-pagination?page=' + id);
+  }
+
+  search(formData : FormData){
+    return this.http.post(`${environment.apiUrl}/search`, formData)
   }
 }

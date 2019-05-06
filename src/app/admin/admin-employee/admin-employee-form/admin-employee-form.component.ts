@@ -13,23 +13,26 @@ import { ToastrService } from 'ngx-toastr';
   styleUrls: ['./admin-employee-form.component.css']
 })
 export class AdminEmployeeFormComponent implements OnInit {
-  emloyeeForm: FormGroup;
-  employee: Employee;
+  employeeForm: FormGroup;
+  employee: Employee = null;
   addresses: Address[];
   submitted = false;
-  btn_delete: boolean = false;
   id: number;
+  fileAvatar = null;
+  image : String = null;
+  check : boolean = false;
   constructor(
     private formBuilder: FormBuilder,
-    private employeeService: EmployeeService,
+    private service: EmployeeService,
     private router: Router,
     private route: ActivatedRoute,
     private addressService: AddressService,
-    private toastr: ToastrService
-  ) { }
+    private toastr : ToastrService,
+  ) { 
+  }
 
   ngOnInit() {
-    //this.getDoctorDetails(this.route.snapshot.params['id']);
+    //this.getemployeeDetails(this.route.snapshot.params['id']);
     this.id = this.route.snapshot.params['id'];
     this.addressService.getAllObject().subscribe(
       data => {
@@ -37,14 +40,12 @@ export class AdminEmployeeFormComponent implements OnInit {
       });
     if (this.id != null) {
       this.getEmployeeByID(this.id);
-      this.btn_delete = true;
     }
-    this.emloyeeForm = this.formBuilder.group({
-      id: [null],
-      employee_no :[null],
+    this.employeeForm = this.formBuilder.group({
+      id: [],
+      employee_no: [],
       name: [null, Validators.required],
       avatar: [null],
-      tax_number : [null, Validators.required],
       birthday: [null, Validators.required],
       description: [null, Validators.required],
       gender: [null, Validators.required],
@@ -56,69 +57,117 @@ export class AdminEmployeeFormComponent implements OnInit {
       passport_date: [null],
       phone_number: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      address_id: [null],
-      address_detail: [null],
+      address_details : [null],
+      address_id :["Địa chỉ"],
       start_date: [null],
       end_date: [null],
+      tax_number :[""],
     });
   }
-  get f() { return this.emloyeeForm.controls; }
+  get f() { return this.employeeForm.controls; }
   onSubmit() {
     this.submitted = true;
-    if (this.emloyeeForm.invalid) {
+    if (this.employeeForm.invalid) {
       return;
     }
-    if (this.id != null) {
-      this.update();
-    }
-    else {
-      this.add();
-    }
+    this.update();
   }
 
   getEmployeeByID(id: number) {
-    return this.employeeService.getObjectByID(id)
+    return this.service.getObjectByID(id)
       .subscribe(
         data => {
-          this.employee = data["data"] as Employee,
-            this.emloyeeForm.patchValue({
+          this.employee = data["data"] as Employee;
+          if(this.employee.avatar !=null){
+            this.check = true;
+            this.image = this.employee.avatar
+          }
+            this.employeeForm.patchValue({
               id: this.employee.id,
+              employee_no: this.employee.employee_no,
               name: this.employee.name,
-              tax_number : this.employee.tax_number,
-              employee_no : this.employee.employee_no,
-              //avatar : this.doctor.avatar,
+              //avatar : this.employee.avatar,
               birthday: this.employee.birthday,
               description: this.employee.description,
               gender: this.employee.gender,
               id_number: this.employee.id_number,
               id_number_place: this.employee.id_number_place,
               id_number_date: this.employee.id_number_date,
+              passport_no : this.employee.passport_no,
+              passport_date  : this.employee.passport_date,
+              passport_place : this.employee.passport_place,
               phone_number: this.employee.phone_number,
-              passport_no: this.employee.passport_no,
-              passport_date: this.employee.passport_date,
-              passport_place: this.employee.passport_place,
               email: this.employee.email,
-              //address_id: this.employee.address_id,
+              address_id : this.employee.address_id,
               start_date : this.employee.start_date,
-              end_date : this.employee.end_date
-
+              end_date : this.employee.end_date,
+              tax_number : this.employee.tax_number,
+              address_details : this.employee.address_details
             })
         }, (err) => { console.log(err) }
       );
   }
 
+  onSelectedFile(event) {
+    if (event.target.files.length > 0) {
+      this.fileAvatar = <File>event.target.files[0];
+    }
+  }
+  
   update() {
-    this.employeeService.update(this.emloyeeForm.value).subscribe(
+    const formData = new FormData();
+    formData.append('_method', 'PUT');
+    formData.append('id', this.employeeForm.get('id').value);
+    formData.append('name', this.employeeForm.get('name').value);
+    if(this.fileAvatar !=null){
+      formData.append('avatar', this.fileAvatar);
+    }
+    formData.append('birthday', this.employeeForm.get('birthday').value);
+    formData.append('gender', this.employeeForm.get('gender').value);
+    formData.append('phone_number', this.employeeForm.get('phone_number').value);
+    formData.append('id_number_place', this.employeeForm.get('id_number_place').value);
+    formData.append('id_number_date', this.employeeForm.get('id_number_date').value);
+    formData.append('id_number', this.employeeForm.get('id_number').value);
+    formData.append('passport_no', this.employeeForm.get('passport_no').value);
+    formData.append('passport_date', this.employeeForm.get('passport_date').value);
+    formData.append('passport_place', this.employeeForm.get('passport_place').value);
+    formData.append('email', this.employeeForm.get('email').value);
+    formData.append('address_id', this.employeeForm.get('address_id').value);
+    formData.append('description', this.employeeForm.get('description').value);
+    formData.append('address_details', this.employeeForm.get('address_details').value);
+    formData.append('tax_number', this.employeeForm.get('tax_number').value);
+    this.service.update(formData).subscribe(
       data => {
-        this.toastr.success("Đã cập nhật thành công!", "FIDO!")
-        this.router.navigate(['/admin/employee'])
-
+        this.toastr.success("Đã cập nhật thành công!", "FIDO!");
+        this.getEmployeeByID(this.id);
       }, (err) => { this.toastr.error(err) }
     )
   }
 
   add() {
-    this.employeeService.add(this.emloyeeForm.value).subscribe(
+
+    const formData = new FormData();
+    formData.append('_method', 'PUT');
+    formData.append('id', this.employeeForm.get('id').value);
+    formData.append('name', this.employeeForm.get('name').value);
+    if(this.fileAvatar !=null){
+      formData.append('avatar', this.fileAvatar);
+    }
+    formData.append('birthday', this.employeeForm.get('birthday').value);
+    formData.append('gender', this.employeeForm.get('gender').value);
+    formData.append('phone_number', this.employeeForm.get('phone_number').value);
+    formData.append('id_number_place', this.employeeForm.get('id_number_place').value);
+    formData.append('id_number_date', this.employeeForm.get('id_number_date').value);
+    formData.append('id_number', this.employeeForm.get('id_number').value);
+    formData.append('passport_no', this.employeeForm.get('passport_no').value);
+    formData.append('passport_date', this.employeeForm.get('passport_date').value);
+    formData.append('passport_place', this.employeeForm.get('passport_place').value);
+    formData.append('email', this.employeeForm.get('email').value);
+    formData.append('address_id', this.employeeForm.get('address_id').value);
+    formData.append('description', this.employeeForm.get('description').value);
+    formData.append('address_details', this.employeeForm.get('address_details').value);
+    formData.append('tax_number', this.employeeForm.get('tax_number').value);
+    this.service.add(formData).subscribe(
       data => {
         if (data["status_code"] == 201) {
           this.toastr.success("Đã thêm thành công!", "FIDO!");
@@ -128,11 +177,12 @@ export class AdminEmployeeFormComponent implements OnInit {
           this.toastr.error("Email or CMND đã tồn tại", "FIDO!")
       }, (err) => { this.toastr.error(err) }
     )
+    
   }
 
   OnDelete(id:number){
     if(confirm("Bạn có chắc chắn muốn xóa?")) {
-      this.employeeService.delete(id).subscribe(
+      this.service.delete(id).subscribe(
         data => {
           this.toastr.success("Đã xóa thành công" ,"FIDO!");
           console.log(id);

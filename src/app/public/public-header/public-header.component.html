@@ -1,89 +1,85 @@
-<link rel="stylesheet"
-  href="https://d19m59y37dris4.cloudfront.net/universal/2-0-1/vendor/font-awesome/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://d19m59y37dris4.cloudfront.net/universal/2-0-1/vendor/font-awesome/css/font-awesome.min.css">
 <div class="top-bar">
-  <div class="container">
-    <div class="row d-flex align-items-center">
-
-      <div class="col-md-6 d-md-block d-none">
-        Liên hệ : +0312458741 or email:abc@gmail.com
-      </div>
-      <div class="col-md-6">
-        <div class="d-flex justify-content-md-end justify-content-between">
-          <ul class="list-inline contact-info d-block d-md-none">
-            <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
-          </ul>
-          <div class="login" *ngIf="!isLoading">
-            <a [routerLink]="['/login']" class="login-btn">
-              <i class="fa fa-sign-in"></i>
-              <span class="d-none d-md-inline-block">Đăng nhập</span>
-            </a>
-            <a [routerLink]="['/register']" class="signup-btn"><i class="fa fa-user"></i><span
+    <div class="container">
+        <div class="row d-flex align-items-center">
+            <div class="col-md-6 d-md-block d-none">
+                Liên hệ : +0312458741 or email:abc@gmail.com
+            </div>
+            <div class="col-md-6" style="padding-right: 3%;">
+                <div class="d-flex justify-content-md-end justify-content-between">
+                    <ul class="list-inline contact-info d-block d-md-none">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-phone"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
+                    <div class="login" *ngIf="!isLoading">
+                        <a [routerLink]="['/login']" class="login-btn">
+                            <i class="fa fa-sign-in"></i>
+                            <span class="d-none d-md-inline-block">Đăng nhập</span>
+                        </a>
+                        <a [routerLink]="['/register']" class="signup-btn"><i class="fa fa-user"></i><span
                 class="d-none d-md-inline-block">Đăng ký</span>
             </a>
-          </div>
-          <div class="login" *ngIf="isLoading">
-              <a  class="login-btn" [routerLink]="['/']" (click)="logout()">
-                <i class="fa fa-sign-in"></i>
-                <span class="d-none d-md-inline-block">Đăng xuất</span>
-              </a>
-            <!-- <div class="btn-group">
-              <button class="btn btn-secondary btn-sm dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" (click)="logout()">
-                Hi {{currentUser?.name}}
-              </button>
-              <div class="dropdown-menu">
-                ...
-              </div>
-            </div> -->
-          </div>
-          <ul class="social-custom list-inline">
-            <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
-            <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
+                    </div>
+                    <div class="login" *ngIf="isLoading">
+                        <div class="navbar" style="padding: 0">
+                            <div class="dropdown" style="display: flex;margin-left: 1%;">
+                                <img _ngcontent-c1="" alt="User Image" class="user-image" src="{{currentUser?.avatar}}">
+                                <button style="font-size: small;color: white;padding: 0" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                  {{currentUser.name}}
+                               </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item" [routerLink]="['/public/info']">
+                                        <i class="fa fa-fw fa-info-circle" aria-hidden="true"></i> Thông tin tài khoản</a>
+                                    <a class="dropdown-item" href="#">
+                                        <i class="fa fa-fw fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
+                                    <a class="dropdown-item" [routerLink]="['/']" (click)="logout()">
+                                        <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i> Đăng xuất</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <ul class="social-custom list-inline">
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-facebook"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-google-plus"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-twitter"></i></a></li>
+                        <li class="list-inline-item"><a href="#"><i class="fa fa-envelope"></i></a></li>
+                    </ul>
 
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" style="margin-left: 3%">
-    <h2>FIDO</h2>
-  </a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<nav class="navbar navbar-expand-lg navbar-light bg-light" style="padding: 0">
+    <a class="navbar-brand" style="margin-left: 3%">
+        <img src="/assets/images/logo.png" alt="">
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+                <a class="nav-link" [routerLink]="['/public']">
+                    <i class="fa fa-home"></i> Trang chủ <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/public/doctor']">
+                    <i class="fa fa-book" aria-hidden="true"></i> Tra cứu bác sĩ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/public/doctor']">
+                    <i class="fa fa-tint" aria-hidden="true"></i> Bệnh thường gặp</a>
+            </li>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav mr-auto">
-      <li class="nav-item active">
-        <a class="nav-link" [routerLink]="['/public']">Trang chủ <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/public/doctor']">Tra cứu bác sĩ</a>
-      </li>
-      <li class="nav-item dropdown">
-        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
-          aria-haspopup="true" aria-expanded="false">
-          Tra cứu
-        </a>
-        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <div class="dropdown-divider"></div>
-          <a class="dropdown-item" href="#">Something else here</a>
-        </div>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/public/forum']" tabindex="-1">Diễn đàn</a>
-      </li>
-    </ul>
-    <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-      <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-    </form>
-  </div>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/public/forum']" tabindex="-1">
+                    <i aria-hidden="true" class="fa fa-comments-o"></i> Diễn đàn</a>
+            </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+        </form>
+    </div>
 </nav>

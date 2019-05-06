@@ -15,8 +15,9 @@ export class Employee {
     passport_place	:String;
     phone_number	:String;
     email	:String;
-    fk_address_id	:number;
+    address_id	:number;
     tax_number :string;
     start_date :Date;
     end_date : Date;
+    address_details: String;
 }

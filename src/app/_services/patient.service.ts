@@ -17,8 +17,8 @@ export class PatientService {
   getObjectByID(id: number): Observable<Patient> {
     return this.http.get<Patient>(environment.apiUrl + '/patients/' + id);
   }
-  update(patient: Patient) {
-    return this.http.put(`${environment.apiUrl}/patients/${patient.id}`, patient);
+  update(formData: FormData) {
+    return this.http.post(`${environment.apiUrl}/patients/${formData.get("id")}`, formData);
   }
 
   delete(id: number) {

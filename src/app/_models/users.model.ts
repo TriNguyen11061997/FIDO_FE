@@ -13,5 +13,6 @@ export class Users {
     remember_token :string;
     address_id:number;
     specialist_id :number;
-    avatar : string;
+    avatar : string;;
+    status_code : string;
 }
