@@ -1,4 +1,4 @@
-<app-doctor-header></app-doctor-header>
+<app-admin-header></app-admin-header>
 <div class="main">
     <div>
         <main class="container pt-5">
@@ -16,6 +16,7 @@
                                 <th>Thích</th>
                                 <th>Ngày đánh giá</th>
                                 <th>Trạng thái report</th>
+                                <th>Xóa</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -27,6 +28,7 @@
                                 <td>{{emp.like}}</td>
                                 <td>{{emp.created_at}}</td>
                                 <td>{{emp.report}}</td>
+                                <td><button (click)="onDelete(emp.id,emp.doctor_id)" class="btn-outline-primary">X</button></td>
                                 <!-- /[routerLink]="['/public/doctor/details',item.id]" -->
                             </tr>
                         </tbody>
@@ -36,4 +38,4 @@
         </main>
     </div>
 </div>
-<app-doctor-footer></app-doctor-footer>
+<app-admin-footer></app-admin-footer>

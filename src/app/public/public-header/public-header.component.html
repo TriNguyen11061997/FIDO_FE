@@ -23,7 +23,12 @@
                     <div class="login" *ngIf="isLoading">
                         <div class="navbar" style="padding: 0">
                             <div class="dropdown" style="display: flex;margin-left: 1%;">
-                                <img _ngcontent-c1="" alt="User Image" class="user-image" src="{{currentUser?.avatar}}">
+                                <ng-container *ngIf="avatarCheck; else elseTemplate1">
+                                    <img src="{{currentUser?.avatar}}" class="user-image" alt="User Image">
+                                </ng-container>
+                                <ng-template #elseTemplate1>
+                                    <img src="http://via.placeholder.com/160x160" class="user-image" alt="User Image">
+                                </ng-template>
                                 <button style="font-size: small;color: white;padding: 0" class="btn dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                   {{currentUser.name}}
                                </button>

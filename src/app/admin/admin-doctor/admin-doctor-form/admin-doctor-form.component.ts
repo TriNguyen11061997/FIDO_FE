@@ -59,7 +59,7 @@ export class AdminDoctorFormComponent implements OnInit {
     );
     this.employeeService.getAllObject().subscribe(
       data => {
-        this.employees = data["data"] as Employee[]
+        this.employees = data as Employee[]
       }, (err) => { }
     );
     if (this.id != null) {
@@ -85,9 +85,9 @@ export class AdminDoctorFormComponent implements OnInit {
       employee_id: [null],
       hospital_name: [null, Validators.required],
       address_details: [null],
-      address_id: ["Địa chỉ"],
-      specialist_id: ["Chuyên khoa"],
-      sub_specialist_id: ["Chuyên khoa"],
+      address_id: [null],
+      specialist_id: [null],
+      sub_specialist_id: [null],
       experience: [null],
       title: [null]
 
@@ -163,10 +163,13 @@ export class AdminDoctorFormComponent implements OnInit {
     formData.append('id_number_date', this.doctorForm.get('id_number_date').value);
     formData.append('phone_number', this.doctorForm.get('phone_number').value);
     formData.append('email', this.doctorForm.get('email').value);
-    formData.append('address_id', this.doctorForm.get('address_id').value);
+    if (this.doctorForm.get('address_id').value != null)
+      formData.append('address_id', this.doctorForm.get('address_id').value);
     formData.append('description', this.doctorForm.get('description').value);
-    formData.append('sub_specialist_id', this.doctorForm.get('sub_specialist_id').value);
-    formData.append('specialist_id', this.doctorForm.get('specialist_id').value);
+    if (this.doctorForm.get('sub_specialist_id').value != null)
+      formData.append('sub_specialist_id', this.doctorForm.get('sub_specialist_id').value);
+    if (this.doctorForm.get('specialist_id').value != null)
+      formData.append('specialist_id', this.doctorForm.get('specialist_id').value);
     formData.append('address_details', this.doctorForm.get('address_details').value);
     if (this.doctorForm.get('employee_id').value != null) {
       formData.append('employee_id', this.doctorForm.get('employee_id').value);
@@ -208,7 +211,7 @@ export class AdminDoctorFormComponent implements OnInit {
       formData.append('employee_id', this.doctorForm.get('employee_id').value);
       formData.append('actived', "1");
     }
-    else{
+    else {
       formData.append('actived', "0");
     }
     formData.append('hospital_name', this.doctorForm.get('hospital_name').value);

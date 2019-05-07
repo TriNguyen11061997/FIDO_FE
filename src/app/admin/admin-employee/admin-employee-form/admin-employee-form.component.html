@@ -119,7 +119,7 @@
             <div class="form-group col-md-4">
                 <label for="inputCity">Tỉnh,thành phố</label>
                 <select class="form-control" formControlName="address_id">
-                            <option class="hidden" selected disabled>Địa chỉ
+                            <option class="hidden" value="" selected disabled>Địa chỉ
                             </option>
                             <option *ngFor="let item of addresses" value="{{item.id}}">{{item.name}}
                             </option>

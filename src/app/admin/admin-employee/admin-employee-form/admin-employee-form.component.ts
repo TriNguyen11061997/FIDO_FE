@@ -21,6 +21,7 @@ export class AdminEmployeeFormComponent implements OnInit {
   fileAvatar = null;
   image : String = null;
   check : boolean = false;
+  btn_delete : boolean =false;
   constructor(
     private formBuilder: FormBuilder,
     private service: EmployeeService,
@@ -39,6 +40,7 @@ export class AdminEmployeeFormComponent implements OnInit {
         this.addresses = data as Address[]
       });
     if (this.id != null) {
+      this.btn_delete = true;
       this.getEmployeeByID(this.id);
     }
     this.employeeForm = this.formBuilder.group({
@@ -52,16 +54,16 @@ export class AdminEmployeeFormComponent implements OnInit {
       id_number: [null, Validators.required],
       id_number_place: [null, Validators.required],
       id_number_date: [null, Validators.required],
-      passport_no: [null],
-      passport_place: [null],
+      passport_no: [],
+      passport_place: [],
       passport_date: [null],
       phone_number: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
-      address_details : [null],
-      address_id :["Địa chỉ"],
+      address_details : [],
+      address_id :[""],
       start_date: [null],
       end_date: [null],
-      tax_number :[""],
+      tax_number :[],
     });
   }
   get f() { return this.employeeForm.controls; }
@@ -70,7 +72,12 @@ export class AdminEmployeeFormComponent implements OnInit {
     if (this.employeeForm.invalid) {
       return;
     }
-    this.update();
+    if (this.id != null) {
+      this.update();
+    }
+    else {
+      this.add();
+    }
   }
 
   getEmployeeByID(id: number) {
@@ -139,16 +146,13 @@ export class AdminEmployeeFormComponent implements OnInit {
     this.service.update(formData).subscribe(
       data => {
         this.toastr.success("Đã cập nhật thành công!", "FIDO!");
-        this.getEmployeeByID(this.id);
+        this.router.navigate(['/admin/employee']);
       }, (err) => { this.toastr.error(err) }
     )
   }
 
   add() {
-
     const formData = new FormData();
-    formData.append('_method', 'PUT');
-    formData.append('id', this.employeeForm.get('id').value);
     formData.append('name', this.employeeForm.get('name').value);
     if(this.fileAvatar !=null){
       formData.append('avatar', this.fileAvatar);
@@ -167,6 +171,7 @@ export class AdminEmployeeFormComponent implements OnInit {
     formData.append('description', this.employeeForm.get('description').value);
     formData.append('address_details', this.employeeForm.get('address_details').value);
     formData.append('tax_number', this.employeeForm.get('tax_number').value);
+    formData.append('start_date', this.employeeForm.get('start_date').value);
     this.service.add(formData).subscribe(
       data => {
         if (data["status_code"] == 201) {

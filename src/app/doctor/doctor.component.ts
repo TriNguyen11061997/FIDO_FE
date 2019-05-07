@@ -20,7 +20,7 @@ import { Users } from '@app/_models/users.model';
 })
 export class DoctorComponent implements OnInit {
 
-  currentUser : Users;
+  currentUser: Users;
   doctorForm: FormGroup;
   doctor: Doctor = null;
   speciallists: Specialist[];
@@ -29,8 +29,8 @@ export class DoctorComponent implements OnInit {
   submitted = false;
   id: number;
   fileAvatar = null;
-  image : String = null;
-  check : boolean = false;
+  image: String = null;
+  check: boolean = false;
   constructor(
     private formBuilder: FormBuilder,
     private service: DoctorService,
@@ -38,11 +38,11 @@ export class DoctorComponent implements OnInit {
     private route: ActivatedRoute,
     private addressService: AddressService,
     private specilistService: SpecialistService,
-    private employeeService : EmployeeService,
-    private toastr : ToastrService,
-    private userService : AuthenticationService
-  ) { 
-    this.userService.currentUser.subscribe(user => {this.currentUser = user})
+    private employeeService: EmployeeService,
+    private toastr: ToastrService,
+    private userService: AuthenticationService
+  ) {
+    this.userService.currentUser.subscribe(user => { this.currentUser = user })
   }
 
   ngOnInit() {
@@ -76,19 +76,16 @@ export class DoctorComponent implements OnInit {
       id_number: [null, Validators.required],
       id_number_place: [null, Validators.required],
       id_number_date: [null, Validators.required],
-      passport_no: [null],
-      passport_place: [null],
-      passport_date: [null],
       phone_number: [null, Validators.required],
       email: [null, [Validators.required, Validators.email]],
       employee_id: [null],
       hospital_name: [null, Validators.required],
-      address_details : [null],
-      address_id :["Địa chỉ"],
-      specialist_id : ["Chuyên khoa"],
-      sub_specialist_id : ["Chuyên khoa"],
-      experience : [null],
-      title : [null]
+      address_details: [null],
+      address_id: [null],
+      specialist_id: [null],
+      sub_specialist_id: [null],
+      experience: [null],
+      title: [null]
     });
   }
   get f() { return this.doctorForm.controls; }
@@ -105,32 +102,31 @@ export class DoctorComponent implements OnInit {
       .subscribe(
         data => {
           this.doctor = data as Doctor;
-          if(this.doctor.avatar !=null){
+          if (this.doctor.avatar != null) {
             this.check = true;
             this.image = this.doctor.avatar
           }
-            this.doctorForm.patchValue({
-              id: this.doctor.id,
-              doctor_no: this.doctor.doctor_no,
-              name: this.doctor.name,
-              //avatar : this.doctor.avatar,
-              birthday: this.doctor.birthday,
-              description: this.doctor.description,
-              gender: this.doctor.gender,
-              id_number: this.doctor.id_number,
-              id_number_place: this.doctor.id_number_place,
-              id_number_date: this.doctor.id_number_date,
-              phone_number: this.doctor.phone_number,
-              email: this.doctor.email,
-              hospital_name: this.doctor.hospital_name,
-              address_id : this.doctor.address_id,
-              address_details : this.doctor.address_details,
-              specialist_id : this.doctor.specialist_id,
-              sub_specialist_id : this.doctor.sub_specialist_id,
-              employee_id : this.doctor.employee_id,
-              experience : this.doctor.experience,
-              title : this.doctor.title
-            })
+          this.doctorForm.patchValue({
+            id: this.doctor.id,
+            doctor_no: this.doctor.doctor_no,
+            name: this.doctor.name,
+            //avatar : this.doctor.avatar,
+            birthday: this.doctor.birthday,
+            description: this.doctor.description,
+            gender: this.doctor.gender,
+            id_number: this.doctor.id_number,
+            id_number_place: this.doctor.id_number_place,
+            id_number_date: this.doctor.id_number_date,
+            phone_number: this.doctor.phone_number,
+            email: this.doctor.email,
+            hospital_name: this.doctor.hospital_name,
+            address_id: this.doctor.address_id,
+            address_details: this.doctor.address_details,
+            specialist_id: this.doctor.specialist_id,
+            sub_specialist_id: this.doctor.sub_specialist_id,
+            experience: this.doctor.experience,
+            title: this.doctor.title
+          })
         }, (err) => { console.log(err) }
       );
   }
@@ -140,13 +136,13 @@ export class DoctorComponent implements OnInit {
       this.fileAvatar = <File>event.target.files[0];
     }
   }
-  
+
   update() {
     const formData = new FormData();
     formData.append('_method', 'PUT');
     formData.append('id', this.doctorForm.get('id').value);
     formData.append('name', this.doctorForm.get('name').value);
-    if(this.fileAvatar !=null){
+    if (this.fileAvatar != null) {
       formData.append('avatar', this.fileAvatar);
     }
     formData.append('birthday', this.doctorForm.get('birthday').value);
@@ -156,12 +152,16 @@ export class DoctorComponent implements OnInit {
     formData.append('id_number_date', this.doctorForm.get('id_number_date').value);
     formData.append('phone_number', this.doctorForm.get('phone_number').value);
     formData.append('email', this.doctorForm.get('email').value);
-    formData.append('address_id', this.doctorForm.get('address_id').value);
+
+    if (this.doctorForm.get('address_id').value != null)
+      formData.append('address_id', this.doctorForm.get('address_id').value);
     formData.append('description', this.doctorForm.get('description').value);
-    formData.append('sub_specialist_id', this.doctorForm.get('sub_specialist_id').value);
-    formData.append('specialist_id', this.doctorForm.get('specialist_id').value);
+    if (this.doctorForm.get('sub_specialist_id').value != null)
+      formData.append('sub_specialist_id', this.doctorForm.get('sub_specialist_id').value);
+    if (this.doctorForm.get('specialist_id').value != null)
+      formData.append('specialist_id', this.doctorForm.get('specialist_id').value);
+
     formData.append('address_details', this.doctorForm.get('address_details').value);
-    formData.append('employee_id', this.doctorForm.get('employee_id').value);
     formData.append('experience', this.doctorForm.get('experience').value);
     formData.append('hospital_name', this.doctorForm.get('hospital_name').value);
     formData.append('title', this.doctorForm.get('title').value);

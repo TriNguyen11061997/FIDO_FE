@@ -20,14 +20,20 @@ export class RatingService {
     return this.http.get(`${environment.apiUrl}/doctors/${id}/ratings`);
   }
   update(rv: Rating) {
-    return this.http.put(`${environment.apiUrl}/doctors/${rv.id}`, rv);
+    return this.http.put(`${environment.apiUrl}/doctors/${rv.doctor_id}/ratings/${rv.id}`, rv);
   }
 
-  delete(id: number) {
-    return this.http.delete(`${environment.apiUrl}/patients/${id}`);
+  delete(id: number,doctor_id : number) {
+    return this.http.delete(`${environment.apiUrl}/doctors/${doctor_id}/ratings/${id}`);
   }
 
   add(rv: Rating) {
     return this.http.post(`${environment.apiUrl}/doctors/${rv.doctor_id}/ratings`, rv);
+  }
+  getObjectByID(id: number,doctor_id : number){
+    return this.http.get(`${environment.apiUrl}/doctors/${doctor_id}/ratings/${id}`);
+  }
+  getObjectReported(){
+    return this.http.get(`${environment.apiUrl}/ratings/reported`);
   }
 }

@@ -27,6 +27,6 @@ export class EmployeeService {
   }
 
   add(formData: FormData) {
-    return this.http.post(environment.apiUrl + "/employees", formData);
+    return this.http.post(`${environment.apiUrl}/employees`, formData);
   }
 }

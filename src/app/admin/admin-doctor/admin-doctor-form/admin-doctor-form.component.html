@@ -96,7 +96,7 @@
             <div class="form-group col-md-4">
                 <label for="inputCity">Chuyên khoa chính</label>
                 <select class="form-control" formControlName="specialist_id">
-                    <option class="hidden" selected disabled>Chuyên khoa
+                    <option class="hidden"  selected disabled>Chuyên khoa
                     </option>
                     <option *ngFor="let item of speciallists" value="{{item.id}}">
                         {{item.name}}</option>
@@ -109,7 +109,7 @@
             <div class="form-group col-md-4">
                 <label for="inputCity">Chuyên khoa phụ</label>
                 <select class="form-control" formControlName="sub_specialist_id">
-                    <option class="hidden" selected disabled>Chuyên khoa
+                    <option class="hidden"  selected disabled>Chuyên khoa
                     </option>
                     <option *ngFor="let item of speciallists" value="{{item.id}}">
                         {{item.name}}</option>

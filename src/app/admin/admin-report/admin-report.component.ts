@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Rating } from '@app/_models/rating.model';
+import { AuthenticationService } from '@app/_services';
 import { Router } from '@angular/router';
 import { RatingService } from '@app/_services/rating.service';
 import { ToastrService } from 'ngx-toastr';
-import { Subject } from 'rxjs';
 import { Users } from '@app/_models/users.model';
-import { AuthenticationService } from '@app/_services';
 
 @Component({
-  selector: 'app-doctor-comment',
-  templateUrl: './doctor-comment.component.html',
-  styleUrls: ['./doctor-comment.component.css']
+  selector: 'app-admin-report',
+  templateUrl: './admin-report.component.html',
+  styleUrls: ['./admin-report.component.css']
 })
-export class DoctorCommentComponent implements OnInit {
+export class AdminReportComponent implements OnInit {
 
   dtOptions: DataTables.Settings = {};
   ratings: Rating[] = [];
@@ -25,7 +24,6 @@ export class DoctorCommentComponent implements OnInit {
   ) {
     this.userService.currentUser.subscribe(user => { this.currentUser = user });
   }
-  dtTrigger: Subject<Rating> = new Subject();
   ngOnInit() {
     this.LoadDoctor();
     this.dtOptions = {
@@ -36,21 +34,27 @@ export class DoctorCommentComponent implements OnInit {
   }
 
   LoadDoctor() {
-    this.ratingService.getObjectByDoctorID(this.currentUser.usable_id)
+    this.ratingService.getObjectReported()
       .subscribe(
         data => {
           this.ratings = data as Rating[];
-          this.dtTrigger.next();
         }, (err) => { alert(err) }
       );
   }
-  ngOnDestroy(): void {
-    // Do not forget to unsubscribe the event
-    this.dtTrigger.unsubscribe();
+
+  onDelete(id: number, doctor_id: number) {
+    if (confirm('Bạn có chắc chắn muốn xóa?')) {
+      this.ratingService.delete(id,doctor_id).subscribe(
+        data=>{
+          this.toastr.success("Xóa thành công!","FIDO!", { timeOut: 1000 });
+          this.LoadDoctor();
+        },(err)=> { this.toastr.warning("Xóa không thành công!","FIDO!", { timeOut: 1000 });}
+      )
+    }
   }
 
   onReport(id: number) {
-    if (confirm('Bạn có chắc chắn muốn xóa?')) {
+    if (confirm('Bạn có chắc chắn muốn report?')) {
       let rate: Rating;
       this.ratingService.getObjectByID(id, this.currentUser.usable_id).subscribe(
         data => {
@@ -76,4 +80,5 @@ export class DoctorCommentComponent implements OnInit {
       )
     }
   }
+
 }
