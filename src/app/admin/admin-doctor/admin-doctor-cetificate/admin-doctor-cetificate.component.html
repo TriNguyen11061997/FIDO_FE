@@ -1,0 +1,51 @@
+<app-admin-header></app-admin-header>
+<div class="main">
+    <div class="card-header">Chứng chỉ hành nghề
+    </div>
+    <div class="jumbtron">
+        <div class="row">
+            <div class="col-md-5">
+                <form #form="ngForm" (submit)="onSubmit(form)" autocomplete="off">
+                    <div class="form-group">
+                        <img src="{{certificateService.formData.image}}" alt="" style="width: 300px;height: 200px;">
+                        <input type="file" name="image" (change)="onSelectedFile($event)">
+                    </div>
+                    <input type="hidden" name="id" #id="ngModel" [(ngModel)]="certificateService.formData.id">
+                    <input type="hidden" name="doctor_id" #id="ngModel" [(ngModel)]="certificateService.formData.doctor_id">
+                    <div class="form-group">
+                        <label>Tên chứng chỉ</label>
+                        <input name="name" #name="ngModel" [(ngModel)]="certificateService.formData.name" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label>Mô tả</label>
+                        <textarea name="description" #Position="ngModel" [(ngModel)]="certificateService.formData.description" class="form-control"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-success btn-block">SUBMIT</button>
+                        <button type="reset" class="btn btn-primary btn-block" (click)="resetForm(form)">Reset</button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-7">
+                <table class="table table-hover table-sm m-0">
+                    <thead>
+                        <tr>
+                            <th>Tên chứng chỉ</th>
+                            <th>Mô tả</th>
+                            <th>Ảnh</th>
+                            <th>Bác sĩ</th>
+                        </tr>
+                    </thead>
+                    <tr *ngFor="let emp of certificateService.list">
+                        <td (click)="populateForm(emp)">{{emp.name}}</td>
+                        <td (click)="populateForm(emp)">{{emp.description}}</td>
+                        <td (click)="populateForm(emp)"><a href="{{emp.image}}">{{emp.image}}</a></td>
+                        <td (click)="populateForm(emp)">{{emp.doctor_id}}</td>
+                        <td><button (click)="onDelete(emp.id)" class="btn btn-sm btn-outline-danger">X</button></td>
+                    </tr>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+<app-admin-footer></app-admin-footer>

@@ -24,7 +24,7 @@ export class AuthenticationService {
         return this.http.post(environment.apiUrl + "/login", formData)
             .pipe(map(user => {
                 // login successful if there's a jwt token in the response
-                if (user["data"]) {
+                if (user && user["access_token"]) {
                     // store user details and jwt token in local storage to keep user logged in between page refreshes           
                     formData.usable_id = user["usable_id"];
                     formData.name = user["data"]["name"];
@@ -34,10 +34,12 @@ export class AuthenticationService {
                     formData.status_code = user["status_code"];
                     //console.log(user["data"]["data"]["name"]);
                     localStorage.setItem('currentUser2', JSON.stringify(formData));
-                    this.currentUserSubject.next(formData);
-                    return formData;
+                    this.currentUserSubject.next(formData);     
                 }
-                return null;
+                else{
+                    formData.status_code = user["status_code"];
+                }
+                return formData;
             }))
     }
 

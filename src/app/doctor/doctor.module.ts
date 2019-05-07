@@ -10,11 +10,12 @@ import { DoctorCertificateComponent } from './doctor-certificate/doctor-certific
 import { DoctorCommentComponent } from './doctor-comment/doctor-comment.component';
 import { DoctorCertificateListComponent } from './doctor-certificate/doctor-certificate-list/doctor-certificate-list.component';
 import { DoctorCertificateFormComponent } from './doctor-certificate/doctor-certificate-form/doctor-certificate-form.component';
+import { AuthBSGuard } from '@app/_guards';
 
 const appRoutes: Routes = [
    //{ path: 'admin/doctor', component: , canActivate: [AuthGuard] },
-   { path: 'doctor/certificates', component: DoctorCertificateComponent, canActivate: [AuthGuard] },
-   { path: 'doctor/comment', component: DoctorCommentComponent, canActivate: [AuthGuard] },
+   { path: 'doctor/certificates', component: DoctorCertificateComponent,canActivate: [AuthBSGuard] },
+   { path: 'doctor/comment', component: DoctorCommentComponent, canActivate: [AuthBSGuard] },
   // otherwise redirect to home
 ];
 @NgModule({

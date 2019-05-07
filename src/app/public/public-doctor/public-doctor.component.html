@@ -6,11 +6,11 @@
     <div id="main_left">
         <div id="filter-summary">
             <form [formGroup]="formSearch" (ngSubmit)="onSearch()">
-                <select formControlName="address_id" title="Lọc danh sách bác sĩ theo Tỉnh thành"> 
+                <select class="	fas fa-globe" formControlName="address_id" title="Lọc danh sách bác sĩ theo Tỉnh thành"> 
                     <option value=""><a>Tỉnh thành</a></option>
                     <option *ngFor="let item of addresses"  value="{{item.id}}">{{item.name}}</option>
                 </select>
-                <select formControlName="specialist_id" title="Lọc danh sách bác sĩ theo Chuyên khoa"> 
+                <select class="fas fa-globe" formControlName="specialist_id" title="Lọc danh sách bác sĩ theo Chuyên khoa"> 
                     <option value="">Chuyên khoa</option>
                     <option *ngFor="let item of specialists"  value="{{item.id}}">{{item.name}}</option>
                 </select>
@@ -21,6 +21,9 @@
                 <button type="submit">Search</button>
             </form>
         </div>
+        <!-- <agm-map style="height: 300px;" [latitude]="latitude" [longitude]="longitude" [zoom]="zoom">
+            <agm-marker [latitude]="latitude" [longitude]="longitude"></agm-marker>
+        </agm-map> -->
         <div>
             <ul class="main_left_ul">
                 <li class="main_left_ul_li" *ngFor="let item of listDoctor">

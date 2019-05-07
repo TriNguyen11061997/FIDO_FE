@@ -11,6 +11,7 @@
                         <thead>
                             <tr>
                                 <th>Chi tiết</th>
+                                <th>Chứng chỉ</th>
                                 <th>Mã</th>
                                 <th>Họ tên</th>
                                 <th>Giới tính</th>
@@ -32,6 +33,7 @@
                   </label>
                                 </td> -->
                                 <td><button class="btn-outline-primary" [routerLink]="['/admin/doctor/form',emp.id]"><a>View</a></button></td>
+                                <td><button class="btn-outline-primary" [routerLink]="['/admin/doctor/certificate',emp.id]"><a>...</a></button></td>
                                 <td>{{emp.doctor_no}}</td>
                                 <td>{{emp.name}}</td>
                                 <td>{{emp.gender}}</td>

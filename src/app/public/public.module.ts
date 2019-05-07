@@ -19,13 +19,14 @@ import { DemoComponent } from './demo/demo.component';
 import { DoctorComponent } from '@app/doctor/doctor.component';
 import { BarRatingModule } from "ngx-bar-rating";
 import { PublicInfoComponent } from './public-info/public-info.component';
+import { AgmCoreModule } from '@agm/core';
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
   { path: 'public/forum', component: DoctorComponent },
   { path: 'public/doctor/details/:id', component: PublicDoctorDetailComponent },
   { path: 'public/doctor/:address_id/:name', component: PublicDoctorComponent },
-  { path: 'public/info', component: PublicInfoComponent,canActivate: [AuthGuard]},
-  
+  { path: 'public/info', component: PublicInfoComponent, canActivate: [AuthGuard] },
+
 ];
 @NgModule({
   declarations: [
@@ -43,13 +44,17 @@ const appRoutes: Routes = [
     FormsModule,
     CommonModule,
     ReactiveFormsModule,
-    DataTablesModule ,
+    DataTablesModule,
     BrowserAnimationsModule,
-    BarRatingModule, 
+    BarRatingModule,
     ToastrModule.forRoot(),
-    RouterModule.forChild(appRoutes)
+    RouterModule.forChild(appRoutes),
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyCHNHoCKHcwaqSnYsfnVVeqx_-nPptJP0k',
+      libraries: ['places']
+    })
   ],
-  exports:[
+  exports: [
     PublicHeaderComponent,
     PublicFooterComponent
   ]

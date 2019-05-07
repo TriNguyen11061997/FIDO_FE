@@ -13,8 +13,7 @@ import { AppRouting }        from './app.routing';
 import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { BarRatingModule } from 'ngx-bar-rating';import { CommonModule } from '@angular/common';
-;
-
+import { AgmCoreModule } from '@agm/core';
 @NgModule({
     imports: [
         BrowserModule,
@@ -24,7 +23,8 @@ import { BarRatingModule } from 'ngx-bar-rating';import { CommonModule } from '@
         AppRouting,
         FormsModule,
         DataTablesModule,
-        BarRatingModule
+        BarRatingModule,
+      
     ],
     declarations: [
         AppComponent,

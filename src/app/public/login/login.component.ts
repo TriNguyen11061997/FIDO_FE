@@ -32,7 +32,7 @@ export class LoginComponent implements OnInit {
         })
 
         // get return url from route parameters or default to '/'
-        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+        this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/login';
     }
     get f() { return this.loginForm.controls; }
     onSubmit() {
@@ -54,15 +54,9 @@ export class LoginComponent implements OnInit {
                         this.toastr.success("Đăng nhập thành công!", "FIDO!", { timeOut: 1000 });
                     }
                     else{
-                        this.toastr.error("Username or Password không đúng!", "FiDo!", { timeOut: 1000 });
+                        this.toastr.warning("Username or Password không đúng!", "FiDo!", { timeOut: 1000 });
                     }
                     //console.log(data.name);                  
-
-                },
-                error => {
-                    //this.authenticationService.logout();        
-                    this.toastr.error("Đăng nhập không thành công!", "FiDo!", { timeOut: 1000 });
-                    //this.loading = false;
-                });
+                })
     }
 }
