@@ -16,7 +16,7 @@ export class DoctorCertificateFormComponent implements OnInit {
   idDoctor: number;
   fileAvatar: File = null;
   constructor(
-    private certificateService: CertificateService,
+    public certificateService: CertificateService,
     private userService: AuthenticationService,
     private toastr: ToastrService) {
     this.userService.currentUser.subscribe(user => { this.currentUser = user });

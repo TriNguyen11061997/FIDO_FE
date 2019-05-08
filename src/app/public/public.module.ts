@@ -15,7 +15,6 @@ import { LoginComponent } from './login';
 import { PublicDoctorDetailComponent } from './public-doctor/public-doctor-detail/public-doctor-detail.component';
 import { PublicForumComponent } from './public-forum/public-forum.component';
 import { RegisterComponent } from './register/register.component';
-import { DemoComponent } from './demo/demo.component';
 import { DoctorComponent } from '@app/doctor/doctor.component';
 import { BarRatingModule } from "ngx-bar-rating";
 import { PublicInfoComponent } from './public-info/public-info.component';
@@ -37,7 +36,6 @@ const appRoutes: Routes = [
     PublicDoctorDetailComponent,
     PublicForumComponent,
     RegisterComponent,
-    DemoComponent,
     PublicInfoComponent,
   ],
   imports: [

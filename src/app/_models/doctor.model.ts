@@ -31,4 +31,6 @@ export class Doctor {
     actived: number;
     experience: string;
     title : string;
+    likes:number;
+    numberOfRating : number;
 }
