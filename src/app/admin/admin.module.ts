@@ -15,6 +15,7 @@ import { AdminEmployeeComponent } from './admin-employee/admin-employee.componen
 import { AdminEmployeeFormComponent } from './admin-employee/admin-employee-form/admin-employee-form.component';
 import { AdminReportComponent } from './admin-report/admin-report.component';
 import { AdminDoctorCetificateComponent } from './admin-doctor/admin-doctor-cetificate/admin-doctor-cetificate.component';
+import { AdminAccountComponent } from './admin-account/admin-account.component';
 
 
 
@@ -30,7 +31,7 @@ const appRoutes: Routes = [
   { path: 'admin/employee/form/:id', component: AdminEmployeeFormComponent, canActivate: [AuthGuard] },
   { path: 'admin/report', component: AdminReportComponent, canActivate: [AuthGuard] },
   { path: 'admin/doctor/certificate/:id', component: AdminDoctorCetificateComponent, canActivate: [AuthGuard] },
-  { path: 'admin/user', component: AdminPatientComponent },
+  { path: 'admin/account', component: AdminAccountComponent,canActivate: [AuthGuard] },
   // otherwise redirect to home
 ];
 @NgModule({
@@ -45,6 +46,7 @@ const appRoutes: Routes = [
     AdminEmployeeFormComponent,
     AdminReportComponent,
     AdminDoctorCetificateComponent,
+    AdminAccountComponent,
   ],
   imports: [
     CommonModule,

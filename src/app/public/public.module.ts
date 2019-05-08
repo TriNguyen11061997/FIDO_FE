@@ -19,6 +19,7 @@ import { DoctorComponent } from '@app/doctor/doctor.component';
 import { BarRatingModule } from "ngx-bar-rating";
 import { PublicInfoComponent } from './public-info/public-info.component';
 import { AgmCoreModule } from '@agm/core';
+import { NgxSpinnerModule } from 'ngx-spinner';
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
   { path: 'public/forum', component: PublicForumComponent },
@@ -46,6 +47,7 @@ const appRoutes: Routes = [
     BrowserAnimationsModule,
     BarRatingModule,
     ToastrModule.forRoot(),
+    NgxSpinnerModule,
     RouterModule.forChild(appRoutes),
     AgmCoreModule.forRoot({
       apiKey: 'AIzaSyCHNHoCKHcwaqSnYsfnVVeqx_-nPptJP0k',

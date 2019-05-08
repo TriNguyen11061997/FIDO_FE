@@ -9,6 +9,7 @@ import { AddressService } from '@app/_services/address.service';
 import { SpecialistService } from '@app/_services/specialist.service';
 import { Specialist } from '@app/_models/specialist.model';
 import { Address } from '@app/_models/address.model';
+import { error } from 'util';
 
 @Component({
   selector: 'app-register',
@@ -28,19 +29,19 @@ export class RegisterComponent implements OnInit {
     private userService: UserService,
     private route: ActivatedRoute,
     private router: Router,
-    private addressService : AddressService,
-    private specialistService : SpecialistService) { }
+    private addressService: AddressService,
+    private specialistService: SpecialistService) { }
 
   ngOnInit() {
     this.addressService.getAllObject().subscribe(
-      data =>{
+      data => {
         this.addresses = data as Address[]
-      },(err)=>{}
+      }, (err) => { }
     );
     this.specialistService.getAllObject().subscribe(
-      data =>{
+      data => {
         this.specialists = data as Specialist[]
-      },(err)=>{}
+      }, (err) => { }
     );
 
     this.registerUserForm = this.formBuilder.group({
@@ -77,9 +78,11 @@ export class RegisterComponent implements OnInit {
 
     this.userService.register(this.registerUserForm.value).subscribe(
       data => {
-        this.toastr.success("Đăng kí thành công!", "FIDO!",{ timeOut: 2000 });
+        this.toastr.success("Đăng kí thành công!", "FIDO!", { timeOut: 1000 });
         this.router.navigate(["/login"]);
-      }, (err) => { this.toastr.error("Đăng kí không thành công!", "FIDO!",{ timeOut: 2000 }) }
+      },error => { 
+        console.error();
+        this.toastr.warning("Email đã tồn tại or Password không đúng!", "FIDO!", { timeOut: 1000 })  }
     )
 
     //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerUserForm.value))
@@ -89,12 +92,16 @@ export class RegisterComponent implements OnInit {
     if (this.registerDoctorForm.invalid) {
       return;
     }
-    
+
     this.userService.register(this.registerDoctorForm.value).subscribe(
       data => {
-        this.router.navigate(["/login"]);
-        this.toastr.success("Đăng kí thành công!", "FIDO!",{ timeOut: 2000 })
-      }, (err) => { this.toastr.error("Đăng kí không thành công!", "FIDO!",{ timeOut: 2000 }) }
+        if (data["status_code"] != 403) {
+          this.router.navigate(["/login"]);
+          this.toastr.success("Đăng kí thành công!", "FIDO!", { timeOut: 1000 })
+        } else {
+          this.toastr.warning("Email đã tồn tại or Password không đúng!", "FIDO!", { timeOut: 1000 })
+        }
+      }, (err) => { this.toastr.warning("Email đã tồn tại or Password không đúng!", "FIDO!", { timeOut: 1000 }) }
     )
   }
 }

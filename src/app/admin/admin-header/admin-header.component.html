@@ -104,7 +104,7 @@
             <li> <a [routerLink]="['/admin/patient']"><i class="fas fa-wheelchair"></i><span class="nav-label">Bệnh nhân</span></a> </li>
 
             <li *ngIf="currentUser.role"> <a [routerLink]="['/admin/employee']"><i class="fas fa-users"></i><span class="nav-label">Nhân viên</span></a> </li>
-            <li *ngIf="currentUser.role"> <a [routerLink]="['/admin/user']"><i class="far fa-address-book"></i><span class="nav-label">Tài khoản</span></a> </li>
+            <li *ngIf="currentUser.role"> <a [routerLink]="['/admin/account']"><i class="far fa-address-book"></i><span class="nav-label">Tài khoản</span></a> </li>
             <li> <a [routerLink]="['/admin/report']"><i class="fa fa-wpforms"></i><span class="nav-label"> Báo cáo</span></a> </li>
             <li> <a><i class="fas fa-folder"></i><span>Bài đăng</span></a> </li>
         </ul>

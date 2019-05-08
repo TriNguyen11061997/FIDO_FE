@@ -14,6 +14,7 @@ import { AlertComponent } from './_components';
 import { JwtInterceptor, ErrorInterceptor } from './_helpers';
 import { BarRatingModule } from 'ngx-bar-rating';import { CommonModule } from '@angular/common';
 import { AgmCoreModule } from '@agm/core';
+import { NgxSpinnerModule } from 'ngx-spinner';
 @NgModule({
     imports: [
         BrowserModule,
@@ -24,7 +25,7 @@ import { AgmCoreModule } from '@agm/core';
         FormsModule,
         DataTablesModule,
         BarRatingModule,
-      
+        NgxSpinnerModule
     ],
     declarations: [
         AppComponent,

@@ -9,6 +9,7 @@ import { map } from 'rxjs/operators';
 import { AddressService } from '@app/_services/address.service';
 import { Address } from '@app/_models/address.model';
 import { ActivatedRoute } from '@angular/router';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-public-doctor',
@@ -34,6 +35,7 @@ export class PublicDoctorComponent implements OnInit {
     private specialistService: SpecialistService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
+    private spinner : NgxSpinnerService
   ) {
   }
 
@@ -49,10 +51,20 @@ export class PublicDoctorComponent implements OnInit {
         address_id: this.doctorService.address_id,
         name: this.doctorService.name
       })
-      this.onSearch();
+      this.spinner.show()
+      this.doctorService.search(this.formSearch.value).subscribe(
+        data => {
+          this.spinner.hide()
+          this.pageNumber = data["meta"]["last_page"] as number;
+          this.listDoctor = data["data"] as Doctor[];
+          this.showPagination(this.pageNumber);
+        }
+      )
     } else {
+      this.spinner.show()
       this.doctorService.get10Object(1)
         .subscribe(data => {
+          this.spinner.hide()
           this.pageNumber = data["meta"]["last_page"] as number;
           this.listDoctor = data["data"] as Doctor[];
           this.showPagination(this.pageNumber);
@@ -70,22 +82,15 @@ export class PublicDoctorComponent implements OnInit {
     )
   }
 
-  onSearch() {
-    this.doctorService.search(this.formSearch.value).subscribe(
-      data => {
-        this.pageNumber = data["meta"]["last_page"] as number;
-        this.listDoctor = data["data"] as Doctor[];
-        this.showPagination(this.pageNumber);
-      }
-    )
-  }
 
   OnclickCK(id: number) {
     this.formSearch.patchValue({
       specialist_id : id
     })
+    this.spinner.show();
     this.doctorService.search(this.formSearch.value).subscribe(
       data => {
+        this.spinner.hide();
         this.pageNumber = data["meta"]["last_page"] as number;
         this.listDoctor = data["data"] as Doctor[];
         this.showPagination(this.pageNumber);
@@ -104,8 +109,10 @@ export class PublicDoctorComponent implements OnInit {
   }
 
   getDoctor(page: number) {
+    this.spinner.show()
     this.doctorService.get10Object(page)
       .subscribe(data => {
+        this.spinner.hide()
         this.listDoctor = data["data"] as Doctor[];
       }, (err) => { console.log(err) }
       )

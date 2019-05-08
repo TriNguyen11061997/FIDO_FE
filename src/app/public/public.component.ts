@@ -4,6 +4,8 @@ import { Address } from '@app/_models/address.model';
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { DoctorService } from '@app/_services/doctor.service';
+import { Spinner } from 'ngx-spinner/lib/ngx-spinner.enum';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-public',
@@ -17,7 +19,8 @@ export class PublicComponent implements OnInit {
     private addressService: AddressService,
     private formBuilder: FormBuilder,
     private router: Router,
-    private doctorService : DoctorService
+    private doctorService : DoctorService,
+    private spinner : NgxSpinnerService
   ) { }
 
   ngOnInit() {
@@ -25,8 +28,10 @@ export class PublicComponent implements OnInit {
       address_id: [""],
       name: [""]
     })
+    this.spinner.show()
     this.addressService.getAllObject().subscribe(
       data => {
+        this.spinner.hide();
         this.addresses = data as Address[]
       }
     )
