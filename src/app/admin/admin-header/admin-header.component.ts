@@ -14,7 +14,7 @@ export class AdminHeaderComponent implements OnInit {
   avatarCheck: boolean = false;
   constructor(
     private router: Router,
-    private authenticationService: AuthenticationService
+    public authenticationService: AuthenticationService
   ) {
     this.authenticationService.currentUser.subscribe(x => this.currentUser = x);
   }

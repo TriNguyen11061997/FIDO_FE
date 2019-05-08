@@ -17,7 +17,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PublicDoctorComponent implements OnInit {
 
-  texto : string = 'Wenceslau Braz - Cuidado com as cargas';
+  texto: string = 'Wenceslau Braz - Cuidado com as cargas';
   lat: number = -23.8779431;
   lng: number = -49.8046873;
   zoom: number = 15;
@@ -71,6 +71,19 @@ export class PublicDoctorComponent implements OnInit {
   }
 
   onSearch() {
+    this.doctorService.search(this.formSearch.value).subscribe(
+      data => {
+        this.pageNumber = data["meta"]["last_page"] as number;
+        this.listDoctor = data["data"] as Doctor[];
+        this.showPagination(this.pageNumber);
+      }
+    )
+  }
+
+  OnclickCK(id: number) {
+    this.formSearch.patchValue({
+      specialist_id : id
+    })
     this.doctorService.search(this.formSearch.value).subscribe(
       data => {
         this.pageNumber = data["meta"]["last_page"] as number;

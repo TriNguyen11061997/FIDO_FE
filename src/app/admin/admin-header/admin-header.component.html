@@ -62,7 +62,7 @@
                 <li class="nav-item dropdown  user-menu">
                     <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         <ng-container *ngIf="avatarCheck; else elseTemplate1">
-                            <img src="{{currentUser.avatar}}" class="user-image" alt="User Image">
+                            <img src="{{currentUser?.avatar}}" class="user-image" alt="User Image">
                         </ng-container>
                         <ng-template #elseTemplate1>
                             <img src="http://via.placeholder.com/160x160" class="user-image" alt="User Image">
@@ -87,7 +87,7 @@
         <div class="user-panel">
             <div class="pull-left image">
                 <ng-container *ngIf="avatarCheck; else elseTemplate">
-                    <img src="{{currentUser.avatar}}" class="rounded-circle" alt="User Image">
+                    <img src="{{currentUser?.avatar}}" class="rounded-circle" alt="User Image">
                 </ng-container>
                 <ng-template #elseTemplate>
                     <img src="http://via.placeholder.com/160x160" class="rounded-circle" alt="User Image">
@@ -104,7 +104,7 @@
             <li> <a [routerLink]="['/admin/patient']"><i class="fas fa-wheelchair"></i><span class="nav-label">Bệnh nhân</span></a> </li>
 
             <li *ngIf="currentUser.role"> <a [routerLink]="['/admin/employee']"><i class="fas fa-users"></i><span class="nav-label">Nhân viên</span></a> </li>
-            <li *ngIf="currentUser.role"> <a [routerLink]="['/admin/employee']"><i class="far fa-address-book"></i><span class="nav-label">Tài khoản</span></a> </li>
+            <li *ngIf="currentUser.role"> <a [routerLink]="['/admin/user']"><i class="far fa-address-book"></i><span class="nav-label">Tài khoản</span></a> </li>
             <li> <a [routerLink]="['/admin/report']"><i class="fa fa-wpforms"></i><span class="nav-label"> Báo cáo</span></a> </li>
             <li> <a><i class="fas fa-folder"></i><span>Bài đăng</span></a> </li>
         </ul>

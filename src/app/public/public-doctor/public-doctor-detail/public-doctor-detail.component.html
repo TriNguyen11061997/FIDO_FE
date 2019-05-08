@@ -72,7 +72,7 @@
                             </div>
                             <div class="row text-center group-activities">
                                 <div class="col-xs-3">
-                                    <a href="#" class="tab-content-link">
+                                    <a class="tab-content-link">
                                         <p>
                                             {{doctor?.likes}}
                                             <i aria-hidden="true" class="fa fa-thumbs-o-up"></i>
@@ -87,7 +87,7 @@
                                         </a>
                                     </div> -->
                                 <div class="col-xs-3">
-                                    <a href="#" class="tab-content-link">
+                                    <a (click)="ShowRating()" class="tab-content-link">
                                         <p>{{doctor?.numberOfRating}}
                                             <i class="fa fa-comment-o"></i>
                                         </p>
@@ -360,7 +360,7 @@
                                                                 <label>Bình luận:</label>
                                                                 <textarea formControlName="review" placeholder="Đánh giá của bạn..." required="required" rows="5" class="form-control">
                                                                         </textarea></div>
-                                                            <div class="form-group">
+                                                            <!-- <div class="form-group">
                                                                 <label class="like">
                                                                             <input type="radio" name="like" value="true"> 
                                                                             <i class="fa fa-thumbs-o-up"></i> Hài lòng
@@ -369,7 +369,7 @@
                                                                             <input type="radio" name="like" value="false"> 
                                                                             <i class="fa fa-thumbs-o-down"></i> Không hài lòng
                                                                         </label>
-                                                            </div>
+                                                            </div> -->
                                                             <div class="form-group">
                                                                 <button type="submit" class="btn btn-sm btn-primary">Gửi</button></div>
                                                         </ng-container>

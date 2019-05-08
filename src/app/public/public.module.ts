@@ -21,7 +21,7 @@ import { PublicInfoComponent } from './public-info/public-info.component';
 import { AgmCoreModule } from '@agm/core';
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
-  { path: 'public/forum', component: DoctorComponent },
+  { path: 'public/forum', component: PublicForumComponent },
   { path: 'public/doctor/details/:id', component: PublicDoctorDetailComponent },
   { path: 'public/doctor/:address_id/:name', component: PublicDoctorComponent },
   { path: 'public/info', component: PublicInfoComponent, canActivate: [AuthBNGuard] },

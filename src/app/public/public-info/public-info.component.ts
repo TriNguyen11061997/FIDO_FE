@@ -105,6 +105,7 @@ export class PublicInfoComponent implements OnInit {
   onSelectedFile(event) {
     if (event.target.files.length > 0) {
       this.fileAvatar = <File>event.target.files[0];
+      //this.image = event.target.files[0].;
     }
   }
 

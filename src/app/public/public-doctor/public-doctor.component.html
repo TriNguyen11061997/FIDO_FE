@@ -33,17 +33,17 @@
                             <a href="{{item.avatar}}"><img class="hero-image" src="{{item.avatar}}" alt=""></a>
                             <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than#nhan-xet" class="comments-summary break" title="2 hài lòng, 6 nhận xét, 329 câu trả lời, 76 cảm ơn">
                                 <span class="like-count">
-                                    <i class="fa fa-thumbs-o-up"></i> 2
+                                    <i class="fa fa-thumbs-o-up"></i> {{item.likes}}
                                 </span>
                                 <span class="comment-count">
-                                    <i class="fa fa-comment-o"></i> 6
+                                    <i class="fa fa-comment-o"></i> {{item.numberOfRating}}
                                 </span>
                             </a>
 
                         </div>
                         <div class="info">
                             <h2>
-                                <a href="/danh-sach/bac-si/tam-ly-le-van-thang-47351/tam-than">{{item.name}}</a>
+                                <a [routerLink]="['/public/doctor/details',item.id]">{{item.name}}</a>
                             </h2>
                             <div class="desc">
                                 {{item.description}},...
@@ -55,14 +55,14 @@
                                     <i class="fa fa-graduation-cap"></i>
                                 </dt>
                                 <dd>
-                                    <a href="/danh-sach/bac-si/?degrees=thac-si">{{item.title}}</a>
+                                    <a>{{item.title}}</a>
                                 </dd>
                                 <dt>
                                     <i class="fa fa-stethoscope"></i>
                                 </dt>
                                 <dd>
-                                    <a href="">{{item.specialist_name}}</a>,
-                                    <a href="">{{item.sub_specialist_name}}</a>
+                                    <a>{{item.specialist_name}}</a>,
+                                    <a>{{item.sub_specialist_name}}</a>
                                 </dd>
 
                                 <dt>
@@ -76,7 +76,7 @@
                                     <i class="fa fa-hospital-o"></i>
                                 </dt>
                                 <dd>
-                                    <a href="/trung-tam-tu-van-tam-ly-247-96564/tam-than">{{item.hospital_name}}</a>
+                                    <a>{{item.hospital_name}}</a>
                                 </dd>
 
                             </dl>
@@ -113,7 +113,7 @@
             <h3>Chuyên khoa</h3>
             <dl class="collapsible-target">
                 <dt *ngFor="let item of specialists">
-                    <a href="/danh-sach/bac-si/?specialities=duoc" class="" title="Dược">
+                    <a (click)="OnclickCK(item.id)"  class="" title="Dược">
                         <h5>{{item.name}}</h5>
                     </a>
                 </dt>
