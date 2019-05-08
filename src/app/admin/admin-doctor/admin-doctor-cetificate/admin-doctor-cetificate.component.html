@@ -1,6 +1,9 @@
 <app-admin-header></app-admin-header>
 <div class="main">
-    <div class="card-header">Chứng chỉ hành nghề
+    <div class="card-header">
+        <i class="fa fa-home"></i>Trang chủ/
+        <i class="fa fa-user-md"></i>Quản lý bác sĩ/
+        <i class="fas fa-graduation-cap"></i>Chứng chỉ hành nghề
     </div>
     <div class="jumbtron">
         <div class="row">
@@ -33,15 +36,21 @@
                             <th>Tên chứng chỉ</th>
                             <th>Mô tả</th>
                             <th>Ảnh</th>
-                            <th>Bác sĩ</th>
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tr *ngFor="let emp of certificateService.list">
                         <td (click)="populateForm(emp)">{{emp.name}}</td>
                         <td (click)="populateForm(emp)">{{emp.description}}</td>
                         <td (click)="populateForm(emp)"><a href="{{emp.image}}">{{emp.image}}</a></td>
-                        <td (click)="populateForm(emp)">{{emp.doctor_id}}</td>
-                        <td><button (click)="onDelete(emp.id)" class="btn btn-sm btn-outline-danger">X</button></td>
+                        <td>
+                            <a (click)="onDelete(emp.id)">
+                                <span class="fa-stack">
+                                <i class="fa fa-square fa-stack-2x"></i>
+                                <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                            </span>
+                            </a>
+                        </td>
                     </tr>
                 </table>
             </div>

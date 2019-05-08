@@ -23,11 +23,11 @@ export class AdminDoctorCetificateComponent implements OnInit {
     private route: ActivatedRoute,
     private toastr: ToastrService) {
     this.userService.currentUser.subscribe(user => { this.currentUser = user });
-    this.idDoctor = this.route.snapshot.params['id'];
-    this.certificateService.getAllObject(this.idDoctor);
   }
 
   ngOnInit() {
+    this.idDoctor = this.route.snapshot.params['id'];
+    this.certificateService.getAllObject(this.idDoctor);
     this.resetForm();
   }
 
@@ -53,7 +53,7 @@ export class AdminDoctorCetificateComponent implements OnInit {
       name: '',
       description: '',
       image: '',
-      doctor_id: null,
+      doctor_id: this.idDoctor,
     }
   }
 
@@ -74,10 +74,9 @@ export class AdminDoctorCetificateComponent implements OnInit {
   insertRecord(form: NgForm) {
     const formData = new FormData();
     formData.append('image', this.fileAvatar);
-    formData.append('id', form.value.id);
     formData.append('name', form.value.name);
     formData.append('description', form.value.description);
-    formData.append('doctor_id', form.value.doctor_id);
+    formData.append('doctor_id', this.idDoctor.toString());
     this.certificateService.add(formData).subscribe(
       res => {
         if (res["status_code"] == 201) {
@@ -100,7 +99,7 @@ export class AdminDoctorCetificateComponent implements OnInit {
     formData.append('id', form.value.id);
     formData.append('name', form.value.name);
     formData.append('description', form.value.description);
-    formData.append('doctor_id', form.value.doctor_id);
+    formData.append('doctor_id', this.idDoctor.toString());
     this.certificateService.update(formData).subscribe(
       res => {
         if (res["status_code"] == 201) {

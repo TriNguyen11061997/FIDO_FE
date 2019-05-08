@@ -1,6 +1,9 @@
 <app-admin-header></app-admin-header>
 <div class="main">
-    <div class="card-header">Thông tin bác sĩ
+    <div class="card-header">
+        <i class="fa fa-home"></i>Trang chủ/
+        <i class="fa fa-user-md"></i>Quản lý bác sĩ/
+        <i class="fa fa-fw fa-info-circle"></i>Thông tin bác sĩ
     </div>
     <form [formGroup]="doctorForm" (ngSubmit)="onSubmit()">
         <input type="text" formControlName="id" hidden>

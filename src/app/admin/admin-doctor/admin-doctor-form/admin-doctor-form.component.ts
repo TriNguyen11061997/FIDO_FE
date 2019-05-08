@@ -59,7 +59,7 @@ export class AdminDoctorFormComponent implements OnInit {
     );
     this.employeeService.getAllObject().subscribe(
       data => {
-        this.employees = data as Employee[]
+        this.employees = data["data"] as Employee[]
       }, (err) => { }
     );
     if (this.id != null) {

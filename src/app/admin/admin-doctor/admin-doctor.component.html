@@ -3,15 +3,19 @@
     <div>
         <main class="container pt-5">
             <div class="card mb-5">
-                <div class="card-header">Danh sách Bác sĩ
-                    <a [routerLink]="['/admin/doctor/form']"><button style="float: right;" class="btn btn-primary">Thêm mới</button></a>
+                <div class="card-header">
+                    <i class="fa fa-home"></i>Trang chủ/
+                    <i class="fa fa-user-md"></i>Quản lý bác sĩ
+                    <a [routerLink]="['/admin/doctor/form']" id="add-request" type="button" class="btn btn-primary pull-right">
+                        <i class="fa fa-plus"></i>
+                    </a>
+
                 </div>
                 <div class="card-block p-0">
                     <table class="table table-bordered table-sm m-0" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
                         <thead>
                             <tr>
-                                <th>Chi tiết</th>
-                                <th>Chứng chỉ</th>
+                                <th>Action</th>
                                 <th>Mã</th>
                                 <th>Họ tên</th>
                                 <th>Giới tính</th>
@@ -32,8 +36,20 @@
                     <span class="custom-control-indicator"></span>
                   </label>
                                 </td> -->
-                                <td><button class="btn-outline-primary" [routerLink]="['/admin/doctor/form',emp.id]"><a>View</a></button></td>
-                                <td><button class="btn-outline-primary" [routerLink]="['/admin/doctor/certificate',emp.id]"><a>...</a></button></td>
+                                <td>
+                                    <a [routerLink]="['/admin/doctor/form',emp.id]">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-square fa-stack-2x"></i>
+                                            <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                    <a [routerLink]="['/admin/doctor/certificate',emp.id]">
+                                        <span class="fa-stack">
+                                                <i class="fa fa-square fa-stack-2x"></i>
+                                                <i class="fa fa-search-plus fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                    </a>
+                                </td>
                                 <td>{{emp.doctor_no}}</td>
                                 <td>{{emp.name}}</td>
                                 <td>{{emp.gender}}</td>
@@ -43,7 +59,14 @@
                                 <td>{{emp.email}}</td>
                                 <td>{{emp.address_name}}</td>
                                 <td>{{emp.specialist_name}}</td>
-                                <td>{{emp.actived}}</td>
+                                <td>
+                                    <ng-container *ngIf="emp.actived; else elseTemplate">
+                                        <button type="button" class="btn btn-success">Yes</button>
+                                    </ng-container>
+                                    <ng-template #elseTemplate>
+                                        <button type="button" class="btn btn-danger">No</button>
+                                    </ng-template>
+                                </td>
                                 <!-- /[routerLink]="['/public/doctor/details',item.id]" -->
                             </tr>
                         </tbody>

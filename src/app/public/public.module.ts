@@ -10,7 +10,7 @@ import { PublicHeaderComponent } from './public-header/public-header.component';
 import { PublicFooterComponent } from './public-footer/public-footer.component';
 import { PublicComponent } from './public.component';
 import { PublicDoctorComponent } from './public-doctor/public-doctor.component';
-import { AuthGuard } from '@app/_guards';
+import { AuthGuard, AuthBNGuard } from '@app/_guards';
 import { LoginComponent } from './login';
 import { PublicDoctorDetailComponent } from './public-doctor/public-doctor-detail/public-doctor-detail.component';
 import { PublicForumComponent } from './public-forum/public-forum.component';
@@ -25,7 +25,7 @@ const appRoutes: Routes = [
   { path: 'public/forum', component: DoctorComponent },
   { path: 'public/doctor/details/:id', component: PublicDoctorDetailComponent },
   { path: 'public/doctor/:address_id/:name', component: PublicDoctorComponent },
-  { path: 'public/info', component: PublicInfoComponent, canActivate: [AuthGuard] },
+  { path: 'public/info', component: PublicInfoComponent, canActivate: [AuthBNGuard] },
 
 ];
 @NgModule({

@@ -3,36 +3,43 @@
     <div>
         <main class="container pt-5">
             <div class="card mb-5">
-                <div class="card-header">Danh sách người dùng
-                    <a [routerLink]="['/admin/patient/form']"><button style="float: right;" class="btn btn-primary">Thêm mới</button></a>
+                <div class="card-header">
+                    <i class="fa fa-home"></i>Trang chủ/
+                    <i class="fas fa-wheelchair"></i>Quản lý bệnh nhân
+                    <a [routerLink]="['/admin/patient/form']" id="add-request" type="button" class="btn btn-primary pull-right">
+                        <i class="fa fa-plus"></i>
+                    </a>
                 </div>
                 <div class="card-block p-0">
                     <table class="table table-bordered table-sm m-0" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
                         <thead>
                             <tr>
-
+                                <th>Action</th>
                                 <th>Họ tên</th>
                                 <th>Giới tính</th>
                                 <th>Ngày sinh</th>
                                 <th>CMND</th>
                                 <th>Số điện thoại</th>
                                 <th>Email</th>
-                                <th>Địa chỉ</th>
-                                <th>Cập nhật</th>
 
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let emp of patients">
+                                <td>
+                                    <a [routerLink]="['/admin/patient/form',emp.id]">
+                                        <span class="fa-stack">
+                                                    <i class="fa fa-square fa-stack-2x"></i>
+                                                    <i class="fa fa-pencil fa-stack-1x fa-inverse"></i>
+                                                </span>
+                                    </a>
+                                </td>
                                 <td>{{emp.name}}</td>
                                 <td>{{emp.gender}}</td>
                                 <td>{{emp.birthday}}</td>
                                 <td>{{emp.id_number}}</td>
                                 <td>{{emp.phone_number}}</td>
                                 <td>{{emp.email}}</td>
-                                <td>{{emp.address_id}}</td>
-                                <td><button class="btn-outline-primary"><a [routerLink]="['/admin/patient/form',emp.id]">View</a></button></td>
-                            </tr>
                         </tbody>
                     </table>
                 </div>

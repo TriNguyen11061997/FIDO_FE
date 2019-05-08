@@ -29,7 +29,7 @@ export class AdminEmployeeComponent implements OnInit {
     this.employeeService.getAllObject().subscribe(
       data => {
         this.dtTrigger.next();
-        this.employees = data as Employee[];
+        this.employees = data["data"] as Employee[];
       }, (err) => { alert(err) }
     );
     this.dtOptions = {

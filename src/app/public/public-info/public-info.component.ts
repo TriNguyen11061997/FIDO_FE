@@ -129,13 +129,8 @@ export class PublicInfoComponent implements OnInit {
     formData.append('description', this.patientForm.get('description').value);
     this.service.update(formData).subscribe(
       data => {
-        if (data["status_code"] == 201) {
-          this.toastr.success("Đã cập nhật thành công!", "FIDO!");
           this.getPatientByID(this.id);
-        }
-        else {
-          this.toastr.warning("Cập nhật không thành công!", "FIDO!");
-        }
+          this.toastr.success("Đã cập nhật thành công!", "FIDO!");
       }, (err) => { this.toastr.error(err) }
     )
   }

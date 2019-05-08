@@ -9,26 +9,31 @@
                     <table class="table table-bordered table-sm m-0">
                         <thead>
                             <tr>
-                                <th>Report</th>
+                                <th>Action</th>
                                 <th>Tên người dùng</th>
                                 <th>Đánh giá</th>
                                 <th>Nội dung</th>
                                 <th>Thích</th>
                                 <th>Ngày đánh giá</th>
                                 <th>Trạng thái report</th>
-                                <th>Xóa</th>
                             </tr>
                         </thead>
                         <tbody>
                             <tr *ngFor="let emp of ratings">
-                                <td><button (click)="onReport(emp.id)" class="btn-outline-primary">Report</button></td>
+                                <td>
+                                    <a (click)="onDelete(emp.id,emp.doctor_id)">
+                                        <span class="fa-stack">
+                                            <i class="fa fa-square fa-stack-2x"></i>
+                                            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+                                        </span>
+                                    </a>
+                                </td>
                                 <td>{{emp.patient_name}}</td>
                                 <td>{{emp.star}}</td>
                                 <td>{{emp.review}}</td>
                                 <td>{{emp.like}}</td>
                                 <td>{{emp.created_at}}</td>
                                 <td>{{emp.report}}</td>
-                                <td><button (click)="onDelete(emp.id,emp.doctor_id)" class="btn-outline-primary">X</button></td>
                                 <!-- /[routerLink]="['/public/doctor/details',item.id]" -->
                             </tr>
                         </tbody>

@@ -70,10 +70,10 @@ export class AdmminPatientFormComponent implements OnInit {
     if (this.patientForm.invalid) {
       return;
     }
-    if(this.id != null){
+    if (this.id != null) {
       this.update();
     }
-    else{
+    else {
       this.add();
     }
   }
@@ -132,13 +132,8 @@ export class AdmminPatientFormComponent implements OnInit {
     formData.append('description', this.patientForm.get('description').value);
     this.service.update(formData).subscribe(
       data => {
-        if (data["status_code"] == 201) {
-          this.toastr.success("Đã cập nhật thành công!", "FIDO!");
-          this.router.navigate(['/admin/patient'])
-        }
-        else {
-          this.toastr.warning("Cập nhật không thành công!", "FIDO!");
-        }
+        this.toastr.success("Đã cập nhật thành công!", "FIDO!");
+        this.router.navigate(['/admin/patient'])
       }, (err) => { this.toastr.error(err) }
     )
   }
@@ -159,7 +154,7 @@ export class AdmminPatientFormComponent implements OnInit {
     formData.append('phone_number', this.patientForm.get('phone_number').value);
     formData.append('email', this.patientForm.get('email').value);
     formData.append('address_id', this.patientForm.get('address_id').value);
-  
+
     this.service.add(formData).subscribe(
       data => {
         if (data["status_code"] == 201) {

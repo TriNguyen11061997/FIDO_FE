@@ -3,7 +3,7 @@
         <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
-        <a class="navbar-brand p-0 mr-5" href="#"><img src="/assets/images/logo.png" alt=""></a>
+        <a class="navbar-brand p-0 mr-5" [routerLink]="['/admin']"><img src="/assets/images/logo.png" alt=""></a>
 
         <div class="collapse navbar-collapse flex-row-reverse" id="navbarNavDropdown">
             <ul class="navbar-nav">
@@ -18,56 +18,6 @@
                             <li>
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu list-unstyled">
-                                    <li>
-                                        <!-- start message -->
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="http://via.placeholder.com/160x160" class="rounded-circle  " alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Support Team
-                                                <small><i class="fa fa-clock-o"></i> 5 mins</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <!-- end message -->
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                            </div>
-                                            <h4>
-                                                AdminLTE Design Team
-                                                <small><i class="fa fa-clock-o"></i> 2 hours</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Developers
-                                                <small><i class="fa fa-clock-o"></i> Today</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <div class="pull-left">
-                                                <img src="http://via.placeholder.com/160x160" class="rounded-circle " alt="User Image">
-                                            </div>
-                                            <h4>
-                                                Sales Department
-                                                <small><i class="fa fa-clock-o"></i> Yesterday</small>
-                                            </h4>
-                                            <p>Why not buy a new awesome theme?</p>
-                                        </a>
-                                    </li>
                                     <li>
                                         <a href="#">
                                             <div class="pull-left">
@@ -98,28 +48,8 @@
                                 <!-- inner menu: contains the actual data -->
                                 <ul class="menu list-unstyled">
                                     <li>
-                                        <a href="#">
+                                        <a>
                                             <i class="fa fa-users text-aqua"></i> 5 new members joined today
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-warning text-yellow"></i> Very long description here that may not fit into the page and may cause design problems
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-users text-red"></i> 5 new members joined
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-shopping-cart text-green"></i> 25 sales made
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-user text-red"></i> You changed your username
                                         </a>
                                     </li>
                                 </ul>
@@ -140,8 +70,12 @@
                         <span class="hidden-xs">{{currentUser.name}}</span>
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-                        <a class="dropdown-item" [routerLink]="['/admin']">Thông tin cá nhân</a>
-                        <a class="dropdown-item" (click)="logout()">Đăng xuất</a>
+                        <a class="dropdown-item" [routerLink]="['/admin']">
+                            <i class="fa fa-fw fa-info-circle" aria-hidden="true"></i> Thông tin tài khoản</a>
+                        <a class="dropdown-item" href="#">
+                            <i class="fa fa-fw fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
+                        <a class="dropdown-item" [routerLink]="['/']" (click)="logout()">
+                            <i class="fa fa-fw fa-sign-out" aria-hidden="true"></i> Đăng xuất</a>
                     </div>
                 </li>
             </ul>
@@ -164,51 +98,13 @@
                 <a><i class="fa fa-circle text-success"></i> Online</a>
             </div>
         </div>
-        <ul class="list-sidebar bg-defoult" style="height: 602px;">
-            <!-- <li> <a href="#" data-toggle="collapse" data-target="#dashboard" class="collapsed active"> <i
-            class="fa fa-th-large"></i> <span class="nav-label"> Dashboards </span> <span
-            class="fa fa-chevron-left pull-right"></span> </a>
-        <ul class="sub-menu collapse" id="dashboard">
-          <li class="active"><a href="#">CSS3 Animation</a></li>
-          <li><a href="#">General</a></li>
-          <li><a href="#">Buttons</a></li>
-          <li><a href="#">Tabs & Accordions</a></li>
-          <li><a href="#">Typography</a></li>
-          <li><a href="#">FontAwesome</a></li>
-          <li><a href="#">Slider</a></li>
-          <li><a href="#">Panels</a></li>
-          <li><a href="#">Widgets</a></li>
-          <li><a href="#">Bootstrap Model</a></li>
-        </ul>
-      </li> -->
+        <ul class="list-sidebar bg-defoult" style="height: 562px;">
+            <li> <a [routerLink]="['/admin']"><i class="fa fa-fw fa-info-circle"></i> <span class="nav-label">Thông tin tài khoản</span></a> </li>
             <li> <a [routerLink]="['/admin/doctor']"><i class="fa fa-user-md"></i> <span class="nav-label">Bác sĩ</span></a> </li>
             <li> <a [routerLink]="['/admin/patient']"><i class="fas fa-wheelchair"></i><span class="nav-label">Bệnh nhân</span></a> </li>
-            <!-- <li> <a href="#"><i class="fa fa-laptop"></i> <span class="nav-label">Grid options</span></a> </li>
-      <li> <a href="#" data-toggle="collapse" data-target="#tables" class="collapsed active"><i class="fa fa-table"></i>
-          <span class="nav-label">Tables</span><span class="fa fa-chevron-left pull-right"></span></a>
-        <ul class="sub-menu collapse" id="tables">
-          <li><a href=""> Static Tables</a></li>
-          <li><a href=""> Data Tables</a></li>
-          <li><a href=""> Foo Tables</a></li>
-          <li><a href=""> jqGrid</a></li>
-        </ul>
-      </li>
-      <li> <a href="#" data-toggle="collapse" data-target="#e-commerce" class="collapsed active"><i
-            class="fa fa-shopping-cart"></i> <span class="nav-label">E-commerce</span><span
-            class="fa fa-chevron-left pull-right"></span></a>
-        <ul class="sub-menu collapse" id="e-commerce">
-          <li><a href=""> Products grid</a></li>
-          <li><a href=""> Products list</a></li>
-          <li><a href="">Product edit</a></li>
-          <li><a href=""> Product detail</a></li>
-          <li><a href="">Cart</a></li>
-          <li><a href=""> Orders</a></li>
-          <li><a href=""> Credit Card form</a> </li>
-        </ul>
-      </li> -->
             <li> <a [routerLink]="['/admin/employee']"><i class="fas fa-users"></i><span class="nav-label">Nhân viên</span></a> </li>
             <li> <a [routerLink]="['/admin/report']"><i class="fa fa-wpforms"></i><span class="nav-label"> Báo cáo</span></a> </li>
-            <li> <a href="#"><i class="fas fa-folder"></i><span>Bài đăng</span></a> </li>
+            <li> <a><i class="fas fa-folder"></i><span>Bài đăng</span></a> </li>
         </ul>
     </div>
 </aside>
