@@ -18,7 +18,7 @@ export class AdminDoctorCetificateComponent implements OnInit {
   idDoctor: number;
   fileAvatar: File = null;
   constructor(
-    private certificateService: CertificateService,
+    public certificateService: CertificateService,
     private userService: AuthenticationService,
     private route: ActivatedRoute,
     private toastr: ToastrService) {
