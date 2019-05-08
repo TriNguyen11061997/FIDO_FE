@@ -15,4 +15,5 @@ export class Users {
     specialist_id :number;
     avatar : string;;
     status_code : string;
+    role: number;
 }

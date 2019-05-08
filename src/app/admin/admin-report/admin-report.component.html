@@ -3,7 +3,9 @@
     <div>
         <main class="container pt-5">
             <div class="card mb-5">
-                <div class="card-header">Danh sách những đánh giá
+                <div class="card-header">
+                    <i class="fa fa-home"></i>Trang chủ/
+                    <i class="fas fa-comment-alt"></i>Đánh giá
                 </div>
                 <div class="card-block p-0">
                     <table class="table table-bordered table-sm m-0">
@@ -33,7 +35,14 @@
                                 <td>{{emp.review}}</td>
                                 <td>{{emp.like}}</td>
                                 <td>{{emp.created_at}}</td>
-                                <td>{{emp.report}}</td>
+                                <td style="text-align: center">
+                                    <ng-container *ngIf="emp.report; else elseTemplate">
+                                        <i class="fas fa-eye-slash"></i>
+                                    </ng-container>
+                                    <ng-template #elseTemplate>
+                                        <i class="fas fa-eye"></i>
+                                    </ng-template>
+                                </td>
                                 <!-- /[routerLink]="['/public/doctor/details',item.id]" -->
                             </tr>
                         </tbody>

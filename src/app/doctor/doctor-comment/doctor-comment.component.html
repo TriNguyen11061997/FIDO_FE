@@ -11,7 +11,7 @@
                     <table class="table table-bordered table-sm m-0">
                         <thead>
                             <tr>
-                                <th>Report</th>
+                                <th>Action</th>
                                 <th>Tên người dùng</th>
                                 <th>Đánh giá</th>
                                 <th>Nội dung</th>
@@ -22,13 +22,20 @@
                         </thead>
                         <tbody>
                             <tr *ngFor="let emp of ratings">
-                                <td><button (click)="onReport(emp.id)" class="btn-outline-primary">Report</button></td>
+                                <td><button (click)="onReport(emp.id)" class="btn btn-danger">Report</button></td>
                                 <td>{{emp.patient_name}}</td>
                                 <td>{{emp.star}}</td>
                                 <td>{{emp.review}}</td>
                                 <td>{{emp.like}}</td>
                                 <td>{{emp.created_at}}</td>
-                                <td>{{emp.report}}</td>
+                                <td style="text-align: center">
+                                    <ng-container *ngIf="emp.report; else elseTemplate">
+                                        <i class="fas fa-eye-slash"></i>
+                                    </ng-container>
+                                    <ng-template #elseTemplate>
+                                        <i class="fas fa-eye"></i>
+                                    </ng-template>
+                                </td>
                                 <!-- /[routerLink]="['/public/doctor/details',item.id]" -->
                             </tr>
                         </tbody>
