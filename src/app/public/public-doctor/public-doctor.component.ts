@@ -35,7 +35,7 @@ export class PublicDoctorComponent implements OnInit {
     private specialistService: SpecialistService,
     private formBuilder: FormBuilder,
     private route: ActivatedRoute,
-    private spinner : NgxSpinnerService
+    private spinner: NgxSpinnerService
   ) {
   }
 
@@ -82,10 +82,19 @@ export class PublicDoctorComponent implements OnInit {
     )
   }
 
-
+  onSearch() {
+    this.spinner.show()
+    this.doctorService.search(this.formSearch.value).subscribe(
+      data => {
+        this.spinner.hide()
+        this.pageNumber = data["meta"]["last_page"] as number;
+        this.listDoctor = data["data"] as Doctor[];
+        this.showPagination(this.pageNumber);
+      })
+  }
   OnclickCK(id: number) {
     this.formSearch.patchValue({
-      specialist_id : id
+      specialist_id: id
     })
     this.spinner.show();
     this.doctorService.search(this.formSearch.value).subscribe(
