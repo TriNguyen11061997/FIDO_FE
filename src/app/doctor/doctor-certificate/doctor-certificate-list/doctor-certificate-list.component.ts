@@ -15,7 +15,7 @@ export class DoctorCertificateListComponent implements OnInit {
   idDoctor : number;
   currentUser : Users;
   constructor(
-    private certificateService: CertificateService,
+    public certificateService: CertificateService,
     private userService : AuthenticationService,
     private toastr: ToastrService) {
        this.userService.currentUser.subscribe(user =>{this.currentUser = user});
