@@ -20,4 +20,5 @@ export class Employee {
     start_date :Date;
     end_date : Date;
     address_details: String;
+    address_name: String;
 }
