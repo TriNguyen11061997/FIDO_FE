@@ -9,5 +9,6 @@ export class Rating {
     patient_name : String;
     created_at : Date;
     report : number;
+    doctor_name : string;
 }
 

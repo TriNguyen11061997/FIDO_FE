@@ -28,4 +28,8 @@ export class UserService {
     delete(id: number) {
         return this.http.delete(`${environment.apiUrl}/users/${id}`);
     }
+
+    resetPass(formData: FormData) {
+        return this.http.put(`${environment.apiUrl}/reset-password`,formData);
+    }
 }
