@@ -10,6 +10,7 @@ import { SpecialistService } from '@app/_services/specialist.service';
 import { Patient } from '@app/_models/patient.model';
 import { PatientService } from '@app/_services/patient.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-admmin-patient-form',
@@ -34,11 +35,13 @@ export class AdmminPatientFormComponent implements OnInit {
     private route: ActivatedRoute,
     private addressService: AddressService,
     private toastr: ToastrService,
+    private spinner: NgxSpinnerService
   ) {
   }
 
   ngOnInit() {
     //this.getpatientDetails(this.route.snapshot.params['id']);
+    this.spinner.show()
     this.id = this.route.snapshot.params['id'];
     this.addressService.getAllObject().subscribe(
       data => {
@@ -63,6 +66,10 @@ export class AdmminPatientFormComponent implements OnInit {
       address_details: [null],
       address_id: [""],
     });
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+  }, 1000);
   }
   get f() { return this.patientForm.controls; }
   onSubmit() {
@@ -82,6 +89,7 @@ export class AdmminPatientFormComponent implements OnInit {
     return this.service.getObjectByID(id)
       .subscribe(
         data => {
+          this.spinner.hide();
           this.patient = data["data"] as Patient;
           if (this.patient.avatar != null) {
             this.check = true;

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-doctor-certificate',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DoctorCertificateComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    private spinner: NgxSpinnerService,
+  ) { }
 
   ngOnInit() {
   }

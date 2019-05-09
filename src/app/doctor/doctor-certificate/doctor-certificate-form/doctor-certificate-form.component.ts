@@ -87,7 +87,7 @@ export class DoctorCertificateFormComponent implements OnInit {
     this.certificateService.update(formData).subscribe(
       res => {
         if (res["status_code"] == 201) {
-          this.toastr.success('Cập nhật thành thành công', 'FIDO!');
+          this.toastr.success('Cập nhật thành công', 'FIDO!');
           this.resetForm(form);
           this.certificateService.getAllObject(this.idDoctor);
         }

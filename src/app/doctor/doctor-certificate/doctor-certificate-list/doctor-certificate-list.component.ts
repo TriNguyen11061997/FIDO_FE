@@ -4,6 +4,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Users } from '@app/_models/users.model';
 import { AuthenticationService } from '@app/_services';
 import { Certificate } from '@app/_models/certificate.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 
 @Component({
@@ -12,18 +13,23 @@ import { Certificate } from '@app/_models/certificate.model';
   styleUrls: ['./doctor-certificate-list.component.css']
 })
 export class DoctorCertificateListComponent implements OnInit {
-  idDoctor : number;
-  currentUser : Users;
+  idDoctor: number;
+  currentUser: Users;
   constructor(
     public certificateService: CertificateService,
-    private userService : AuthenticationService,
+    private userService: AuthenticationService,
+    private spinner: NgxSpinnerService,
     private toastr: ToastrService) {
-       this.userService.currentUser.subscribe(user =>{this.currentUser = user});
-       this.idDoctor = this.currentUser.usable_id;
-    }
+    this.userService.currentUser.subscribe(user => { this.currentUser = user });
+    this.idDoctor = this.currentUser.usable_id;
+  }
 
   ngOnInit() {
+    this.spinner.show()
     this.certificateService.getAllObject(this.idDoctor);
+    setTimeout(() => {
+      this.spinner.hide();
+  }, 1000);
   }
 
   populateForm(emp: Certificate) {
@@ -32,7 +38,7 @@ export class DoctorCertificateListComponent implements OnInit {
 
   onDelete(id: number) {
     if (confirm('Bạn có chắc chắn muốn xóa?')) {
-      this.certificateService.delete(id,this.idDoctor).subscribe(res => {
+      this.certificateService.delete(id, this.idDoctor).subscribe(res => {
         this.certificateService.getAllObject(this.idDoctor);
         this.toastr.success('Deleted successfully', 'FIDO said!');
       });

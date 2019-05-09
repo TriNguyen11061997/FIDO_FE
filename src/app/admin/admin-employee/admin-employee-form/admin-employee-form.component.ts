@@ -6,6 +6,7 @@ import { EmployeeService } from '@app/_services/employee.service';
 import { Router, ActivatedRoute } from '@angular/router';
 import { AddressService } from '@app/_services/address.service';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-admin-employee-form',
@@ -29,11 +30,13 @@ export class AdminEmployeeFormComponent implements OnInit {
     private route: ActivatedRoute,
     private addressService: AddressService,
     private toastr : ToastrService,
+    private spinner: NgxSpinnerService
   ) { 
   }
 
   ngOnInit() {
     //this.getemployeeDetails(this.route.snapshot.params['id']);
+    this.spinner.show()
     this.id = this.route.snapshot.params['id'];
     this.addressService.getAllObject().subscribe(
       data => {
@@ -65,6 +68,10 @@ export class AdminEmployeeFormComponent implements OnInit {
       end_date: [null],
       tax_number :[],
     });
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+  }, 1000);
   }
   get f() { return this.employeeForm.controls; }
   onSubmit() {
@@ -84,6 +91,7 @@ export class AdminEmployeeFormComponent implements OnInit {
     return this.service.getObjectByID(id)
       .subscribe(
         data => {
+          this.spinner.hide()
           this.employee = data["data"] as Employee;
           if(this.employee.avatar !=null){
             this.check = true;

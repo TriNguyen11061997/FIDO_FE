@@ -7,10 +7,10 @@
     <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
         <input type="text" formControlName="id" hidden>
         <ng-container *ngIf="check; else elseTemplate">
-            <img src="{{image}}" alt="" style="width: 200px;height: 156px;float: left;">
+            <img src="{{image}}" alt="" style="width: 140px;height: 156px;float: left;">
         </ng-container>
         <ng-template #elseTemplate>
-            <img src="https://i.imgur.com/jddhYSx.jpg" alt="" style="width: 200px;height: 156px;float: left;">
+            <img src="https://i.imgur.com/jddhYSx.jpg" alt="" style="width: 140px;height: 156px;float: left;">
         </ng-template>
 
         <div class="form-row">

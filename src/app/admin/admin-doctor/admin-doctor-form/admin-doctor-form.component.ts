@@ -10,6 +10,7 @@ import { Address } from '@app/_models/address.model';
 import { EmployeeService } from '@app/_services/employee.service';
 import { Employee } from '@app/_models/employee.model';
 import { ToastrService } from 'ngx-toastr';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-admin-doctor-form',
@@ -37,11 +38,13 @@ export class AdminDoctorFormComponent implements OnInit {
     private addressService: AddressService,
     private specilistService: SpecialistService,
     private employeeService: EmployeeService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
   ) { }
 
   ngOnInit() {
     //this.getDoctorDetails(this.route.snapshot.params['id']);
+    this.spinner.show()
     this.id = this.route.snapshot.params['id'];
     this.addressService.getAllObject().subscribe(
       data => {
@@ -92,6 +95,11 @@ export class AdminDoctorFormComponent implements OnInit {
       title: [null]
 
     });
+
+    setTimeout(() => {
+      /** spinner ends after 5 seconds */
+      this.spinner.hide();
+    }, 1000);
   }
   get f() { return this.doctorForm.controls; }
   onSubmit() {
@@ -111,6 +119,7 @@ export class AdminDoctorFormComponent implements OnInit {
     return this.service.getObjectByID(id)
       .subscribe(
         data => {
+          this.spinner.hide();
           this.doctor = data as Doctor;
           if (this.doctor.avatar != null) {
             this.check = true;

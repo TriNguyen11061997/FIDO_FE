@@ -5,6 +5,7 @@ import { Router } from '@angular/router';
 import { RatingService } from '@app/_services/rating.service';
 import { ToastrService } from 'ngx-toastr';
 import { Users } from '@app/_models/users.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-admin-report',
@@ -20,11 +21,13 @@ export class AdminReportComponent implements OnInit {
     private ratingService: RatingService,
     private toastr: ToastrService,
     private router: Router,
-    private userService: AuthenticationService
+    private userService: AuthenticationService,
+    private spinner: NgxSpinnerService
   ) {
     this.userService.currentUser.subscribe(user => { this.currentUser = user });
   }
   ngOnInit() {
+    this.spinner.show()
     this.LoadDoctor();
     this.dtOptions = {
       pagingType: 'full_numbers',
@@ -37,6 +40,7 @@ export class AdminReportComponent implements OnInit {
     this.ratingService.getObjectReported()
       .subscribe(
         data => {
+          this.spinner.hide()
           this.ratings = data as Rating[];
         }, (err) => { alert(err) }
       );
@@ -44,8 +48,10 @@ export class AdminReportComponent implements OnInit {
 
   onDelete(id: number, doctor_id: number) {
     if (confirm('Bạn có chắc chắn muốn xóa?')) {
+      this.spinner.show()
       this.ratingService.delete(id,doctor_id).subscribe(
         data=>{
+          this.spinner.hide()
           this.toastr.success("Xóa thành công!","FIDO!", { timeOut: 1000 });
           this.LoadDoctor();
         },(err)=> { this.toastr.warning("Xóa không thành công!","FIDO!", { timeOut: 1000 });}

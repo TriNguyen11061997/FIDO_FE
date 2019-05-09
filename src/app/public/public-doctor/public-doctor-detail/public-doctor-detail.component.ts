@@ -10,6 +10,7 @@ import { Users } from '@app/_models/users.model';
 import { ToastrService } from 'ngx-toastr';
 import { Rating } from '@app/_models/rating.model';
 import { RatingService } from '@app/_services/rating.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-public-doctor-detail',
@@ -34,7 +35,8 @@ export class PublicDoctorDetailComponent implements OnInit {
     private formBuilder: FormBuilder,
     private authorService: AuthenticationService,
     private ratingService: RatingService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
   ) {
     this.authorService.currentUser.subscribe(x => this.currentUser = x);
   }
@@ -42,7 +44,20 @@ export class PublicDoctorDetailComponent implements OnInit {
     if (this.currentUser != null) {
       this.loadReview = true;
     }
-    this.getDoctorDetails(this.route.snapshot.params['id']);
+    this.spinner.show()
+    this.doctorService.getObjectByID(this.route.snapshot.params['id']).subscribe(
+      data => {
+        this.spinner.hide()
+        this.doctor = data as Doctor;
+        this.id = this.doctor.id;
+        this.rate = Math.round(this.doctor.rating);
+        if (data["review"] != null) {
+          this.ratings = data["review"];
+        }
+      },
+      (err) => {
+      }
+    )
     this.ratingForm = this.formBuilder.group({
       doctor_id: [null],
       review: [null, Validators],
@@ -78,8 +93,10 @@ export class PublicDoctorDetailComponent implements OnInit {
     this.rating = this.ratingForm.value;
     this.rating.patient_id = this.currentUser.usable_id;
     this.rating.doctor_id = this.id;
+    this.spinner.show()
     this.ratingService.add(this.rating).subscribe(
       data => {
+        this.spinner.hide()
         this.toastr.show("Cám ơn bạn đã gửi nhận xét!");
         this.ratingService.getObjectByDoctorID(this.id).subscribe(
           rates => {

@@ -12,6 +12,7 @@ import { EmployeeService } from '@app/_services/employee.service';
 import { ToastrService } from 'ngx-toastr';
 import { AuthenticationService } from '@app/_services';
 import { Users } from '@app/_models/users.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-doctor',
@@ -40,6 +41,7 @@ export class DoctorComponent implements OnInit {
     private specilistService: SpecialistService,
     private employeeService: EmployeeService,
     private toastr: ToastrService,
+    private spinner : NgxSpinnerService,
     private userService: AuthenticationService
   ) {
     this.userService.currentUser.subscribe(user => { this.currentUser = user })
@@ -48,6 +50,7 @@ export class DoctorComponent implements OnInit {
   ngOnInit() {
     //this.getDoctorDetails(this.route.snapshot.params['id']);
     this.id = this.currentUser.usable_id;
+    this.spinner.show()
     this.addressService.getAllObject().subscribe(
       data => {
         this.addresses = data as Address[]
@@ -59,6 +62,7 @@ export class DoctorComponent implements OnInit {
     );
     this.specilistService.getAllObject().subscribe(
       data => {
+        this.spinner.hide()
         this.speciallists = data as Specialist[]
       }, (err) => { }
     );

@@ -6,6 +6,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { Users } from '@app/_models/users.model';
 import { AuthenticationService } from '@app/_services';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-doctor-comment',
@@ -21,13 +22,22 @@ export class DoctorCommentComponent implements OnInit {
     private ratingService: RatingService,
     private toastr: ToastrService,
     private router: Router,
-    private userService: AuthenticationService
+    private userService: AuthenticationService,
+    private spinner: NgxSpinnerService,
   ) {
     this.userService.currentUser.subscribe(user => { this.currentUser = user });
   }
   dtTrigger: Subject<Rating> = new Subject();
   ngOnInit() {
-    this.LoadDoctor();
+    this.spinner.show()
+    this.ratingService.getObjectByDoctorID(this.currentUser.usable_id)
+      .subscribe(
+        data => {
+          this.spinner.hide()
+          this.ratings = data as Rating[];
+          this.dtTrigger.next();
+        }, (err) => { alert(err) }
+      );
     this.dtOptions = {
       pagingType: 'full_numbers',
       pageLength: 5,

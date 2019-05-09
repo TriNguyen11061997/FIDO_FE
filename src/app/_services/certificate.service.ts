@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http';
 import { environment } from '@environments/environment';
 import { Observable } from 'rxjs';
 import { Certificate } from '@app/_models/certificate.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable({
   providedIn: 'root'
@@ -11,13 +12,16 @@ export class CertificateService {
 
   formData: Certificate;
   list: Certificate[];
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient,
+    private spinner: NgxSpinnerService,) { }
 
 
   getAllObject(idDoctor: number) {
+    this.spinner.show()
     return this.http.get(environment.apiUrl + '/doctors/' + idDoctor + '/certificates')
       .subscribe(
         data => {
+          this.spinner.hide();
           this.list = data as Certificate[]
         }
       );

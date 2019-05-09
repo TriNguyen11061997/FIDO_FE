@@ -11,6 +11,7 @@ import { ToastrService } from 'ngx-toastr';
 import { Subject } from 'rxjs';
 import { Employee } from '@app/_models/employee.model';
 import { EmployeeService } from '@app/_services/employee.service';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-admin-employee',
@@ -20,14 +21,17 @@ import { EmployeeService } from '@app/_services/employee.service';
 export class AdminEmployeeComponent implements OnInit {
 
   employees: Employee[]
-  constructor(private employeeService: EmployeeService) {
+  constructor(private employeeService: EmployeeService,
+    private spinner: NgxSpinnerService) {
   }
 
   dtOptions: DataTables.Settings = {};
   dtTrigger: Subject<Employee> = new Subject();
   ngOnInit() {
+    this.spinner.show()
     this.employeeService.getAllObject().subscribe(
       data => {
+        this.spinner.hide()
         this.dtTrigger.next();
         this.employees = data["data"] as Employee[];
       }, (err) => { alert(err) }

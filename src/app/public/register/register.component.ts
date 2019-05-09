@@ -10,6 +10,7 @@ import { SpecialistService } from '@app/_services/specialist.service';
 import { Specialist } from '@app/_models/specialist.model';
 import { Address } from '@app/_models/address.model';
 import { error } from 'util';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-register',
@@ -30,9 +31,11 @@ export class RegisterComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private addressService: AddressService,
-    private specialistService: SpecialistService) { }
+    private specialistService: SpecialistService,
+    private spinner : NgxSpinnerService) { }
 
   ngOnInit() {
+    this.spinner.show()
     this.addressService.getAllObject().subscribe(
       data => {
         this.addresses = data as Address[]
@@ -40,6 +43,7 @@ export class RegisterComponent implements OnInit {
     );
     this.specialistService.getAllObject().subscribe(
       data => {
+        this.spinner.hide()
         this.specialists = data as Specialist[]
       }, (err) => { }
     );
