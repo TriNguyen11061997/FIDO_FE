@@ -101,15 +101,24 @@
         <div class="form-row">
             <div class="form-group col-md-4">
                 <label for="passport_no">Passport</label>
-                <input formControlName="passport_no" type="text" class="form-control" id="passport_no">
+                <input formControlName="passport_no" type="text" class="form-control" id="passport_no" [ngClass]="{ 'is-invalid': submitted && f.passport_no.errors }">
+                <div *ngIf="submitted && f.passport_no.errors" class="invalid-feedback">
+                    <div *ngIf="f.passport_no.errors.required">Vui lòng nhập họ tên!</div>
+                </div>
             </div>
             <div class="form-group col-md-4">
                 <label for="inputZip">Ngày cấp</label>
-                <input formControlName="passport_date" type="date" class="form-control" id="inputZip">
+                <input formControlName="passport_date" type="date" class="form-control" id="inputZip" [ngClass]="{ 'is-invalid': submitted && f.passport_date.errors }">
+                <div *ngIf="submitted && f.passport_date.errors" class="invalid-feedback">
+                    <div *ngIf="f.passport_date.errors.required">Vui lòng nhập họ tên!</div>
+                </div>
             </div>
             <div class="form-group col-md-4">
                 <label for="passport_place">Nơi cấp</label>
-                <input formControlName="passport_place" type="text" class="form-control" id="passport_place">
+                <input formControlName="passport_place" type="text" class="form-control" id="passport_place" [ngClass]="{ 'is-invalid': submitted && f.passport_place.errors }">
+                <div *ngIf="submitted && f.passport_place.errors" class="invalid-feedback">
+                    <div *ngIf="f.passport_place.errors.required">Vui lòng nhập họ tên!</div>
+                </div>
             </div>
         </div>
 

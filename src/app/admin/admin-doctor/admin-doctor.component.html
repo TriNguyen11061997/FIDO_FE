@@ -59,14 +59,15 @@
                                 <td>{{emp.email}}</td>
                                 <td>{{emp.address_name}}</td>
                                 <td>{{emp.specialist_name}}</td>
-                                <td>
+                                <td style="text-align: center">
                                     <ng-container *ngIf="emp.actived; else elseTemplate">
-                                        <button type="button" class="btn btn-success">Yes</button>
+                                        <i class="fas fa-eye"></i>
                                     </ng-container>
                                     <ng-template #elseTemplate>
-                                        <button type="button" class="btn btn-danger">No</button>
+                                        <i class="fas fa-eye-slash"></i>
                                     </ng-template>
                                 </td>
+
                                 <!-- /[routerLink]="['/public/doctor/details',item.id]" -->
                             </tr>
                         </tbody>

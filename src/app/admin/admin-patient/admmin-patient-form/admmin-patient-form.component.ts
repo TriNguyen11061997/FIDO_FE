@@ -69,7 +69,7 @@ export class AdmminPatientFormComponent implements OnInit {
     setTimeout(() => {
       /** spinner ends after 5 seconds */
       this.spinner.hide();
-  }, 1000);
+    }, 1000);
   }
   get f() { return this.patientForm.controls; }
   onSubmit() {
@@ -169,8 +169,9 @@ export class AdmminPatientFormComponent implements OnInit {
           this.toastr.success("Đã thêm thành công!", "FIDO!");
           this.router.navigate(['/admin/patient'])
         }
-        else
-          this.toastr.error("Email or CMND đã tồn tại", "FIDO!")
+        else{
+          this.toastr.success("Email or CMND đã tồn tại!", "FIDO!");
+        }
       }, (err) => { this.toastr.error(err) }
     )
   }
