@@ -5,6 +5,7 @@ import { first } from 'rxjs/operators';
 import { AlertService, AuthenticationService } from '@app/_services';
 import { ToastrService } from 'ngx-toastr';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Users } from '@app/_models/users.model';
 
 @Component({
     templateUrl: 'login.component.html',
@@ -15,7 +16,7 @@ export class LoginComponent implements OnInit {
     loading = false;
     submitted = false;
     returnUrl: string;
-
+    currentUser: Users
     constructor(
         private formBuilder: FormBuilder,
         private route: ActivatedRoute,
@@ -47,22 +48,35 @@ export class LoginComponent implements OnInit {
             return;
         }
         this.loading = true;
-        this.authenticationService.login(this.loginForm.value)
-            .subscribe(
-                data => {
-                    if (data.status_code == "PASS") {
-                        if (data.usable_type == "App\\Admin" || data.usable_type == "App\\Employee")
-                            this.router.navigate(['/admin']);
-                        if (data.usable_type == "App\\Patient")
-                            this.router.navigate(['/public']);
-                        if (data.usable_type == "App\\Doctor")
-                            this.router.navigate(['/doctor']);
-                        this.toastr.success("Đăng nhập thành công!", "FIDO!", { timeOut: 1000 });
-                    }
-                    else{
-                        this.toastr.warning("Username or Password không đúng!", "FiDo!", { timeOut: 1000 });
-                    }
-                    //console.log(data.name);                  
-                })
+        // this.authenticationService.currentUser.subscribe(x => { this.currentUser = x });
+        // if ( this.currentUser.status_code == 200) {
+        //     if ( this.currentUser.usable_type == "App\\Employee")
+        //          this.router.navigate(['/admin']);
+        //     if ( this.currentUser.usable_type == "App\\Patient")
+        //         this.router.navigate(['/public']);
+        //     if ( this.currentUser.usable_type == "App\\Doctor")
+        //         this.router.navigate(['/doctor']);
+        //     this.toastr.success("Đăng nhập thành công!", "FIDO!", { timeOut: 1000 });
+        // }
+        // else {
+        //     this.toastr.warning("Username or Password không đúng!", "FiDo!", { timeOut: 1000 });
+        // }
+
+        this.authenticationService.login(this.loginForm.value).subscribe(
+            data => {
+                this.authenticationService.currentUser.subscribe(x => { this.currentUser = x });
+                if ( this.currentUser.status_code == 200) {
+                    if ( this.currentUser.usable_type == "App\\Employee")
+                         this.router.navigate(['/admin']);
+                    if ( this.currentUser.usable_type == "App\\Patient")
+                        this.router.navigate(['/public']);
+                    if ( this.currentUser.usable_type == "App\\Doctor")
+                        this.router.navigate(['/doctor']);
+                    this.toastr.success("Đăng nhập thành công!", "FIDO!", { timeOut: 1000 });
+                }
+                else {
+                    this.toastr.warning("Username or Password không đúng!", "FiDo!", { timeOut: 1000 });
+                }                  
+            })
     }
 }

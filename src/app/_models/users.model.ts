@@ -14,6 +14,6 @@ export class Users {
     address_id:number;
     specialist_id :number;
     avatar : string;;
-    status_code : string;
+    status_code : number;
     role: number;
 }

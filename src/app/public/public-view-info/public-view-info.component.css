@@ -5341,6 +5341,7 @@ input[type=radio] {
 .position {
     position: relative;
     margin: auto;
+    width: 1180px
 }
 
 @media (max-width:1220px) {

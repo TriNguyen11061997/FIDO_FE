@@ -1,0 +1,145 @@
+<app-admin-header></app-admin-header>
+<div class="main">
+    <div class="card-header">
+        <i class="fa fa-home"></i>Trang chủ/
+        <i class="fa fa-fw fa-info-circle"></i>Thông tin tài khoản
+    </div>
+    <form [formGroup]="employeeForm" (ngSubmit)="onSubmit()">
+        <input type="text" formControlName="id" hidden>
+        <ng-container *ngIf="check; else elseTemplate">
+            <img src="{{image}}" alt="" style="width: 140px;height: 156px;float: left;">
+        </ng-container>
+        <ng-template #elseTemplate>
+            <img src="https://i.imgur.com/jddhYSx.jpg" alt="" style="width: 140px;height: 156px;float: left;">
+        </ng-template>
+
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputPassword4">Ảnh đại diện</label>
+                <input type="file" name="avatar" class="form-control" id="inputPassword4" (change)="onSelectedFile($event)">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputEmail4">Mã số</label>
+                <input type="text" formControlName="employee_no" class="form-control" id="inputEmail4" placeholder="Mã số" readonly>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="name">Họ tên</label>
+                <input type="text" formControlName="name" class="form-control" id="name" placeholder="Họ tên" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+                <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
+                    <div *ngIf="f.name.errors.required">Vui lòng nhập họ tên!</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Ngày sinh</label>
+                <input type="date" formControlName="birthday" class="form-control" id="inputAddress" placeholder="1234 Main St" [ngClass]="{ 'is-invalid': submitted && f.birthday.errors }">
+                <div *ngIf="submitted && f.birthday.errors" class="invalid-feedback">
+                    <div *ngIf="f.birthday.errors.required">Vui lòng chọn ngày sinh!</div>
+                </div>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Giới tính</label>
+                <select formControlName="gender" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.gender.errors }">
+              <option selected value="Male">Nam</option>
+              <option value="Female">Nữ</option>
+            </select>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="phone_number">Số điện thoại</label>
+                <input formControlName="phone_number" type="tel" class="form-control" id="phone_number" [ngClass]="{ 'is-invalid': submitted && f.phone_number.errors }">
+                <div *ngIf="submitted && f.phone_number.errors" class="invalid-feedback">
+                    <div *ngIf="f.phone_number.errors.required">Vui lòng nhập số điện thoại!</div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="email">Email</label>
+                <input formControlName="email" type="email" class="form-control" id="email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Vui lòng nhập email!</div>
+                    <div *ngIf="f.email.errors.email">Chưa đúng định dạng email!</div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="tax_number">Mã số thuế</label>
+                <input formControlName="tax_number" type="text" class="form-control" id="tax_number">
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="inputAddress2">Mô tả</label>
+            <textarea formControlName="description" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.description.errors }"></textarea>
+            <div *ngIf="submitted && f.description.errors" class="invalid-feedback">
+                <div *ngIf="f.description.errors.required">Vui lòng nhập mô tả bản thân!</div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="id_number">Số CMND</label>
+                <input formControlName="id_number" type="text" class="form-control" id="id_number" [ngClass]="{ 'is-invalid': submitted && f.id_number.errors }">
+                <div *ngIf="submitted && f.id_number.errors" class="invalid-feedback">
+                    <div *ngIf="f.id_number.errors.required">Vui lòng nhập họ tên!</div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputZip">Ngày cấp</label>
+                <input formControlName="id_number_date" type="date" class="form-control" id="inputZip" [ngClass]="{ 'is-invalid': submitted && f.id_number_date.errors }">
+                <div *ngIf="submitted && f.id_number_date.errors" class="invalid-feedback">
+                    <div *ngIf="f.id_number_date.errors.required">Vui lòng chọn ngày cấp!</div>
+                </div>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="id_number_place">Nơi cấp</label>
+                <input formControlName="id_number_place" type="text" class="form-control" id="id_number_place" [ngClass]="{ 'is-invalid': submitted && f.id_number_place.errors }">
+                <div *ngIf="submitted && f.id_number_place.errors" class="invalid-feedback">
+                    <div *ngIf="f.id_number_place.errors.required">Vui lòng nhập nơi cấp!</div>
+                </div>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="passport_no">Passport</label>
+                <input formControlName="passport_no" type="text" class="form-control" id="passport_no">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputZip">Ngày cấp</label>
+                <input formControlName="passport_date" type="date" class="form-control" id="inputZip">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="passport_place">Nơi cấp</label>
+                <input formControlName="passport_place" type="text" class="form-control" id="passport_place">
+            </div>
+        </div>
+
+
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="address_details">Phường,xã,Quận,huyện</label>
+                <input formControlName="address_details" type="text" class="form-control" id="address_details">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputCity">Tỉnh,thành phố</label>
+                <select class="form-control" formControlName="address_id">
+                        <option class="hidden" selected disabled>Địa chỉ
+                        </option>
+                        <option *ngFor="let item of addresses" value="{{item.id}}">{{item.name}}
+                        </option>
+                    </select>
+            </div>
+        </div>
+
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Ngày bắt đầu làm việc</label>
+                <input type="date" formControlName="start_date" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-group col-md-6">
+                <label for="inputAddress">Ngày kết thúc làm việc</label>
+                <input type="date" formControlName="end_date" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<app-admin-footer></app-admin-footer>

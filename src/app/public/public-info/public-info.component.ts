@@ -10,6 +10,7 @@ import { AuthenticationService } from '@app/_services';
 import { Users } from '@app/_models/users.model';
 import { PatientService } from '@app/_services/patient.service';
 import { Patient } from '@app/_models/patient.model';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-public-info',
@@ -34,13 +35,15 @@ export class PublicInfoComponent implements OnInit {
     private route: ActivatedRoute,
     private addressService: AddressService,
     private toastr: ToastrService,
-    private userService: AuthenticationService
+    private userService: AuthenticationService,
+    private spinner: NgxSpinnerService
   ) {
     this.userService.currentUser.subscribe(user => { this.currentUser = user })
   }
 
   ngOnInit() {
     //this.getpatientDetails(this.route.snapshot.params['id']);
+    this.spinner.show();
     this.id = this.currentUser.usable_id;
     this.addressService.getAllObject().subscribe(
       data => {
@@ -79,6 +82,7 @@ export class PublicInfoComponent implements OnInit {
     return this.service.getObjectByID(id)
       .subscribe(
         data => {
+          this.spinner.hide()
           this.patient = data["data"] as Patient;
           if (this.patient.avatar != null) {
             this.check = true;
@@ -132,6 +136,7 @@ export class PublicInfoComponent implements OnInit {
       data => {
           this.getPatientByID(this.id);
           this.toastr.success("Đã cập nhật thành công!", "FIDO!");
+          this.router.navigate(['/public/info']);
       }, (err) => { this.toastr.error(err) }
     )
   }

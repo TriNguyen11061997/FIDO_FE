@@ -20,12 +20,14 @@ import { BarRatingModule } from "ngx-bar-rating";
 import { PublicInfoComponent } from './public-info/public-info.component';
 import { AgmCoreModule } from '@agm/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
+import { PublicViewInfoComponent } from './public-view-info/public-view-info.component';
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
   { path: 'public/forum', component: PublicForumComponent },
   { path: 'public/doctor/details/:id', component: PublicDoctorDetailComponent },
   { path: 'public/doctor/:address_id/:name', component: PublicDoctorComponent },
-  { path: 'public/info', component: PublicInfoComponent, canActivate: [AuthBNGuard] },
+  { path: 'public/info/edit', component: PublicInfoComponent, canActivate: [AuthBNGuard] },
+  { path: 'public/info', component: PublicViewInfoComponent, canActivate: [AuthBNGuard] },
 
 ];
 @NgModule({
@@ -38,6 +40,7 @@ const appRoutes: Routes = [
     PublicForumComponent,
     RegisterComponent,
     PublicInfoComponent,
+    PublicViewInfoComponent,
   ],
   imports: [
     FormsModule,

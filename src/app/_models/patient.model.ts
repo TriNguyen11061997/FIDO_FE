@@ -17,4 +17,5 @@ export class Patient {
     phone_number	:String;
     email	:String;
     address_id	:number;
+    address_name:string;
 }

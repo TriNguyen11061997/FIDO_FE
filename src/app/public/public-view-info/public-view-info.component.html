@@ -1,14 +1,52 @@
-<app-doctor-header></app-doctor-header>
-<div id="main" style="float: left;height: 562px;width: 84%;overflow: overlay;">
-    <div class="card-header"><i class="fa fa-home"></i>Trang chủ/ <i class="fa fa-fw fa-info-circle" aria-hidden="true"></i>Thông tin tài khoản
-    </div>
+<app-public-header></app-public-header>
+<div id="main">
     <div id="account" class="has-aside">
+        <div id="page-title">
+            <div class="background"></div>
+            <div class="mask">
+                <div class="position">
+                    <ul class="breadcrumbs">
+                        <li>
+                            <a href="">Trang chủ</a>
+                        </li>
+                        <li>
+                            <a href="">Quản lý tài khoản</a>
+                        </li>
+                    </ul>
+                    <h1>
+                        Thông tin tài khoản
+                    </h1>
+                </div>
+            </div>
+        </div>
         <div class="position">
-            <div class="content" style="margin: 0 15%;margin-top: 20px;">
+            <aside>
+                <section class="collapsible-container collapsible-list">
+                    <h3>Xin chào, <span class="bind-name">{{patient?.name}}</span></h3>
+                    <dl>
+                        <dt>
+                            <a class="active"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Thông tin tài khoản</a>
+                        </dt>
+                        <dt>
+                            <a href="" class=""><i class="fa fa-fw fa-comments-o" aria-hidden="true"></i> Nhận xét đã gửi</a>
+                        </dt>
+                        <dt>
+                            <a href="" class=""><i class="fa fa-fw fa-comments-o" aria-hidden="true"></i> Dánh giá đã gửi</a>
+                        </dt>
+                        <dt>
+                            <a  class=""><i class="fa fa-fw fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
+                        </dt>
+                        <dt>
+                            <a (click)="logout()" class="logout"><i class="fa fa-fw fa-power-off" aria-hidden="true"></i> Đăng xuất</a>
+                        </dt>
+                    </dl>
+                </section>
+            </aside>
+            <div class="content">
                 <section class="customer">
                     <div class="section-header">
                         <h2><i class="fa fa-fw fa-user" aria-hidden="true"></i> Tài khoản</h2>
-                        <a [routerLink]="['/doctor/info/edit']" class="edit">
+                        <a [routerLink]="['/public/info/edit']" class="edit">
                             <span class="for-not-editing"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Sửa thông tin</span>
                         </a>
                     </div>
@@ -19,19 +57,10 @@
                             <div class="form-row">
                                 <div class="form-field">
                                     <label>
-                                                Mã:
-                                            </label>
-                                    <div class="form-field-text for-not-editing" data-text-for="email">
-                                        {{doctor?.doctor_no}}
-                                    </div>
-
-                                </div>
-                                <div class="form-field">
-                                    <label>
                                         Email:
                                     </label>
                                     <div class="form-field-text for-not-editing" data-text-for="email">
-                                        {{doctor?.email}}
+                                        {{patient?.email}}
                                     </div>
 
                                     <div class="form-field-input for-editing">
@@ -45,17 +74,7 @@
                                         Họ và tên:
                                     </label>
                                     <div class="form-field-text for-not-editing" data-text-for="full_name">
-                                        {{doctor?.id_number}}
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label>
-                                            CMND:
-                                        </label>
-                                    <div class="form-field-text for-not-editing" data-text-for="full_name">
-                                        {{doctor?.name}}
+                                        {{patient?.name}}
                                     </div>
                                 </div>
                             </div>
@@ -65,7 +84,7 @@
                                         Ngày sinh:
                                     </label>
                                     <div class="form-field-text for-not-editing" data-text-for="dob">
-                                        <em>{{doctor?.birthday}}</em>
+                                        <em>{{patient?.birthday}}</em>
                                     </div>
                                     <div class="form-field-input for-editing">
                                         <input type="text" name="dob" value="" placeholder="Ví dụ 15/11/1985">
@@ -75,10 +94,10 @@
                             <div class="form-row">
                                 <div class="form-field">
                                     <label>
-                                       Giới tính:
+                                       Giới tính
                                     </label>
                                     <div class="form-field-text for-not-editing" data-text-for="gender">
-                                        {{doctor?.gender}}
+                                        {{patient?.gender}}
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +107,7 @@
                                         Địa chỉ:
                                     </label>
                                     <div class="form-field-text for-not-editing" data-text-for="address">
-                                        <em>{{doctor?.address_name}}</em>
+                                        <em>{{patient?.address_name}}</em>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +117,7 @@
                                         Số điện thoại:
                                     </label>
                                     <div class="form-field-text for-not-editing" data-text-for="phone">
-                                        <em>{{doctor?.phone_number}}</em>
+                                        <em>{{patient?.phone_number}}</em>
                                     </div>
 
                                     <div class="form-field-input for-editing">
@@ -106,43 +125,14 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label>
-                                            Chuyên khoa chính:
-                                        </label>
-                                    <div class="form-field-text for-not-editing" data-text-for="address">
-                                        <em>{{doctor?.specialist_name}}</em>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label>
-                                            Chuyên khoa phụ:
-                                        </label>
-                                    <div class="form-field-text for-not-editing" data-text-for="address">
-                                        <em>{{doctor?.sub_specialist_name}}</em>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="form-row">
-                                <div class="form-field">
-                                    <label>
-                                            Nơi làm việc:
-                                        </label>
-                                    <div class="form-field-text for-not-editing" data-text-for="address">
-                                        <em>{{doctor?.hospital_name}}</em>
-                                    </div>
-                                </div>
-                            </div>
+
                             <div class="form-row">
                                 <div class="form-field">
                                     <label>
                                         Ảnh đại diện:
                                     </label>
                                     <div class="form-field-text">
-                                        <a href="{{doctor?.avatar}}">{{doctor?.avatar}}</a>
+                                        <a href="{{patient?.avatar}}">{{patient?.avatar}}</a>
                                     </div>
                                 </div>
                             </div>
@@ -161,4 +151,4 @@
         </div>
     </div>
 </div>
-<app-doctor-footer></app-doctor-footer>
+<app-public-footer></app-public-footer>
