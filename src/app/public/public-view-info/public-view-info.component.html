@@ -28,10 +28,10 @@
                             <a class="active"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Thông tin tài khoản</a>
                         </dt>
                         <dt>
-                            <a href="" class=""><i class="fa fa-fw fa-comments-o" aria-hidden="true"></i> Nhận xét đã gửi</a>
+                            <a href="" class=""><i class="fa fa-fw fa-comments-o" aria-hidden="true"></i>Đã hỏi bác sĩ</a>
                         </dt>
                         <dt>
-                            <a href="" class=""><i class="fa fa-fw fa-comments-o" aria-hidden="true"></i> Dánh giá đã gửi</a>
+                            <a href="" class=""><i class="fa fa-fw fa-comments-o" aria-hidden="true"></i> Đánh giá đã gửi</a>
                         </dt>
                         <dt>
                             <a  class=""><i class="fa fa-fw fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
@@ -43,7 +43,7 @@
                 </section>
             </aside>
             <div class="content">
-                <section class="customer">
+                <section class="customer" *ngIf="loadAq">
                     <div class="section-header">
                         <h2><i class="fa fa-fw fa-user" aria-hidden="true"></i> Tài khoản</h2>
                         <a [routerLink]="['/public/info/edit']" class="edit">
@@ -147,6 +147,28 @@
                         </form>
                     </div>
                 </section>
+
+
+                <section class="customer">
+                    <table class="table">
+                        <thead>
+                            <th>Tên bác sĩ</th>
+                            <th>Ngày hỏi</th>
+                            <th>Nội dung hỏi</th>
+                            <th>Nội dung trả lời</th>
+                            <th>Ngày trả lời</th>
+                        </thead>
+                        <tbody>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                            <td>1</td>
+                        </tbody>
+                    </table>
+                </section>
+
+
             </div>
         </div>
     </div>

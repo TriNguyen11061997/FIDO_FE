@@ -4,6 +4,8 @@ import { PatientService } from '@app/_services/patient.service';
 import { AuthenticationService } from '@app/_services';
 import { Patient } from '@app/_models/patient.model';
 import { Router } from '@angular/router';
+import { Rating } from '@app/_models/rating.model';
+import { Aq } from '@app/_models/aq.model';
 
 @Component({
   selector: 'app-public-view-info',
@@ -12,7 +14,12 @@ import { Router } from '@angular/router';
 })
 export class PublicViewInfoComponent implements OnInit {
   patient: Patient;
-  id: number
+  rating: Rating;
+  aq : Aq;
+  id: number;
+  loadInfo: boolean= true;
+  loadRating: boolean = false;
+  loadAq: boolean = false;
   constructor(
     private spinner: NgxSpinnerService,
     private patientService: PatientService,
@@ -27,7 +34,9 @@ export class PublicViewInfoComponent implements OnInit {
     this.patientService.getObjectByID(this.id).subscribe(
       data => {
         this.spinner.hide()
-        this.patient = data["data"] as Patient;
+        this.patient = data["data"] as Patient
+        this.rating = data["data"]["reviews"] as Rating;
+        this.aq = data["data"]["questions"] as Aq;
       }
     )
   }
