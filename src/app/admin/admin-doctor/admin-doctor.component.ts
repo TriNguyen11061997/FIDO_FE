@@ -27,7 +27,7 @@ export class AdminDoctorComponent implements OnDestroy, OnInit {
       .subscribe(
         data => {
           this.spinner.hide()
-          this.doctors = data as Doctor[];
+          this.doctors = data["data"] as Doctor[];
           this.dtTrigger.next();
         }, (err) => { alert(err) }
       );
@@ -42,7 +42,7 @@ export class AdminDoctorComponent implements OnDestroy, OnInit {
     this.doctorService.getAllObject()
       .subscribe(
         data => {
-          this.doctors = data as Doctor[];
+          this.doctors = data["data"] as Doctor[];
           this.dtTrigger.next();
         }, (err) => { alert(err) }
       );

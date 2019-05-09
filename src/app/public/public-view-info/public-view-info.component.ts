@@ -6,6 +6,7 @@ import { Patient } from '@app/_models/patient.model';
 import { Router } from '@angular/router';
 import { Rating } from '@app/_models/rating.model';
 import { Aq } from '@app/_models/aq.model';
+import { timingSafeEqual } from 'crypto';
 
 @Component({
   selector: 'app-public-view-info',
@@ -14,12 +15,13 @@ import { Aq } from '@app/_models/aq.model';
 })
 export class PublicViewInfoComponent implements OnInit {
   patient: Patient;
-  rating: Rating;
-  aq : Aq;
+  ratings: Rating[];
+  aqs: Aq[];
   id: number;
-  loadInfo: boolean= true;
-  loadRating: boolean = false;
-  loadAq: boolean = false;
+  checkinfo: boolean = true;
+  checkrating: boolean = false;
+  checkaq: boolean = false;
+  checkReset: boolean = false;
   constructor(
     private spinner: NgxSpinnerService,
     private patientService: PatientService,
@@ -35,11 +37,39 @@ export class PublicViewInfoComponent implements OnInit {
       data => {
         this.spinner.hide()
         this.patient = data["data"] as Patient
-        this.rating = data["data"]["reviews"] as Rating;
-        this.aq = data["data"]["questions"] as Aq;
+        this.ratings = data["data"]["reviews"] as Rating[];
+        this.aqs = data["data"]["questions"] as Aq[];
       }
     )
   }
+
+  loadInfo() {
+    $("#aq").removeClass("active");
+    $("#rating").removeClass("active");
+    $("#info").addClass("active");
+    this.checkinfo = true;
+    this.checkaq = false;
+    this.checkrating = false;
+  }
+
+  loadAq() {
+    $("#info").removeClass("active");
+    $("#rating").removeClass("active");
+    $("#aq").addClass("active");
+    this.checkaq = true;
+    this.checkinfo = false;
+    this.checkrating = false;
+  }
+
+  loadRaing() {
+    $("#info").removeClass("active");
+    $("#aq").removeClass("active");
+    $("#rating").addClass("active");
+    this.checkaq = false;
+    this.checkinfo = false;
+    this.checkrating = true;
+  }
+
   logout() {
     this.userService.logout();
     this.router.navigate(['/public']);

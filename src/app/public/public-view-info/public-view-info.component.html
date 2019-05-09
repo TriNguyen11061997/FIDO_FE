@@ -25,13 +25,13 @@
                     <h3>Xin chào, <span class="bind-name">{{patient?.name}}</span></h3>
                     <dl>
                         <dt>
-                            <a class="active"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Thông tin tài khoản</a>
+                            <a id="info" (click)="loadInfo()" class="active"><i class="fa fa-fw fa-user" aria-hidden="true"></i> Thông tin tài khoản</a>
                         </dt>
                         <dt>
-                            <a href="" class=""><i class="fa fa-fw fa-comments-o" aria-hidden="true"></i>Đã hỏi bác sĩ</a>
+                            <a id="aq" (click)="loadAq()"  ><i class="fa fa-fw fa-comments-o" aria-hidden="true"></i> Đã hỏi bác sĩ</a>
                         </dt>
                         <dt>
-                            <a href="" class=""><i class="fa fa-fw fa-comments-o" aria-hidden="true"></i> Đánh giá đã gửi</a>
+                            <a id="rating" (click)="loadRaing()"><i class="fa fa-fw fa-comments-o" aria-hidden="true"></i> Đánh giá đã gửi</a>
                         </dt>
                         <dt>
                             <a  class=""><i class="fa fa-fw fa-key" aria-hidden="true"></i> Đổi mật khẩu</a>
@@ -43,7 +43,7 @@
                 </section>
             </aside>
             <div class="content">
-                <section class="customer" *ngIf="loadAq">
+                <section class="customer" *ngIf="checkinfo">
                     <div class="section-header">
                         <h2><i class="fa fa-fw fa-user" aria-hidden="true"></i> Tài khoản</h2>
                         <a [routerLink]="['/public/info/edit']" class="edit">
@@ -148,8 +148,7 @@
                     </div>
                 </section>
 
-
-                <section class="customer">
+                <section class="customer" *ngIf="checkaq">
                     <table class="table">
                         <thead>
                             <th>Tên bác sĩ</th>
@@ -159,16 +158,41 @@
                             <th>Ngày trả lời</th>
                         </thead>
                         <tbody>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
-                            <td>1</td>
+                            <tr *ngFor="let item of aqs">
+                                <td>{{item.doctor_name}}</td>
+                                <td>{{item.created_at}}</td>
+                                <td>{{item.question_content}}</td>
+                                <td>{{item.answer}}</td>
+                                <td>{{item.updated_at}}</td>
+                            </tr>
                         </tbody>
                     </table>
                 </section>
 
+                <section class="customer" *ngIf="checkrating">
+                    <table class="table">
+                        <thead>
+                            <th>Tên bác sĩ</th>
+                            <th>Đánh giá</th>
+                            <th>Nội dung</th>
+                            <th>Ngày đánh giá</th>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let item1 of ratings">
+                                <td>{{item1.doctor_name}}</td>
+                                <td>{{item1.star}}</td>
+                                <td>{{item1.review}}</td>
+                                <td>{{item1.created_at}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </section>
 
+                <section class="customer" *ngIf="checkReset">
+                    <form action="">
+
+                    </form>
+                </section>
             </div>
         </div>
     </div>
