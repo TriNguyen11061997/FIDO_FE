@@ -38,6 +38,6 @@ export class DoctorService {
   }
 
   search(formData : FormData){
-    return this.http.post(`${environment.apiUrl}/search`, formData)
+    return this.http.post(`${environment.apiUrl}/doctors/search`, formData)
   }
 }

@@ -1,0 +1,42 @@
+<app-doctor-header></app-doctor-header>
+<div class="main">
+    <div class="card-header">
+        <i class="fa fa-home"></i>Trang chủ/
+        <i class="fas fa-comments"></i>Hỏi đáp/
+        <i class="fa fa-fw fa-info-circle"></i>Cập nhật
+    </div>
+    <form [formGroup]="aqForm" (ngSubmit)="onSubmit()">
+        <input type="text" formControlName="id" hidden>
+        <input type="text" formControlName="doctor_id" hidden>
+        <input type="text" formControlName="patient_id" hidden>
+        <div class="form-row">
+            <div class="form-group col-md-4">
+                <label for="inputAddress">Tên người hỏi</label>
+                <input readonly type="text" formControlName="patient_name" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputAddress">Tuổi</label>
+                <input readonly type="text" formControlName="patient_age" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+            <div class="form-group col-md-4">
+                <label for="inputAddress">Địa chỉ</label>
+                <input readonly type="text" formControlName="patient_address_name" class="form-control" id="inputAddress" placeholder="1234 Main St">
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputAddress">Nội dung hỏi</label>
+                <textarea class="form-control" readonly formControlName="question_content"></textarea>
+            </div>
+        </div>
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="inputAddress">Nội dung trả lời</label>
+                <textarea class="form-control" formControlName="answer"></textarea>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+    <button style="margin-left: 2%" class="btn btn-danger" *ngIf="btn_delete" (click)="OnDelete(id)">Delete</button>
+</div>
+<app-doctor-footer></app-doctor-footer>

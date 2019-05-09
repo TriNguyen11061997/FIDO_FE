@@ -1,0 +1,45 @@
+<app-doctor-header></app-doctor-header>
+<div class="main">
+    <div>
+        <main class="container pt-5">
+            <div class="card mb-5">
+                <div class="card-header">
+                    <i class="fa fa-home"></i>Trang chủ/
+                    <i class="fas fa-comments"></i>Hỏi đáp
+                </div>
+                <div class="card-block p-0">
+                    <table class="table table-bordered table-sm m-0" datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger">
+                        <thead>
+                            <tr>
+                                <th>Action</th>
+                                <th>Tên người dùng</th>
+                                <th>Câu hỏi</th>
+                                <th>Ngày hỏi</th>
+                                <th>Câu trả lời</th>
+                                <th>Ngày trả lời</th>
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr *ngFor="let emp of aqs">
+                                <td style="text-align: center">
+                                    <a [routerLink]="['/doctor/aq/form',emp.id]">
+                                        <span class="fa-stack">
+                                            <i class="fas fa-location-arrow"></i>                                        
+                                        </span>
+                                    </a>
+                                </td>
+                                <td>{{emp.patient_name}}</td>
+                                <td>{{emp.question_content}}</td>
+                                <td>{{emp.created_at}}</td>
+                                <td>{{emp.answer}}</td>
+                                <td>{{emp.updated_at}}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </main>
+    </div>
+</div>
+<app-doctor-footer></app-doctor-footer>

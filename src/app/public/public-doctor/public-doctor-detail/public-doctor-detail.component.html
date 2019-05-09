@@ -18,23 +18,6 @@
                         </h1>
                         <bar-rating [(rate)]="rate" [max]="5"></bar-rating>
                     </div>
-                    <!-- <div class="btn-group pull-right text-right">
-                            <span class="social-follow">
-                                <span>
-                                    <span>
-                                        <span href="#" class="btn btn-primary-inverted btn-curvy btn-sm weaker m-r-xs">
-                                            <i aria-hidden="true" class="fa fa-user-plus"></i> Theo dõi
-                                        </span>
-                                    </span>
-                                </span>
-                            </span>
-                            <a href="#" title="" data-professional-id="42"
-                                class="action-favourite btn btn-primary-inverted btn-curvy btn-sm weaker ">
-                                <i class="fa fa-spinner fa-pulse loader"></i>
-                                <span class="added"><i aria-hidden="true" class="fa fa-bookmark"></i> Đã ghi nhớ</span>
-                                <span class="unadded"><i aria-hidden="true" class="fa fa-bookmark-o"></i> Ghi nhớ</span>
-                            </a>
-                        </div> -->
                 </div>
             </div>
             <nav class="bg-white m-b-sm text-right">
@@ -48,6 +31,12 @@
                                          Đánh giá
                                         </a>
                         </li>
+                        <li class="no-paddings">
+                            <a (click)="ShowAQ()" class="click-me auto-scroll-item"><i aria-hidden="true"
+                                            class="fa fa-comments-o"></i>
+                                            Hỏi đáp
+                            </a>
+                        </li>
                     </ul>
                     <ul *ngIf="loadRating" class="nav-tabs hover-underline tab-content-triggers list-unstyled list-inline auto-scroll-nav">
                         <li class="no-paddings"><a (click)="ShowDetail()" class="auto-scroll-item">Thông
@@ -56,7 +45,30 @@
                             <a (click)="ShowRating()" class="click-me auto-scroll-item active"><i aria-hidden="true"
                                             class="fa fa-comments-o"></i>
                                              Đánh giá
-                                            </a>
+                            </a>
+                        </li>
+                        <li class="no-paddings">
+                            <a (click)="ShowAQ()" class="click-me auto-scroll-item"><i aria-hidden="true"
+                                                class="fa fa-comments-o"></i>
+                                                Hỏi đáp
+                                </a>
+                        </li>
+                    </ul>
+
+                    <ul *ngIf="loadAQ" class="nav-tabs hover-underline tab-content-triggers list-unstyled list-inline auto-scroll-nav">
+                        <li class="no-paddings"><a (click)="ShowDetail()" class="auto-scroll-item">Thông
+                                            tin chi tiết</a></li>
+                        <li class="no-paddings">
+                            <a (click)="ShowRating()" class="click-me auto-scroll-item"><i aria-hidden="true"
+                                                class="fa fa-comments-o"></i>
+                                                 Đánh giá
+                                </a>
+                        </li>
+                        <li class="no-paddings">
+                            <a (click)="ShowAQ()" class="click-me auto-scroll-item active"><i aria-hidden="true"
+                                                    class="fa fa-comments-o"></i>
+                                                    Hỏi đáp
+                                    </a>
                         </li>
                     </ul>
                 </div>
@@ -105,7 +117,6 @@
                     <section class="col-xs-12 col-md-9 col-lg-8" *ngIf="loadDetail">
                         <div class="min-page-height clearfix">
                             <div class="tab-content-container">
-                                <!-- start chi tiet-->
                                 <div id="thong-tin-chi-tiet" class="tab-content active">
                                     <div class="row">
                                         <div class="col-xs-12 col-md-7">
@@ -152,16 +163,9 @@
                                                     <ul class="list-unstyled">
                                                         <li>
                                                             <a href="#">
-                                                                <!-- <span class="image" style="background-image: url(&quot;https://dwbxi9io9o7ce.cloudfront.net/images/11_07_2016_10_06_14_661256.jpeg&quot;);"></span> Phòng khám Sản phụ khoa - Bác sĩ Đỗ Thị
-                                                                Ngọc Lan -->
                                                                 <span>{{doctor?.hospital_name}}</span>
                                                             </a>
                                                         </li>
-                                                        <!-- <li>
-                                                            <a href="#">
-                                                                <span class="image" style="background-image: url(&quot;https://dwbxi9io9o7ce.cloudfront.net/images/24_07_2016_07_04_10_382763.jpeg&quot;);"></span> Bệnh viện Phụ sản An Thịnh
-                                                            </a>
-                                                        </li> -->
                                                     </ul>
                                                 </div>
                                             </div>
@@ -304,7 +308,6 @@
                                         </div>
                                     </div>
                                 </div>
-                                <!-- start hoi-dap bac si-->
                             </div>
                         </div>
                     </section>
@@ -391,10 +394,112 @@
                             </div>
                         </div>
                     </section>
+                    <div class="col-xs-12 col-lg-8" *ngIf="loadAQ">
+                        <div class="col-xs-12">
+                            <form *ngIf="loadReview" [formGroup]="aqForm" (ngSubmit)="onAq() " id="social-create " class="social-create ">
+                                <div class="social-comment ">
+                                    <a href="# " class="pull-left ">
+                                        <img src="{{currentUser?.avatar}} " class="image " alt=" ">
+                                    </a>
+                                    <div class="social-body ">
+                                        <ul class="list-inline ">
+                                            <li>
+                                                <a href="# " class="active "><span class="fa fa-fw fa-question-circle "></span> Đặt câu hỏi
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="media-body form-group ">
+                                        <textarea formControlName="question_content" data-rules="required|min_length[30] " placeholder="Bạn muốn hỏi Bác sĩ Đỗ Thị Ngọc Lan điều gì? " autocomplete="false " class="form-control validate " style="overflow:
+                                hidden; overflow-wrap: break-word; height: 50px; ">
+                                        </textarea></div>
+                                </div>
+
+                                <div class="text-center submit-form ">
+                                    <button type="submit " class="btn btn-md btn-primary pull-right ">
+                                        Gửi
+                                        <i aria-hidden="true " class="fa fa-fw fa-paper-plane ">
+                                        </i>
+                                    </button>
+                                </div>
+                            </form>
+                            <!---->
+                            <div class="loading-screen " style="display: none; ">
+                            </div>
+                            <div>
+                                <div>
+                                    <div class="social-feed-box " *ngFor="let item of aqs ">
+                                        <div class="social-avatar ">
+                                            <a class="pull-left ">
+                                                <img src="{{item.patient_avatar}} " class="image " alt=" ">
+                                            </a>
+                                            <div class="media-body ">
+                                                <p>
+                                                    <a href="/thanh-vien/tien-vo-185333/ ">					
+                                                        {{item.patient_name}}
+                                                    </a>
+                                                    <span class="social-follow ">
+                                                       
+                                                    </span>
+                                                    <span><span><span>đã hỏi<a href="/danh-sach/bac-si/do-thi-ngoc-lan-42/san-phu-khoa "> {{item.doctor_name}}</a>.
+                                                    </span>
+                                                    </span>
+                                                    </span>
+                                                </p>
+                                                <small><a><span title="15h20 05-12-2017 ">{{item.created_at}}</span> <span>Nữ</span> <span>{{item.patient_age}} tuổi</span> <span>{{item.patient_address_name}}</span></a></small>
+                                            </div>
+                                        </div>
+                                        <div class="social-body ">
+                                            <div class="m-b-xs break-word ">
+                                                <p>{{item.question_content}}</p>
+                                            </div>
+
+                                            <div class="social-reply editing " style="display: none; "><span class="image "></span>
+                                                <div class="media-body ">
+                                                    <div class="form-group "><textarea placeholder="Viết trả lời... " rows="1 " class="form-control resize-textarea " style="overflow-x: hidden; overflow-wrap: break-word; "></textarea>
+                                                        <a class="attach-image "><i aria-hidden="true " class="fa fa-camera "></i> <input type="file " accept="image/* " multiple="multiple "></a></div>
+                                                </div>
+                                            </div>
+                                            <div class="social-footer has-active-reply-box " *ngIf="item.answer ">
+                                                <div class="social-comment official ">
+                                                    <a href="/danh-sach/bac-si/do-thi-ngoc-lan-42/san-phu-khoa " class="pull-left ">
+                                                        <img src="{{item.doctor_avatar}} " class="image " alt=" ">
+                                                    </a>
+                                                    <div class="media-body ">
+                                                        <div class="media-name ">
+                                                            <a>
+                                                                {{item.doctor_name}}        
+                                                            </a>
+                                                        </div>
+                                                        <div class="m-b-xs break-word ">
+                                                            <p>Chào bạn,</p>
+                                                            <p>{{item.answer}}</p>
+                                                        </div>
+                                                        <div class="social-reply editing " style="display: none; "><span class="image "></span>
+                                                            <div class="media-body ">
+                                                                <div class="form-group "><textarea placeholder="Viết trả lời... " rows="1 " class="form-control resize-textarea " style="overflow-x: hidden; overflow-wrap: break-word; "></textarea>
+                                                                    <a class="attach-image "><i aria-hidden="true " class="fa fa-camera "></i> <input type="file " accept="image/* " multiple="multiple "></a></div>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                    <div class="media-footer ">
+                                                        <ul class="list-unstyled media-meta ">
+                                                            <li title="13h40 08-12-2017 ">
+                                                                {{item.updated_at}}
+                                                            </li>
+                                                        </ul>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <!---->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
-        </div>
-    </div>
-</div>
 
-<app-public-footer></app-public-footer>
+            <app-public-footer></app-public-footer>
