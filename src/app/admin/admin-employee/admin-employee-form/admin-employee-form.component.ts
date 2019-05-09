@@ -182,7 +182,7 @@ export class AdminEmployeeFormComponent implements OnInit {
     formData.append('start_date', this.employeeForm.get('start_date').value);
     this.service.add(formData).subscribe(
       data => {
-        if (data["status_code"] == 200) {
+        if (data["status_code"] == 201) {
           this.toastr.success("Đã thêm thành công!", "FIDO!");
           this.router.navigate(['/admin/employee'])
         }

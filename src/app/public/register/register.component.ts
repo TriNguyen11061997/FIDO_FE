@@ -32,7 +32,7 @@ export class RegisterComponent implements OnInit {
     private router: Router,
     private addressService: AddressService,
     private specialistService: SpecialistService,
-    private spinner : NgxSpinnerService) { }
+    private spinner: NgxSpinnerService) { }
 
   ngOnInit() {
     this.spinner.show()
@@ -82,11 +82,18 @@ export class RegisterComponent implements OnInit {
 
     this.userService.register(this.registerUserForm.value).subscribe(
       data => {
-        this.toastr.success("Đăng kí thành công!", "FIDO!", { timeOut: 1000 });
-        this.router.navigate(["/login"]);
-      },error => { 
+        if (data["status_code"] == 200) {
+          this.toastr.success("Đăng kí thành công!", "FIDO!", { timeOut: 1000 });
+          this.router.navigate(["/login"]);
+        }
+        else {
+          this.toastr.warning("Email đã tồn tại or Password không đúng!", "FIDO!", { timeOut: 1000 })
+        }
+
+      }, error => {
         console.error();
-        this.toastr.warning("Email đã tồn tại or Password không đúng!", "FIDO!", { timeOut: 1000 })  }
+        this.toastr.warning("Email đã tồn tại or Password không đúng!", "FIDO!", { timeOut: 1000 })
+      }
     )
 
     //alert('SUCCESS!! :-)\n\n' + JSON.stringify(this.registerUserForm.value))
@@ -99,7 +106,7 @@ export class RegisterComponent implements OnInit {
 
     this.userService.register(this.registerDoctorForm.value).subscribe(
       data => {
-        if (data["status_code"] != 403) {
+        if (data["status_code"] == 200) {
           this.router.navigate(["/login"]);
           this.toastr.success("Đăng kí thành công!", "FIDO!", { timeOut: 1000 })
         } else {
