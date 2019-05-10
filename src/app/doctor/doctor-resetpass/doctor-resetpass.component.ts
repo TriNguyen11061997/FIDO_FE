@@ -5,6 +5,7 @@ import { AuthenticationService, UserService } from '@app/_services';
 import { Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { MustMatch } from '@app/_helpers/must-match.validator';
+import { Users } from '@app/_models/users.model';
 
 @Component({
   selector: 'app-doctor-resetpass',
@@ -14,6 +15,7 @@ import { MustMatch } from '@app/_helpers/must-match.validator';
 export class DoctorResetpassComponent implements OnInit {
   formReset: FormGroup;
   submitted = false;
+  currentUser: Users;
   constructor(
     private spinner: NgxSpinnerService,
     private userService: AuthenticationService,
@@ -21,7 +23,9 @@ export class DoctorResetpassComponent implements OnInit {
     private resetService: UserService,
     private formBuilder: FormBuilder,
     private toastr: ToastrService
-  ) { }
+  ) {
+    this.userService.currentUser.subscribe(user => { this.currentUser = user })
+  }
 
   ngOnInit() {
     this.formReset = this.formBuilder.group({
@@ -34,6 +38,9 @@ export class DoctorResetpassComponent implements OnInit {
       {
         validator: MustMatch('resetPassword', 'confirmPassword')
       });
+    this.formReset.patchValue({
+      email: this.currentUser.email
+    })
   }
   get f() { return this.formReset.controls; }
   onSubmit() {

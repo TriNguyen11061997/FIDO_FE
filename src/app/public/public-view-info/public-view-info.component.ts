@@ -48,6 +48,9 @@ export class PublicViewInfoComponent implements OnInit {
         this.patient = data["data"] as Patient
         this.ratings = data["data"]["review"] as Rating[];
         this.aqs = data["data"]["questions"] as Aq[];
+        this.formReset.patchValue({
+          email : data["data"]["email"]
+        })
       }
     )
     this.formReset = this.formBuilder.group({

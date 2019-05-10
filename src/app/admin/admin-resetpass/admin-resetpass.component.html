@@ -7,7 +7,7 @@
         <div class="form-row">
             <div class="form-group col-md-8">
                 <label for="Email">Email</label>
-                <input type="email" formControlName="email" class="form-control" id="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <input readonly type="email" formControlName="email" class="form-control" id="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
                 <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                     <div *ngIf="f.email.errors.required">Vui lòng nhập email!</div>
                     <div *ngIf="f.email.errors.email">Không đúng định dạng!</div>
