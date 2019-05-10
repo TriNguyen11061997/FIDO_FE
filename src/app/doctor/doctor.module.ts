@@ -14,6 +14,7 @@ import { AuthBSGuard } from '@app/_guards';
 import { DoctorAqComponent } from './doctor-aq/doctor-aq.component';
 import { DoctorAqFormComponent } from './doctor-aq/doctor-aq-form/doctor-aq-form.component';
 import { DoctorInfoComponent } from './doctor-info/doctor-info.component';
+import { DoctorResetpassComponent } from './doctor-resetpass/doctor-resetpass.component';
 
 const appRoutes: Routes = [
    //{ path: 'admin/doctor', component: , canActivate: [AuthGuard] },
@@ -22,6 +23,7 @@ const appRoutes: Routes = [
    { path: 'doctor/aq', component: DoctorAqComponent, canActivate: [AuthBSGuard] },
    { path: 'doctor/aq/form/:id', component: DoctorAqFormComponent, canActivate: [AuthBSGuard] },
    { path: 'doctor/info/edit', component: DoctorInfoComponent, canActivate: [AuthBSGuard] },
+   { path: 'doctor/resetpass', component: DoctorResetpassComponent, canActivate: [AuthBSGuard] },
    // otherwise redirect to home
 ];
 @NgModule({
@@ -34,7 +36,8 @@ const appRoutes: Routes = [
     DoctorCertificateFormComponent,
     DoctorAqComponent,
     DoctorAqFormComponent,
-    DoctorInfoComponent
+    DoctorInfoComponent,
+    DoctorResetpassComponent
   ],
   imports: [
     CommonModule,

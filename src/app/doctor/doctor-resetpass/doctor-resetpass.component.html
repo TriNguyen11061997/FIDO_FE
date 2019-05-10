@@ -1,0 +1,44 @@
+<app-doctor-header></app-doctor-header>
+<div class="main">
+    <div class="card-header"><i class="fa fa-home"></i>Trang chủ/
+        <i class="fa fa-fw fa-key" aria-hidden="true"></i>Đổi mật khẩu
+    </div>
+    <form [formGroup]="formReset" (ngSubmit)="onSubmit()">
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="Email">Email</label>
+                <input type="email" formControlName="email" class="form-control" id="Email" [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div *ngIf="f.email.errors.required">Vui lòng nhập email!</div>
+                    <div *ngIf="f.email.errors.email">Không đúng định dạng!</div>
+                </div>
+            </div>
+            <div class="form-group col-md-8">
+                <label for="Password">Password</label>
+                <input type="password" formControlName="password" class="form-control" id="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
+                <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+                    <div *ngIf="f.password.errors.required">Vui lòng nhập mật khẩu!</div>
+                </div>
+            </div>
+            <div class="form-group col-md-8">
+                <label for="resetPassword">RePassword</label>
+                <input type="password" formControlName="resetPassword" class="form-control" id="resetPassword" [ngClass]="{ 'is-invalid': submitted && f.resetPassword.errors }">
+                <div *ngIf="submitted && f.resetPassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.resetPassword.errors.required">Vui lòng nhập mật khẩu!</div>
+                </div>
+            </div>
+
+            <div class="form-group col-md-8">
+                <label for="resetPassword">ConfirmPassword</label>
+                <input type="password" formControlName="confirmPassword" class="form-control" id="resetPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
+                <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                    <div *ngIf="f.confirmPassword.errors.required">Xác nhận mật khẩu!
+                    </div>
+                    <div *ngIf="f.confirmPassword.errors.mustMatch">Mật khẩu không khớp!</div>
+                </div>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<app-doctor-footer></app-doctor-footer>

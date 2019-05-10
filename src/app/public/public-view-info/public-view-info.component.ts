@@ -6,8 +6,9 @@ import { Patient } from '@app/_models/patient.model';
 import { Router } from '@angular/router';
 import { Rating } from '@app/_models/rating.model';
 import { Aq } from '@app/_models/aq.model';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
+import { MustMatch } from '@app/_helpers/must-match.validator';
 
 @Component({
   selector: 'app-public-view-info',
@@ -24,6 +25,7 @@ export class PublicViewInfoComponent implements OnInit {
   checkaq: boolean = false;
   checkReset: boolean = false;
   formReset: FormGroup;
+  submitted = false;
   constructor(
     private spinner: NgxSpinnerService,
     private patientService: PatientService,
@@ -47,25 +49,33 @@ export class PublicViewInfoComponent implements OnInit {
       }
     )
     this.formReset = this.formBuilder.group({
-      email: null,
-      password: null,
-      resetPassword: null,
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      resetPassword: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
       _method: ['PUT']
-    })
+    },
+      {
+        validator: MustMatch('resetPassword', 'confirmPassword')
+      });
   }
-
+  get f() { return this.formReset.controls; }
   onSubmit() {
+    this.submitted = true;
+    if (this.formReset.invalid) {
+      return;
+    }
     this.resetService.resetPass(this.formReset.value).subscribe(
       data => {
         if (data["status_code"] == 200) {
-          this.toastr.success("Cập nhật thành công", "FIDO!");
+          this.toastr.success("Đổi mật khẩu thành công", "FIDO!");
           this.logout();
           this.router.navigate(['/login'])
         }
         else {
           this.toastr.warning("Email or Password không chính xác", "FIDO!");
         }
-      }, (err) => { this.toastr.error(err, "FIDO!"); }
+      }, (err) => { this.toastr.error("Email or Password không chính xác", "FIDO!"); }
     )
   }
 
