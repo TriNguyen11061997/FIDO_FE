@@ -28,3 +28,86 @@ form {
 #main_header h2 {
     font-family: initial;
 }
+
+#page-title[_ngcontent-c9] {
+    overflow: hidden;
+    position: relative;
+}
+
+#page-title[_ngcontent-c9] .background[_ngcontent-c9] {
+    background: url("/assets/images/nen_login2.jpg") 100% 80%/auto 250px no-repeat #f9f9f9;
+    bottom: 0;
+    content: " ";
+    left: 0;
+    overflow: hidden;
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+#page-title[_ngcontent-c9] .mask[_ngcontent-c9] {
+    background: hsla(0, 0%, 96%, .4);
+    height: 100%;
+    position: relative;
+}
+
+@media (max-width: 1023px) {
+    #page-title[_ngcontent-c9] .mask[_ngcontent-c9] .position[_ngcontent-c9] {
+        padding: 35px 0;
+    }
+}
+
+@media (max-width: 1220px) {
+    #page-title[_ngcontent-c9] .mask[_ngcontent-c9] .position[_ngcontent-c9] {
+        margin: 0 10px;
+        width: auto;
+    }
+}
+
+#page-title[_ngcontent-c9] .breadcrumbs[_ngcontent-c9] {
+    color: #777;
+    font-size: 12px;
+    padding: 0 0 3px;
+    line-height: 1.2;
+    margin: 0 15px;
+}
+
+#page-title[_ngcontent-c9] .mask[_ngcontent-c9] .position[_ngcontent-c9] {
+    padding: 30px 0 35px;
+}
+
+.position[_ngcontent-c9] {
+    position: relative;
+    margin: auto;
+    width: 1180px;
+}
+
+#page-title[_ngcontent-c9] h1[_ngcontent-c9] {
+    font-size: 26px;
+    margin: 0 15px;
+}
+
+h1[_ngcontent-c9] {
+    color: #333;
+    font-size: 24px;
+}
+
+#page-title[_ngcontent-c9] .breadcrumbs[_ngcontent-c9] li[_ngcontent-c9] {
+    display: inline;
+}
+
+#page-title[_ngcontent-c9] .breadcrumbs[_ngcontent-c9] li[_ngcontent-c9] a[_ngcontent-c9] {
+    color: #777;
+    text-decoration: none;
+}
+
+a[_ngcontent-c9] {
+    color: #00a2a2;
+    transition: all .1s;
+}
+
+#page-title[_ngcontent-c9] .breadcrumbs[_ngcontent-c9] li[_ngcontent-c9]:after {
+    content: "\\";
+    display: inline-block;
+    margin: 0 4px;
+}
