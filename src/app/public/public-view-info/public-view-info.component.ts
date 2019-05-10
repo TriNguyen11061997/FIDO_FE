@@ -9,6 +9,7 @@ import { Aq } from '@app/_models/aq.model';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { MustMatch } from '@app/_helpers/must-match.validator';
+import { Users } from '@app/_models/users.model';
 
 @Component({
   selector: 'app-public-view-info',
@@ -18,6 +19,7 @@ import { MustMatch } from '@app/_helpers/must-match.validator';
 export class PublicViewInfoComponent implements OnInit {
   patient: Patient;
   ratings: Rating[];
+  currentUser : Users;
   aqs: Aq[];
   id: number;
   checkinfo: boolean = true;
@@ -35,12 +37,12 @@ export class PublicViewInfoComponent implements OnInit {
     private formBuilder: FormBuilder,
     private toastr: ToastrService
   ) {
-    this.userService.currentUser.subscribe(user => { this.id = user.usable_id })
+    this.userService.currentUser.subscribe(user => { this.currentUser = user })
   }
 
   ngOnInit() {
     this.spinner.show()
-    this.patientService.getObjectByID(this.id).subscribe(
+    this.patientService.getObjectByID(this.currentUser.usable_id).subscribe(
       data => {
         this.spinner.hide()
         this.patient = data["data"] as Patient

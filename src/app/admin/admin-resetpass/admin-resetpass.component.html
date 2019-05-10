@@ -14,14 +14,14 @@
                 </div>
             </div>
             <div class="form-group col-md-8">
-                <label for="Password">Password</label>
+                <label for="Password">Mật khẩu</label>
                 <input type="password" formControlName="password" class="form-control" id="Password" [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
                 <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                     <div *ngIf="f.password.errors.required">Vui lòng nhập mật khẩu!</div>
                 </div>
             </div>
             <div class="form-group col-md-8">
-                <label for="resetPassword">RePassword</label>
+                <label for="resetPassword">Mật khẩu mới</label>
                 <input type="password" formControlName="resetPassword" class="form-control" id="resetPassword" [ngClass]="{ 'is-invalid': submitted && f.resetPassword.errors }">
                 <div *ngIf="submitted && f.resetPassword.errors" class="invalid-feedback">
                     <div *ngIf="f.resetPassword.errors.required">Vui lòng nhập mật khẩu!</div>
@@ -29,7 +29,7 @@
             </div>
 
             <div class="form-group col-md-8">
-                <label for="resetPassword">ConfirmPassword</label>
+                <label for="resetPassword">Xác nhận mật khẩu mới</label>
                 <input type="password" formControlName="confirmPassword" class="form-control" id="resetPassword" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }">
                 <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
                     <div *ngIf="f.confirmPassword.errors.required">Xác nhận mật khẩu!
