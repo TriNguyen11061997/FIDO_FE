@@ -21,6 +21,7 @@ import { PublicInfoComponent } from './public-info/public-info.component';
 import { AgmCoreModule } from '@agm/core';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { PublicViewInfoComponent } from './public-view-info/public-view-info.component';
+import { PublicSickComponent } from './public-sick/public-sick.component';
 const appRoutes: Routes = [
   { path: 'public/doctor', component: PublicDoctorComponent },
   { path: 'public/forum', component: PublicForumComponent },
@@ -28,7 +29,7 @@ const appRoutes: Routes = [
   { path: 'public/doctor/:address_id/:name', component: PublicDoctorComponent },
   { path: 'public/info/edit', component: PublicInfoComponent, canActivate: [AuthBNGuard] },
   { path: 'public/info', component: PublicViewInfoComponent, canActivate: [AuthBNGuard] },
-
+  { path: 'public/sick', component: PublicSickComponent, canActivate: [AuthBNGuard] },
 ];
 @NgModule({
   declarations: [
@@ -41,6 +42,7 @@ const appRoutes: Routes = [
     RegisterComponent,
     PublicInfoComponent,
     PublicViewInfoComponent,
+    PublicSickComponent,
   ],
   imports: [
     FormsModule,
