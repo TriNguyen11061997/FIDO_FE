@@ -31,7 +31,8 @@ export class AuthenticationService {
                     formData.avatar = user["data"]["avatar"];
                     formData.remember_token = user["access_token"];
                     formData.usable_type = user["usable_type"];
-                    formData.status_code = user["status_code"];
+                    if (user["status_code"] != null)
+                        formData.status_code = user["status_code"];
                     if (user["data"]["role"])
                         formData.role = user["data"]["role"];
                     //console.log(user["data"]["data"]["name"]);

@@ -63,20 +63,21 @@ export class LoginComponent implements OnInit {
         // }
 
         this.authenticationService.login(this.loginForm.value).subscribe(
-            data => {
-                this.authenticationService.currentUser.subscribe(x => { this.currentUser = x });
-                if ( this.currentUser.status_code == 200) {
-                    if ( this.currentUser.usable_type == "App\\Employee")
-                         this.router.navigate(['/admin']);
-                    if ( this.currentUser.usable_type == "App\\Patient")
+            data => {            
+                if (data.status_code != null && data.status_code == 200) {
+                    if (data.usable_type == "App\\Employee")
+                        this.router.navigate(['/admin']);
+                    if (data.usable_type == "App\\Patient")
                         this.router.navigate(['/public']);
-                    if ( this.currentUser.usable_type == "App\\Doctor")
+                    if (data.usable_type == "App\\Doctor")
                         this.router.navigate(['/doctor']);
                     this.toastr.success("Đăng nhập thành công!", "FIDO!", { timeOut: 1000 });
                 }
                 else {
                     this.toastr.warning("Username or Password không đúng!", "FiDo!", { timeOut: 1000 });
-                }                  
+                }
+            }, (err) => {
+                this.toastr.warning("Username or Password không đúng!", "FiDo!", { timeOut: 1000 });
             })
     }
 }
